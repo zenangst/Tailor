@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "Tailor"
-  s.summary          = "A short description of Tailor."
+  s.summary          = "Tailor Swift"
   s.version          = "0.1"
   s.homepage         = "https://github.com/zenangst/Tailor"
   s.license          = 'MIT'

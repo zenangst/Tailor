@@ -5,6 +5,8 @@
 [![License](https://img.shields.io/cocoapods/l/Tailor.svg?style=flat)](http://cocoadocs.org/docsets/Tailor)
 [![Platform](https://img.shields.io/cocoapods/p/Tailor.svg?style=flat)](http://cocoadocs.org/docsets/Tailor)
 
+## Work in progress
+
 ## Usage
 
 ```objc

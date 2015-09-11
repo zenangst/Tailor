@@ -12,7 +12,6 @@ public func <- <T>(inout left: T, right: T?) {
 public protocol Inspectable { }
 public protocol Mappable: class {
   init(_ map: [String : AnyObject])
-  func mapping(map: [String : AnyObject])
 }
 
 public extension Inspectable {

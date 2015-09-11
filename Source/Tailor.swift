@@ -16,14 +16,24 @@ public protocol Mappable: class {
 
 public extension Inspectable {
 
-  public func property(key: String, dictionary: Any? = nil) -> Any? {
+  public func property<T>(key: String, dictionary: T? = nil) -> T? {
     // TODO: Improve this to support nested attributes
     let components = ArraySlice(key.componentsSeparatedByString("."))
     let value = Mirror(reflecting: self)
       .children
       .filter({$0.0! == components.first!})
       .map({ $1 }).first!
-    return value
+
+    var result = value as? T
+    let type:_MirrorType = _reflect(value)
+    if type.disposition == .Optional {
+      if type.count != 0 {
+        let (_, some) = type[0]
+        result = some.value as? T
+      }
+    }
+
+    return result
   }
 
   public func properties() -> [String : Any] {

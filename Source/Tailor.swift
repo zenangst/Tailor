@@ -9,13 +9,13 @@ public func <- <T>(inout left: T, right: T?) {
   left = right
 }
 
-public protocol Reflectable { }
+public protocol Inspectable { }
 public protocol Mappable: class {
   init(_ map: [String : AnyObject])
   func mapping(map: [String : AnyObject])
 }
 
-public extension Reflectable {
+public extension Inspectable {
 
   public func property(key: String, dictionary: Any? = nil) -> Any? {
     // TODO: Improve this to support nested attributes

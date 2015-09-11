@@ -1,7 +1,7 @@
 import Foundation
 import Tailor
 
-class TestPersonClass: NSObject, Reflectable, Mappable {
+class TestPersonClass: NSObject, Inspectable, Mappable {
   var firstName: String = ""
   var lastName: String? = ""
   
@@ -17,7 +17,7 @@ class TestPersonClass: NSObject, Reflectable, Mappable {
   }
 }
 
-struct TestPersonStruct: Reflectable, Equatable {
+struct TestPersonStruct: Inspectable, Equatable {
   var firstName: String = ""
   var lastName: String? = ""
   

@@ -5,12 +5,12 @@ class TestMappable: XCTestCase {
 
   func testMappableStruct() {
     var expectedStruct = TestPersonStruct([:])
-    expectedStruct.firstName = "John"
-    expectedStruct.lastName = "Hyperseed"
+    expectedStruct.firstName = "Taylor"
+    expectedStruct.lastName = "Swift"
 
     let testStruct = TestPersonStruct([
-      "firstName" : "John",
-      "lastName" : "Hyperseed"
+      "firstName" : "Taylor",
+      "lastName" : "Swift"
       ])
 
     XCTAssertEqual(testStruct, expectedStruct)
@@ -18,12 +18,12 @@ class TestMappable: XCTestCase {
 
   func testMappableClass() {
     let expectedClass = TestPersonClass([:])
-    expectedClass.firstName = "John"
-    expectedClass.lastName = "Hyperseed"
+    expectedClass.firstName = "Taylor"
+    expectedClass.lastName = "Swift"
 
     let testClass = TestPersonClass([
-      "firstName" : "John",
-      "lastName" : "Hyperseed"
+      "firstName" : "Taylor",
+      "lastName" : "Swift"
       ])
 
     XCTAssertEqual(testClass.firstName, expectedClass.firstName)

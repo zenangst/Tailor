@@ -4,8 +4,8 @@ import Tailor
 class TestReflectable: XCTestCase {
 
   func testReflectionOnClass() {
-    let firstName = "John"
-    let lastName = "Hyperseed"
+    let firstName = "Taylor"
+    let lastName = "Swift"
     let person = TestPersonClass()
     person.firstName = firstName
     person.lastName = lastName
@@ -15,8 +15,8 @@ class TestReflectable: XCTestCase {
   }
 
   func testReflectionOnStruct() {
-    let firstName = "John"
-    let lastName = "Hyperseed"
+    let firstName = "Taylor"
+    let lastName = "Swift"
     var person = TestPersonStruct([:])
     person.firstName = firstName
     person.lastName = lastName

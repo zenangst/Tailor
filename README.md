@@ -9,8 +9,46 @@
 
 ## Usage
 
-```objc
-<API>
+### Structs
+```swift
+struct PersonStruct {
+  var firstName: String = ""
+  var lastName: String? = ""
+
+  init(_ map: [String : AnyObject]) {
+    firstName <- map.property("firstName")
+    lastName  <- map.property("lastName")
+  }
+}
+
+let testStruct = PersonStruct([
+  "firstName" : "Taylor",
+  "lastName"  : "Swift"
+])
+```
+
+### Classes
+```swift
+class PersonClass: NSObject, Mappable {
+  var firstName: String = ""
+  var lastName: String? = ""
+
+  required convenience init(_ map: [String : AnyObject]) {
+    self.init()
+    firstName <- map.property("firstName")
+    lastName  <- map.property("lastName")
+  }
+
+  func mapping(map: [String : AnyObject]) {
+    firstName <- map.property("firstName")
+    lastName  <- map.property("lastName")
+  }
+}
+
+let testClass = PersonClass([
+  "firstName" : "Taylor",
+  "lastName"  : "Swift"
+])
 ```
 
 ## Installation

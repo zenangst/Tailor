@@ -65,7 +65,7 @@ public extension Dictionary {
     return value as? T
   }
 
-  func propertyWithTransform<T, U>(name: String, transform: ((value: U?) -> T?)? = nil) -> T? {
+  func transform<T, U>(name: String, transform: ((value: U?) -> T?)? = nil) -> T? {
     guard let value = self[name as! Key] else { return nil }
 
     let result: T?

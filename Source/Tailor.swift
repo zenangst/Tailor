@@ -67,25 +67,13 @@ public extension Dictionary {
 
   func transform<T, U>(name: String, transform: ((value: U?) -> T?)? = nil) -> T? {
     guard let value = self[name as! Key] else { return nil }
-
-    let result: T?
-    if let transform = transform {
-      result = transform(value: value as? U)
-    } else {
-      result = value as? T
-    }
-    return result
+    guard let transform = transform else { return value as? T }
+    return transform(value: value as? U)
   }
 
   func relation<T, U>(name: String, transform: ((value: U?) -> T?)? = nil) -> T? {
     guard let key = name as? Key, value = self[key] else { return nil }
-
-    let result: T?
-    if let transform = transform {
-      result = transform(value: self[key] as? U)
-    } else {
-      result = value as? T
-    }
-    return result
+    guard let transform = transform else { return value as? T }
+    return transform(value: self[key] as? U)
   }
 }

@@ -77,7 +77,7 @@ class TestMappable: XCTestCase {
         ["firstName" : "Mini-Mini",
         "lastName" : "Swift",
         "sex": "female",
-        "birth_date": "2014-07-17"]
+        "birth_date": "2014-07-18"]
       ]
       ])
 
@@ -85,7 +85,9 @@ class TestMappable: XCTestCase {
     XCTAssertEqual(testStruct.lastName, expectedStruct.lastName)
     XCTAssertEqual(testStruct.sex, expectedStruct.sex)
     XCTAssertEqual(testStruct.birthDate, expectedStruct.birthDate)
-    XCTAssertTrue(testStruct.relatives.count > 0)
+    XCTAssertTrue(testStruct.relatives.count == 2)
     XCTAssertEqual(testStruct.relatives[0], relationStruct)
+    XCTAssertEqual(testStruct.relatives[0].firstName, "Mini")
+    XCTAssertEqual(testStruct.relatives[1].firstName, "Mini-Mini")
   }
 }

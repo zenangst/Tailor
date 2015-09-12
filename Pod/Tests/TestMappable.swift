@@ -49,4 +49,45 @@ class TestMappable: XCTestCase {
     XCTAssertEqual(testClass.sex, expectedClass.sex)
     XCTAssertEqual(testClass.birthDate, expectedClass.birthDate)
   }
+
+  func testRelations() {
+    let relationStruct = TestPersonStruct([
+        "firstName" : "Mini",
+        "lastName" : "Swift",
+        "sex": "female",
+        "birth_date": "2014-07-15"
+        ])
+    var expectedStruct = TestPersonStruct([:])
+    expectedStruct.firstName = "Taylor"
+    expectedStruct.lastName = "Swift"
+    expectedStruct.sex = .Female
+    expectedStruct.birthDate = dateFormatter.dateFromString("2014-07-15")!
+    expectedStruct.relatives.append(relationStruct)
+
+    let testStruct = TestPersonStruct([
+      "firstName" : "Taylor",
+      "lastName" : "Swift",
+      "sex": "female",
+      "birth_date": "2014-07-15",
+      "relatives" : [
+        ["firstName" : "Mini",
+        "lastName" : "Swift",
+        "sex": "female",
+        "birth_date": "2014-07-17"],
+        ["firstName" : "Mini-Mini",
+        "lastName" : "Swift",
+        "sex": "female",
+        "birth_date": "2014-07-18"]
+      ]
+      ])
+
+    XCTAssertEqual(testStruct.firstName, expectedStruct.firstName)
+    XCTAssertEqual(testStruct.lastName, expectedStruct.lastName)
+    XCTAssertEqual(testStruct.sex, expectedStruct.sex)
+    XCTAssertEqual(testStruct.birthDate, expectedStruct.birthDate)
+    XCTAssertTrue(testStruct.relatives.count == 2)
+    XCTAssertEqual(testStruct.relatives[0], relationStruct)
+    XCTAssertEqual(testStruct.relatives[0].firstName, "Mini")
+    XCTAssertEqual(testStruct.relatives[1].firstName, "Mini-Mini")
+  }
 }

@@ -28,11 +28,9 @@ public extension Inspectable {
 
     var result = value as? T
     let type:_MirrorType = _reflect(value)
-    if type.disposition == .Optional {
-      if type.count != 0 {
-        let (_, some) = type[0]
-        result = some.value as? T
-      }
+    if type.disposition == .Optional && type.count != 0 {
+      let (_, some) = type[0]
+      result = some.value as? T
     }
 
     return result
@@ -65,19 +63,19 @@ public extension Inspectable {
 public extension Dictionary {
 
   func property<T>(name: String) -> T? {
-    guard let value = self[name as! Key] else { return nil }
+    guard let key = name as? Key, value = self[key] else { return nil }
     return value as? T
   }
 
-  func propertyWithTransform<T, U>(name: String, transform: ((value: U?) -> T?)? = nil) -> T? {
+  func transform<T, U>(name: String, transform: ((value: U?) -> T?)? = nil) -> T? {
     guard let value = self[name as! Key] else { return nil }
+    guard let transform = transform else { return value as? T }
+    return transform(value: value as? U)
+  }
 
-    let result: T?
-    if let transform = transform {
-      result = transform(value: value as? U)
-    } else {
-      result = value as? T
-    }
-    return result
+  func relation<T, U>(name: String, transform: ((value: U?) -> T?)? = nil) -> T? {
+    guard let key = name as? Key, value = self[key] else { return nil }
+    guard let transform = transform else { return value as? T }
+    return transform(value: self[key] as? U)
   }
 }

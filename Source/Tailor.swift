@@ -26,11 +26,9 @@ public extension Inspectable {
 
     var result = value as? T
     let type:_MirrorType = _reflect(value)
-    if type.disposition == .Optional {
-      if type.count != 0 {
-        let (_, some) = type[0]
-        result = some.value as? T
-      }
+    if type.disposition == .Optional && type.count != 0 {
+      let (_, some) = type[0]
+      result = some.value as? T
     }
 
     return result

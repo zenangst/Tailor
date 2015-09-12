@@ -61,7 +61,7 @@ public extension Inspectable {
 public extension Dictionary {
 
   func property<T>(name: String) -> T? {
-    guard let value = self[name as! Key] else { return nil }
+    guard let key = name as? Key, value = self[key] else { return nil }
     return value as? T
   }
 

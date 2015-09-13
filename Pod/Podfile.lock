@@ -1,5 +1,5 @@
 PODS:
-  - Tailor (0.1.1)
+  - Tailor (0.1.2)
 
 DEPENDENCIES:
   - Tailor (from `../`)
@@ -9,6 +9,6 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Tailor: bb8aa0648fcad41b30169c2ba6af61e23797be64
+  Tailor: b530751947cb29aac528f3d987c9634a91cfb230
 
 COCOAPODS: 0.39.0.beta.4

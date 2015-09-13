@@ -75,6 +75,7 @@ struct TestPersonStruct: Inspectable, Mappable, Equatable {
     }
 
     relatives <- map.relation("relatives")
+    job <- map.object("job")
   }
 }
 

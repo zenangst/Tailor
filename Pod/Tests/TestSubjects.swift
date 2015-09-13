@@ -38,7 +38,7 @@ class TestPersonClass: NSObject, Inspectable, Mappable {
   }
 }
 
-struct TestPersonStruct: Inspectable, Equatable {
+struct TestPersonStruct: Inspectable, Mappable, Equatable {
   var firstName: String = ""
   var lastName: String? = ""
   var sex: Sex?
@@ -61,12 +61,7 @@ struct TestPersonStruct: Inspectable, Equatable {
       return dateFormatter.dateFromString(value)
     }
 
-    relatives <- map.relation("relatives") { (objects: JSONArray?) -> [TestPersonStruct]? in
-      guard let objects = objects else { return self.relatives }
-      for object in objects { self.relatives.append(TestPersonStruct(object)) }
-      return self.relatives
-    }
-
+    relatives <- map.relation("relatives")
   }
 }
 

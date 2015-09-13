@@ -13,7 +13,7 @@ public func <- <T>(inout left: T, right: T?) {
 }
 
 public protocol Inspectable { }
-public protocol Mappable: class {
+public protocol Mappable {
   init(_ map: JSONDictionary)
 }
 
@@ -76,6 +76,18 @@ public extension Inspectable {
   public func values() -> [Any]  { return Mirror(reflecting: self).children.map { $1 } }
 }
 
+public extension Array {
+  func relation<T : Mappable>() -> [T]? {
+    var objects = [T]()
+    for dictionary in self {
+      guard let dictionary = dictionary as? JSONDictionary else { continue }
+      let object = T(dictionary)
+      objects.append(object)
+    }
+    return objects
+  }
+}
+
 public extension Dictionary {
 
   func property<T>(name: String) -> T? {
@@ -83,15 +95,18 @@ public extension Dictionary {
     return value as? T
   }
 
-  func transform<T, U>(name: String, transform: ((value: U?) -> T?)? = nil) -> T? {
+  func transform<T, U>(name: String, transform: ((value: U?) -> T?)) -> T? {
     guard let value = self[name as! Key] else { return nil }
-    guard let transform = transform else { return value as? T }
     return transform(value: value as? U)
   }
 
-  func relation<T, U>(name: String, transform: ((value: U?) -> T?)? = nil) -> T? {
+  func relation<T : Mappable>(name: String) -> [T]? {
     guard let key = name as? Key, value = self[key] else { return nil }
-    guard let transform = transform else { return value as? T }
-    return transform(value: self[key] as? U)
+    guard let array = value as? JSONArray else { return nil }
+    var objects = [T]()
+    for dictionary in array {
+      objects.append(T(dictionary))
+    }
+    return objects
   }
 }

@@ -90,4 +90,20 @@ class TestMappable: XCTestCase {
     XCTAssertEqual(testStruct.relatives[0].firstName, "Mini")
     XCTAssertEqual(testStruct.relatives[1].firstName, "Mini-Mini")
   }
+
+  func testMapArrayOfObjects() {
+    var testStruct = TestPersonStruct([:])
+    let relatives: [[String : AnyObject]] = [
+      ["firstName" : "Mini",
+        "lastName" : "Swift",
+        "sex": "female",
+        "birth_date": "2014-07-17"],
+      ["firstName" : "Mini-Mini",
+        "lastName" : "Swift",
+        "sex": "female",
+        "birth_date": "2014-07-18"]]
+
+    testStruct.relatives <- relatives.relation()
+    XCTAssert(testStruct.relatives.count == 2)
+  }
 }

@@ -1,4 +1,5 @@
 infix operator <- {}
+
 public typealias JSONArray = [[String : AnyObject]]
 public typealias JSONDictionary = [String : AnyObject]
 
@@ -27,6 +28,21 @@ public extension Inspectable {
       .map({ $1 }).first!
 
     var result = value as? T
+
+    let tail = components.dropFirst()
+    if let indexString = tail.first,
+      index = Int(indexString) {
+        result = (value as! [T])[index]
+        
+        if tail.count > 1 {
+          guard let range = key.rangeOfString(indexString) else { return nil }
+          let key = key.substringFromIndex(range.startIndex.advancedBy(2))
+          return property(key, dictionary: result)
+        } else {
+          return result
+        }
+    }
+
     let type:_MirrorType = _reflect(value)
     if type.disposition == .Optional && type.count != 0 {
       let (_, some) = type[0]

@@ -76,6 +76,18 @@ public extension Inspectable {
   public func values() -> [Any]  { return Mirror(reflecting: self).children.map { $1 } }
 }
 
+public extension Array {
+  func relation<T : Mappable>() -> [T]? {
+    var objects = [T]()
+    for dictionary in self {
+      guard let dictionary = dictionary as? JSONDictionary else { continue }
+      let object = T(dictionary)
+      objects.append(object)
+    }
+    return objects
+  }
+}
+
 public extension Dictionary {
 
   func property<T>(name: String) -> T? {

@@ -14,7 +14,7 @@ class TestPersonClass: NSObject, Inspectable, Mappable {
   var sex: Sex = .Unspecified
   var birthDate: NSDate?
 
-  required convenience init(_ map: [String : AnyObject]) {
+  required convenience init(_ map: JSONDictionary) {
     self.init()
     firstName <- map.property("firstName")
     lastName  <- map.property("lastName")
@@ -32,7 +32,7 @@ class TestPersonClass: NSObject, Inspectable, Mappable {
     }
   }
 
-  func mapping(map: [String : AnyObject]) {
+  func mapping(map: JSONDictionary) {
     firstName <- map.property("firstName")
     lastName  <- map.property("lastName")
   }
@@ -61,7 +61,7 @@ struct TestPersonStruct: Inspectable, Equatable {
       return dateFormatter.dateFromString(value)
     }
 
-    relatives <- map.relation("relatives") { (objects: [[String : AnyObject]]?) -> [TestPersonStruct]? in
+    relatives <- map.relation("relatives") { (objects: JSONArray?) -> [TestPersonStruct]? in
       guard let objects = objects else { return self.relatives }
       for object in objects { self.relatives.append(TestPersonStruct(object)) }
       return self.relatives

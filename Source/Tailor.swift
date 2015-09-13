@@ -13,7 +13,7 @@ public func <- <T>(inout left: T, right: T?) {
 
 public protocol Inspectable { }
 public protocol Mappable: class {
-  init(_ map: [String : AnyObject])
+  init(_ map: JSONDictionary)
 }
 
 public extension Inspectable {

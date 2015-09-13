@@ -100,9 +100,14 @@ public extension Dictionary {
     return transform(value: value as? U)
   }
 
-  func relation<T, U>(name: String, transform: ((value: U?) -> T?)? = nil) -> T? {
+  func relation<T : Mappable>(name: String) -> [T]? {
     guard let key = name as? Key, value = self[key] else { return nil }
-    guard let transform = transform else { return value as? T }
-    return transform(value: self[key] as? U)
+    guard let array = value as? JSONArray else { return nil }
+    var objects = [T]()
+    for dictionary in array {
+      let object = T(dictionary)
+      objects.append(object)
+    }
+    return objects
   }
 }

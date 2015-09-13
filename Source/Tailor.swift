@@ -95,9 +95,8 @@ public extension Dictionary {
     return value as? T
   }
 
-  func transform<T, U>(name: String, transform: ((value: U?) -> T?)? = nil) -> T? {
+  func transform<T, U>(name: String, transform: ((value: U?) -> T?)) -> T? {
     guard let value = self[name as! Key] else { return nil }
-    guard let transform = transform else { return value as? T }
     return transform(value: value as? U)
   }
 

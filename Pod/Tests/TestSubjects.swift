@@ -7,6 +7,18 @@ enum Sex: String {
   case Female = "female"
 }
 
+struct Job: Mappable {
+  var name: String = ""
+  
+  init(_ map: JSONDictionary) {
+    name <- map.property("name")
+  }
+}
+
+func ==(lhs: Job, rhs: Job) -> Bool {
+  return lhs.name == rhs.name
+}
+
 class TestPersonClass: NSObject, Inspectable, Mappable {
 
   var firstName: String = ""
@@ -43,9 +55,10 @@ struct TestPersonStruct: Inspectable, Mappable, Equatable {
   var lastName: String? = ""
   var sex: Sex?
   var birthDate = NSDate(timeIntervalSince1970: 1)
+  var job: Job? = nil
   var relatives = [TestPersonStruct]()
 
-  init(_ map: [String : AnyObject]) {
+  init(_ map: JSONDictionary) {
     firstName <- map.property("firstName")
     lastName  <- map.property("lastName")
 
@@ -62,6 +75,7 @@ struct TestPersonStruct: Inspectable, Mappable, Equatable {
     }
 
     relatives <- map.relation("relatives")
+    job <- map.object("job")
   }
 }
 

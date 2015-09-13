@@ -16,10 +16,12 @@ class TestMappable: XCTestCase {
     expectedStruct.lastName = "Swift"
     expectedStruct.sex = .Female
     expectedStruct.birthDate = dateFormatter.dateFromString("2014-07-15")!
+    let expectedJob = Job(["name" : "Musician"])
 
     let testStruct = TestPersonStruct([
       "firstName" : "Taylor",
       "lastName" : "Swift",
+      "job" : ["name" : "Musician"],
       "sex": "female",
       "birth_date": "2014-07-15"
       ])
@@ -28,6 +30,7 @@ class TestMappable: XCTestCase {
     XCTAssertEqual(testStruct.lastName, expectedStruct.lastName)
     XCTAssertEqual(testStruct.sex, expectedStruct.sex)
     XCTAssertEqual(testStruct.birthDate, expectedStruct.birthDate)
+    XCTAssertEqual(testStruct.job?.name, expectedJob.name)
   }
 
   func testMappableClass() {

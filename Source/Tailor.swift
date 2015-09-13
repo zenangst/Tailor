@@ -105,8 +105,7 @@ public extension Dictionary {
     guard let array = value as? JSONArray else { return nil }
     var objects = [T]()
     for dictionary in array {
-      let object = T(dictionary)
-      objects.append(object)
+      objects.append(T(dictionary))
     }
     return objects
   }

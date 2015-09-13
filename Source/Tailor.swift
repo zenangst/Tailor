@@ -13,7 +13,7 @@ public func <- <T>(inout left: T, right: T?) {
 }
 
 public protocol Inspectable { }
-public protocol Mappable: class {
+public protocol Mappable {
   init(_ map: JSONDictionary)
 }
 

@@ -61,12 +61,7 @@ struct TestPersonStruct: Inspectable, Mappable, Equatable {
       return dateFormatter.dateFromString(value)
     }
 
-    relatives <- map.relation("relatives") { (objects: JSONArray?) -> [TestPersonStruct]? in
-      guard let objects = objects else { return self.relatives }
-      for object in objects { self.relatives.append(TestPersonStruct(object)) }
-      return self.relatives
-    }
-
+    relatives <- map.relation("relatives")
   }
 }
 

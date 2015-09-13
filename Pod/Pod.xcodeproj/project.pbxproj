@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		64F2A17D596D0A5134BA7475 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 174DF0D5891FAF41A24E6525 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		BD25770B1BA2C72700BF7559 /* TestReflectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD25770A1BA2C72700BF7559 /* TestReflectable.swift */; settings = {ASSET_TAGS = (); }; };
+		BD25770B1BA2C72700BF7559 /* TestInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD25770A1BA2C72700BF7559 /* TestInspectable.swift */; settings = {ASSET_TAGS = (); }; };
 		BD25770D1BA2C91E00BF7559 /* TestMappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD25770C1BA2C91E00BF7559 /* TestMappable.swift */; settings = {ASSET_TAGS = (); }; };
 		BD25770F1BA2C95A00BF7559 /* TestSubjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD25770E1BA2C95A00BF7559 /* TestSubjects.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
@@ -24,7 +24,7 @@
 		174DF0D5891FAF41A24E6525 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		45C6534C5D434B16A83A1119 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		7280D9993C983EC5823F78BA /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		BD25770A1BA2C72700BF7559 /* TestReflectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestReflectable.swift; sourceTree = "<group>"; };
+		BD25770A1BA2C72700BF7559 /* TestInspectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestInspectable.swift; sourceTree = "<group>"; };
 		BD25770C1BA2C91E00BF7559 /* TestMappable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestMappable.swift; sourceTree = "<group>"; };
 		BD25770E1BA2C95A00BF7559 /* TestSubjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestSubjects.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -65,7 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				146D72B01AB782920058798C /* Supporting Files */,
-				BD25770A1BA2C72700BF7559 /* TestReflectable.swift */,
+				BD25770A1BA2C72700BF7559 /* TestInspectable.swift */,
 				BD25770C1BA2C91E00BF7559 /* TestMappable.swift */,
 				BD25770E1BA2C95A00BF7559 /* TestSubjects.swift */,
 			);
@@ -237,7 +237,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD25770F1BA2C95A00BF7559 /* TestSubjects.swift in Sources */,
-				BD25770B1BA2C72700BF7559 /* TestReflectable.swift in Sources */,
+				BD25770B1BA2C72700BF7559 /* TestInspectable.swift in Sources */,
 				BD25770D1BA2C91E00BF7559 /* TestMappable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

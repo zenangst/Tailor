@@ -38,7 +38,7 @@ class TestPersonClass: NSObject, Inspectable, Mappable {
   }
 }
 
-struct TestPersonStruct: Inspectable, Equatable {
+struct TestPersonStruct: Inspectable, Mappable, Equatable {
   var firstName: String = ""
   var lastName: String? = ""
   var sex: Sex?

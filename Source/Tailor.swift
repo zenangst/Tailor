@@ -95,18 +95,18 @@ public extension Dictionary {
     return value as? T
   }
 
+  func transform<T, U>(name: String, transform: ((value: U?) -> T?)) -> T? {
+    guard let value = self[name as! Key] else { return nil }
+    return transform(value: value as? U)
+  }
+
   func object<T : Mappable>(name: String) -> T? {
     guard let value = self[name as! Key] else { return nil }
     guard let dictionary = value as? JSONDictionary else { return nil }
     return T(dictionary)
   }
 
-  func transform<T, U>(name: String, transform: ((value: U?) -> T?)) -> T? {
-    guard let value = self[name as! Key] else { return nil }
-    return transform(value: value as? U)
-  }
-
-  func relation<T : Mappable>(name: String) -> [T]? {
+  func objects<T : Mappable>(name: String) -> [T]? {
     guard let key = name as? Key, value = self[key] else { return nil }
     guard let array = value as? JSONArray else { return nil }
     var objects = [T]()

@@ -106,7 +106,7 @@ class TestMappable: XCTestCase {
         "sex": "female",
         "birth_date": "2014-07-18"]]
 
-    testStruct.relatives <- relatives.relation()
+    testStruct.relatives <- relatives.objects()
     XCTAssert(testStruct.relatives.count == 2)
   }
 }

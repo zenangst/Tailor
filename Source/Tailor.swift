@@ -77,7 +77,7 @@ public extension Inspectable {
 }
 
 public extension Array {
-  func relation<T : Mappable>() -> [T]? {
+  func objects<T : Mappable>() -> [T]? {
     var objects = [T]()
     for dictionary in self {
       guard let dictionary = dictionary as? JSONDictionary else { continue }

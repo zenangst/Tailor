@@ -77,13 +77,24 @@ public extension Inspectable {
 }
 
 public extension Array {
-  func objects<T : Mappable>() -> [T]? {
+  func objects<T : Mappable>(name: String? = nil) -> [T]? {
     var objects = [T]()
-    for dictionary in self {
-      guard let dictionary = dictionary as? JSONDictionary else { continue }
-      let object = T(dictionary)
-      objects.append(object)
+
+    if let name = name {
+      for dictionary in self {
+        guard let dictionary = dictionary as? JSONDictionary,
+          value = dictionary[name] as? JSONDictionary else { continue }
+        let object = T(value)
+        objects.append(object)
+      }
+    } else {
+      for dictionary in self {
+        guard let dictionary = dictionary as? JSONDictionary else { continue }
+        let object = T(dictionary)
+        objects.append(object)
+      }
     }
+
     return objects
   }
 }

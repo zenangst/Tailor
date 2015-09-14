@@ -74,7 +74,7 @@ struct TestPersonStruct: Inspectable, Mappable, Equatable {
       return dateFormatter.dateFromString(value)
     }
 
-    relatives <- map.relation("relatives")
+    relatives <- map.objects("relatives")
     job <- map.object("job")
   }
 }

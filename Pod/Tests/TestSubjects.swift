@@ -15,6 +15,13 @@ struct Job: Mappable {
   }
 }
 
+let dateTransformer = { (value: String?) -> NSDate? in
+  guard let value = value else { return nil }
+  let dateFormatter = NSDateFormatter()
+  dateFormatter.dateFormat = "yyyy-MM-dd"
+  return dateFormatter.dateFromString(value)
+}
+
 func ==(lhs: Job, rhs: Job) -> Bool {
   return lhs.name == rhs.name
 }
@@ -67,12 +74,7 @@ struct TestPersonStruct: Inspectable, Mappable, Equatable {
       return Sex(rawValue: value)
     }
 
-    birthDate <- map.transform("birth_date") { (value: String?) -> NSDate? in
-      guard let value = value else { return nil }
-      let dateFormatter = NSDateFormatter()
-      dateFormatter.dateFormat = "yyyy-MM-dd"
-      return dateFormatter.dateFromString(value)
-    }
+    birthDate <- map.transform("birth_date", transformer: dateTransformer)
 
     relatives <- map.objects("relatives")
     job <- map.object("job")

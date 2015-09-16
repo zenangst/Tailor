@@ -1,4 +1,5 @@
 infix operator <- {}
+infix operator <+ {}
 
 public typealias JSONArray = [[String : AnyObject]]
 public typealias JSONDictionary = [String : AnyObject]
@@ -10,6 +11,16 @@ public func <- <T>(inout left: T, right: T) {
 public func <- <T>(inout left: T, right: T?) {
   guard let right = right else { return }
   left = right
+}
+
+public func <+ <T>(inout left: [T], right: [T]?) {
+  guard let right = right else { return }
+  left.appendContentsOf(right)
+}
+
+public func <+ <T>(inout left: [T], right: T?) {
+  guard let right = right else { return }
+  left.append(right)
 }
 
 public protocol Inspectable { }

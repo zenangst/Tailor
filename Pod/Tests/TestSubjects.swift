@@ -64,6 +64,7 @@ struct TestPersonStruct: Inspectable, Mappable, Equatable {
   var birthDate = NSDate(timeIntervalSince1970: 1)
   var job: Job? = nil
   var relatives = [TestPersonStruct]()
+  let children = [TestPersonStruct]()
 
   init(_ map: JSONDictionary) {
     firstName <- map.property("firstName")

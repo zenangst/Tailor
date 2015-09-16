@@ -1,52 +1,146 @@
 ![Tailor Swift logo](https://raw.githubusercontent.com/zenangst/Tailor/master/Images/logo_v1.png)
 
-[![CI Status](http://img.shields.io/travis/zenangst/Tailor.svg?style=flat)](https://travis-ci.org/zenangst/Tailor)
-[![Version](https://img.shields.io/cocoapods/v/Tailor.svg?style=flat)](http://cocoadocs.org/docsets/Tailor)
-[![License](https://img.shields.io/cocoapods/l/Tailor.svg?style=flat)](http://cocoadocs.org/docsets/Tailor)
-[![Platform](https://img.shields.io/cocoapods/p/Tailor.svg?style=flat)](http://cocoadocs.org/docsets/Tailor)
+A super fast & convenient object mapper tailored for your needs.
 
-## Usage
+Mapping objects to arrays or dictionaries can be a really cumbersome task, but those
+days are over. Tailor features a whole bunch of nifty methods for your model sewing needs.
 
-### Structs
+## Mapping properties
+
+Tailor features property, object(s) mapping for both `struct` and `class` objects.
+
+## Struct
 ```swift
-struct PersonStruct {
-  var firstName: String = ""
+struct Person: Mappable {
+
+  var firstName: String? = ""
   var lastName: String? = ""
 
-  init(_ map: [String : AnyObject]) {
-    firstName <- map.property("firstName")
-    lastName  <- map.property("lastName")
+  init(_ map: JSONDictionary) {
+    firstName <- map.property("first_name")
+    lastName  <- map.property("last_name")
   }
 }
 
-let testStruct = PersonStruct([
-  "firstName" : "Taylor",
-  "lastName"  : "Swift"
-])
+let dictionary = ["first_name" : "Taylor", "last_name" : "Swift"]
+let model = Person(dictionary)
 ```
 
-### Classes
+## Class
 ```swift
-class PersonClass: NSObject, Mappable {
-  var firstName: String = ""
+class Person: Mappable {
+
+  var firstName: String? = ""
   var lastName: String? = ""
 
   required convenience init(_ map: [String : AnyObject]) {
     self.init()
-    firstName <- map.property("firstName")
-    lastName  <- map.property("lastName")
-  }
-
-  func mapping(map: [String : AnyObject]) {
-    firstName <- map.property("firstName")
-    lastName  <- map.property("lastName")
+    firstName <- map.property("first_name")
+    lastName  <- map.property("last_name")
   }
 }
 
-let testClass = PersonClass([
-  "firstName" : "Taylor",
-  "lastName"  : "Swift"
-])
+let dictionary = ["first_name" : "Taylor", "last_name" : "Swift"]
+let model = Person(dictionary)
+```
+
+## Object mapping
+
+```swift
+struct Person: Mappable {
+
+  var firstName: String? = ""
+  var lastName: String? = ""
+  var spouse: Person?
+
+  init(_ map: JSONDictionary) {
+    firstName <- map.property("first_name")
+    lastName  <- map.property("last_name")
+    spouse    <- map.object("spouse")
+  }
+}
+
+let dictionary = [
+  "first_name" : "Taylor", 
+  "last_name" : "Swift",
+  "spouse" : ["first_name" : "Calvin", 
+              "last_name" : "Harris"]
+]
+let model = Person(dictionary)
+```
+
+## Mapping objects
+
+```swift
+struct Person: Mappable {
+
+  var firstName: String? = ""
+  var lastName: String? = ""
+  var spouse: Person?
+  var parents = [Person]()
+
+  init(_ map: JSONDictionary) {
+    firstName <- map.property("first_name")
+    lastName  <- map.property("last_name")
+    spouse    <- map.object("spouse")
+    parents   <- map.objects("parents")
+  }
+}
+
+let dictionary = [
+  "first_name" : "Taylor", 
+  "last_name" : "Swift",
+  "spouse" : ["first_name" : "Calvin", 
+              "last_name" : "Harris"],
+  "parents" : [
+             ["first_name" : "Andrea", 
+              "last_name" : "Swift"],
+              ["first_name" : "Scott", 
+              "last_name" : "Swift"]
+  ]
+]
+let model = Person(dictionary)
+```
+
+## Transforms
+
+```swift
+struct Person: Mappable {
+
+  var firstName: String? = ""
+  var lastName: String? = ""
+  var spouse: Person?
+  var parents = [Person]()
+  var birthDate = NSDate?
+
+  init(_ map: JSONDictionary) {
+    firstName <- map.property("first_name")
+    lastName  <- map.property("last_name")
+    spouse    <- map.object("spouse")
+    parents   <- map.objects("parents")
+    birthDate <- map.transform("birth_date", transformer: { (value: String?) -> NSDate? in
+      guard let value = value else { return nil }
+      let dateFormatter = NSDateFormatter()
+      dateFormatter.dateFormat = "yyyy-MM-dd"
+      return dateFormatter.dateFromString(value)
+    })
+  }
+}
+
+let dictionary = [
+  "first_name" : "Taylor", 
+  "last_name" : "Swift",
+  "spouse" : ["first_name" : "Calvin", 
+              "last_name" : "Harris"],
+  "parents" : [
+             ["first_name" : "Andrea", 
+              "last_name" : "Swift"],
+              ["first_name" : "Scott", 
+              "last_name" : "Swift"]
+  ],
+  "birth_date": "1989-12-13"
+]
+let model = Person(dictionary)
 ```
 
 ## Installation

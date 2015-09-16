@@ -125,4 +125,16 @@ class TestMappable: XCTestCase {
     testStruct.relatives <+ relatives.objects()
     XCTAssert(testStruct.relatives.count == 2)
   }
+
+  func testAppendingObject() {
+    var testStruct = TestPersonStruct([:])
+    let relatives: [String : AnyObject] = ["first" :
+      ["firstName" : "Mini",
+        "lastName" : "Swift",
+        "sex": "female",
+        "birth_date": "2014-07-17"]]
+
+    testStruct.relatives <+ relatives.object("first")
+    XCTAssert(testStruct.relatives.count == 1)
+  }
 }

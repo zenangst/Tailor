@@ -5,8 +5,6 @@
 [![License](https://img.shields.io/cocoapods/l/Tailor.svg?style=flat)](http://cocoadocs.org/docsets/Tailor)
 [![Platform](https://img.shields.io/cocoapods/p/Tailor.svg?style=flat)](http://cocoadocs.org/docsets/Tailor)
 
-## Work in progress
-
 ## Usage
 
 ### Structs
@@ -60,10 +58,16 @@ it, simply add the following line to your Podfile:
 pod 'Tailor'
 ```
 
-## Author
+## Contribute
 
-Christoffer Winterkvist, christoffer@winterkvist.com
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create pull request
 
-## License
 
-**Tailor** is available under the MIT license. See the LICENSE file for more info.
+## Who made this?
+
+- Christoffer Winterkvist ([@zenangst](https://twitter.com/zenangst))
+- Vadym Markov ([@vadymmarkov](https://twitter.com/vadymmarkov))

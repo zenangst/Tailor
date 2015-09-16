@@ -18,6 +18,11 @@ public func <+ <T>(inout left: [T], right: [T]?) {
   left.appendContentsOf(right)
 }
 
+public func <+ <T>(inout left: [T], right: T?) {
+  guard let right = right else { return }
+  left.append(right)
+}
+
 public protocol Inspectable { }
 public protocol Mappable {
   init(_ map: JSONDictionary)

@@ -1,4 +1,4 @@
-# Tailor Swift
+![Tailor Swift logo](https://raw.githubusercontent.com/zenangst/Tailor/master/Images/logo.png)
 
 [![CI Status](http://img.shields.io/travis/zenangst/Tailor.svg?style=flat)](https://travis-ci.org/zenangst/Tailor)
 [![Version](https://img.shields.io/cocoapods/v/Tailor.svg?style=flat)](http://cocoadocs.org/docsets/Tailor)

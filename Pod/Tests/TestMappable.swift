@@ -136,5 +136,10 @@ class TestMappable: XCTestCase {
 
     testStruct.relatives <+ relatives.object("first")
     XCTAssert(testStruct.relatives.count == 1)
+
+    let copy = testStruct
+    testStruct.relatives <+ copy
+    XCTAssert(testStruct.relatives.count == 2)
   }
+
 }

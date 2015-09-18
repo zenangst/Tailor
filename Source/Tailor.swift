@@ -122,7 +122,7 @@ public extension Dictionary {
     return transformer(value: value as? U)
   }
 
-  func object<T : Mappable>(name: String) -> T? {
+  func object<T : Mappable>(name: String? = nil) -> T? {
     guard let value = self[name as! Key] else { return nil }
     guard let dictionary = value as? JSONDictionary else { return nil }
     return T(dictionary)

@@ -1,5 +1,6 @@
 import Foundation
 import Tailor
+import Sugar
 
 enum Sex: String {
   case Unspecified = "unspecified"

@@ -1,8 +1,7 @@
+import Sugar
+
 infix operator <- {}
 infix operator <+ {}
-
-public typealias JSONArray = [[String : AnyObject]]
-public typealias JSONDictionary = [String : AnyObject]
 
 public func <- <T>(inout left: T, right: T) {
   left = right

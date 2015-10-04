@@ -6,3 +6,4 @@ use_frameworks!
 inhibit_all_warnings!
 
 pod 'Tailor', path: '../'
+pod 'Sugar', git: 'https://github.com/hyperoslo/Sugar'

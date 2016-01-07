@@ -7,19 +7,48 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		37E0DDABEDCF32A305EF4375 /* Pods_Tailor_Mac_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C581C32AFFD59F5D066182D /* Pods_Tailor_Mac_Tests.framework */; };
 		761458F89C098458D0C6C224 /* Pods_Tailor_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 334CA2895ED00D954294830D /* Pods_Tailor_iOS.framework */; };
 		BA11E9AAFFB80A7D13643B5B /* Pods_Tailor_iOS_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2F5A30EAB105B3B901C8359 /* Pods_Tailor_iOS_Tests.framework */; };
 		BD84098E1C3EF14500EB7C06 /* Tailor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD84098B1C3EF14500EB7C06 /* Tailor.swift */; };
-		BD8409B81C3EF21E00EB7C06 /* TestInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8409B51C3EF20D00EB7C06 /* TestInspectable.swift */; };
-		BD8409B91C3EF21E00EB7C06 /* TestMappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8409B61C3EF20D00EB7C06 /* TestMappable.swift */; };
-		BD8409BA1C3EF21E00EB7C06 /* TestSubjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8409B71C3EF20D00EB7C06 /* TestSubjects.swift */; };
 		BD8409BB1C3EF22300EB7C06 /* TestInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8409B51C3EF20D00EB7C06 /* TestInspectable.swift */; };
 		BD8409BC1C3EF22300EB7C06 /* TestMappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8409B61C3EF20D00EB7C06 /* TestMappable.swift */; };
 		BD8409BD1C3EF22300EB7C06 /* TestSubjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8409B71C3EF20D00EB7C06 /* TestSubjects.swift */; };
 		BDFF1AC31C3F05FF00D4B735 /* Tailor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD84098B1C3EF14500EB7C06 /* Tailor.swift */; };
 		BDFF1AC61C3F065B00D4B735 /* Pods_Tailor_Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDFF1AC51C3F065B00D4B735 /* Pods_Tailor_Mac.framework */; };
-		EA493AD99F30370F064390D1 /* Pods_Tailor_Mac_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C581C32AFFD59F5D066182D /* Pods_Tailor_Mac_Tests.framework */; };
+		BDFF1ACD1C3F0BF200D4B735 /* TestSubjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8409B71C3EF20D00EB7C06 /* TestSubjects.swift */; };
+		BDFF1ACE1C3F0BFE00D4B735 /* TestInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8409B51C3EF20D00EB7C06 /* TestInspectable.swift */; };
+		BDFF1ACF1C3F0BFE00D4B735 /* TestMappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8409B61C3EF20D00EB7C06 /* TestMappable.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BDFF1AC91C3F0B5400D4B735 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 146D728B1AB782920058798C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BD8409691C3EF06300EB7C06;
+			remoteInfo = "Tailor-iOS";
+		};
+		BDFF1ACB1C3F0B5700D4B735 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 146D728B1AB782920058798C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BDFF1ABA1C3F053E00D4B735;
+			remoteInfo = "Tailor-Mac";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BDFF1AD01C3F0C9500D4B735 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		04F2A2DC0521B5E8607ACD3D /* Pods-Tailor-Mac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tailor-Mac.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tailor-Mac/Pods-Tailor-Mac.release.xcconfig"; sourceTree = "<group>"; };
@@ -70,7 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA493AD99F30370F064390D1 /* Pods_Tailor_Mac_Tests.framework in Frameworks */,
+				37E0DDABEDCF32A305EF4375 /* Pods_Tailor_Mac_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,6 +267,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				BDFF1ACA1C3F0B5400D4B735 /* PBXTargetDependency */,
 			);
 			name = "Tailor-iOS-Tests";
 			productName = PodTests;
@@ -273,11 +303,12 @@
 				BD8409A11C3EF1B800EB7C06 /* Frameworks */,
 				BD8409A21C3EF1B800EB7C06 /* Resources */,
 				03AE14ED5CBAF4894F59168E /* Embed Pods Frameworks */,
-				1941C976F1330FD213A7E1A3 /* Copy Pods Resources */,
+				BDFF1AD01C3F0C9500D4B735 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				BDFF1ACC1C3F0B5700D4B735 /* PBXTargetDependency */,
 			);
 			name = "Tailor-Mac-Tests";
 			productName = "Tailor-Mac-Tests";
@@ -392,21 +423,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tailor-Mac-Tests/Pods-Tailor-Mac-Tests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		1941C976F1330FD213A7E1A3 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tailor-Mac-Tests/Pods-Tailor-Mac-Tests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		2CA9177A18EC73B49F08DDBC /* Check Pods Manifest.lock */ = {
@@ -524,9 +540,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD8409B81C3EF21E00EB7C06 /* TestInspectable.swift in Sources */,
-				BD8409B91C3EF21E00EB7C06 /* TestMappable.swift in Sources */,
-				BD8409BA1C3EF21E00EB7C06 /* TestSubjects.swift in Sources */,
+				BDFF1ACE1C3F0BFE00D4B735 /* TestInspectable.swift in Sources */,
+				BDFF1ACF1C3F0BFE00D4B735 /* TestMappable.swift in Sources */,
+				BDFF1ACD1C3F0BF200D4B735 /* TestSubjects.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -539,6 +555,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BDFF1ACA1C3F0B5400D4B735 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BD8409691C3EF06300EB7C06 /* Tailor-iOS */;
+			targetProxy = BDFF1AC91C3F0B5400D4B735 /* PBXContainerItemProxy */;
+		};
+		BDFF1ACC1C3F0B5700D4B735 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BDFF1ABA1C3F053E00D4B735 /* Tailor-Mac */;
+			targetProxy = BDFF1ACB1C3F0B5700D4B735 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		146D72B41AB782920058798C /* Debug */ = {

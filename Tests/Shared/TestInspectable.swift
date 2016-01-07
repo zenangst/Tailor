@@ -1,4 +1,5 @@
 import XCTest
+@testable import Tailor
 
 class TestInspectable: XCTestCase {
 

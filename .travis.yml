@@ -8,5 +8,5 @@ before_install:
 - gem install cocoapods
 
 script:
-- xctool clean build -project Hue.xcodeproj -scheme Tailor-iOS -sdk iphonesimulator
-- xctool test -project Hue.xcodeproj -scheme Tailor-iOS -sdk iphonesimulator
+- xctool clean build -project Tailor.xcodeproj -scheme Tailor-iOS -sdk iphonesimulator
+- xctool test -project Tailor.xcodeproj -scheme Tailor-iOS -sdk iphonesimulator

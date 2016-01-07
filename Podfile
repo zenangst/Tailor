@@ -5,20 +5,21 @@ inhibit_all_warnings!
 
 target "Tailor-iOS" do
   platform :ios, '9.2'
-  pod 'Sugar'
+  pod 'Tailor', path: '.'
 end
 
 target "Tailor-iOS-Tests" do
   platform :ios, '9.2'
-  pod 'Sugar'
+  pod 'Tailor', path: '.'
 end
 
 target "Tailor-Mac" do
   platform :osx, '10.11'
-  pod 'Sugar'
+  pod 'Tailor', path: '.'
 end
 
 target "Tailor-Mac-Tests" do
   platform :osx, '10.11'
+  pod 'Tailor', path: '.'
   pod 'Sugar'
 end

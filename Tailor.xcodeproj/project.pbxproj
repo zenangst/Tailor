@@ -7,18 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		37E0DDABEDCF32A305EF4375 /* Pods_Tailor_Mac_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C581C32AFFD59F5D066182D /* Pods_Tailor_Mac_Tests.framework */; };
-		761458F89C098458D0C6C224 /* Pods_Tailor_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 334CA2895ED00D954294830D /* Pods_Tailor_iOS.framework */; };
-		BA11E9AAFFB80A7D13643B5B /* Pods_Tailor_iOS_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2F5A30EAB105B3B901C8359 /* Pods_Tailor_iOS_Tests.framework */; };
-		BD84098E1C3EF14500EB7C06 /* Tailor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD84098B1C3EF14500EB7C06 /* Tailor.swift */; };
+		2635AB26A7B1C04CEADFD5FA /* Pods_Tailor_iOS_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79D569674E25F77CDF9DC8CE /* Pods_Tailor_iOS_Tests.framework */; };
+		2E513082EFD0CCB46C31C28B /* Pods_Tailor_Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 571BCAF2780510B46D5D9A1F /* Pods_Tailor_Mac.framework */; };
+		3C4B61654C4071BAEDCFBC8C /* Pods_Tailor_Mac_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0878E99A5047CA93758DFB9 /* Pods_Tailor_Mac_Tests.framework */; };
 		BD8409BB1C3EF22300EB7C06 /* TestInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8409B51C3EF20D00EB7C06 /* TestInspectable.swift */; };
 		BD8409BC1C3EF22300EB7C06 /* TestMappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8409B61C3EF20D00EB7C06 /* TestMappable.swift */; };
 		BD8409BD1C3EF22300EB7C06 /* TestSubjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8409B71C3EF20D00EB7C06 /* TestSubjects.swift */; };
-		BDFF1AC31C3F05FF00D4B735 /* Tailor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD84098B1C3EF14500EB7C06 /* Tailor.swift */; };
-		BDFF1AC61C3F065B00D4B735 /* Pods_Tailor_Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDFF1AC51C3F065B00D4B735 /* Pods_Tailor_Mac.framework */; };
 		BDFF1ACD1C3F0BF200D4B735 /* TestSubjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8409B71C3EF20D00EB7C06 /* TestSubjects.swift */; };
 		BDFF1ACE1C3F0BFE00D4B735 /* TestInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8409B51C3EF20D00EB7C06 /* TestInspectable.swift */; };
 		BDFF1ACF1C3F0BFE00D4B735 /* TestMappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8409B61C3EF20D00EB7C06 /* TestMappable.swift */; };
+		BDFF1AE81C3F115E00D4B735 /* Tailor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFF1AE71C3F115E00D4B735 /* Tailor.swift */; };
+		BDFF1AE91C3F115E00D4B735 /* Tailor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFF1AE71C3F115E00D4B735 /* Tailor.swift */; };
+		F6A6314B06861884A8FDBD29 /* Pods_Tailor_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 552BC9911B600FDDBAD5A7FE /* Pods_Tailor_iOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,44 +38,34 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		BDFF1AD01C3F0C9500D4B735 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		04F2A2DC0521B5E8607ACD3D /* Pods-Tailor-Mac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tailor-Mac.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tailor-Mac/Pods-Tailor-Mac.release.xcconfig"; sourceTree = "<group>"; };
-		0C581C32AFFD59F5D066182D /* Pods_Tailor_Mac_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tailor_Mac_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		0F9C11AA88FF00E5182AFF57 /* Pods-Tailor-iOS-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tailor-iOS-Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tailor-iOS-Tests/Pods-Tailor-iOS-Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		0342EB8A98BFDC0929B43E67 /* Pods-Tailor-iOS-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tailor-iOS-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tailor-iOS-Tests/Pods-Tailor-iOS-Tests.release.xcconfig"; sourceTree = "<group>"; };
+		060B991253F244DC9527EE76 /* Pods-Tailor-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tailor-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tailor-iOS/Pods-Tailor-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		09F4EA38E5FFC41B40B023E5 /* Pods-Tailor-iOS-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tailor-iOS-Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tailor-iOS-Tests/Pods-Tailor-iOS-Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		146D72AC1AB782920058798C /* Tailor-iOS-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tailor-iOS-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		24CBD67A60A0BD94C7CF0841 /* Pods-Tailor-Mac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tailor-Mac.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tailor-Mac/Pods-Tailor-Mac.debug.xcconfig"; sourceTree = "<group>"; };
-		2CE7B809D1F9A3CCE6829A13 /* Pods-Tailor-Mac-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tailor-Mac-Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tailor-Mac-Tests/Pods-Tailor-Mac-Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		334CA2895ED00D954294830D /* Pods_Tailor_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tailor_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4F9AD1F07C07AECD635C68D6 /* Pods-Tailor-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tailor-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tailor-iOS/Pods-Tailor-iOS.debug.xcconfig"; sourceTree = "<group>"; };
-		7815C99F3206D7AFDFD57A70 /* Pods-Tailor-Mac-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tailor-Mac-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tailor-Mac-Tests/Pods-Tailor-Mac-Tests.release.xcconfig"; sourceTree = "<group>"; };
-		7D8EA9DC3F509D6306CDD2F0 /* Pods-Tailor-iOS-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tailor-iOS-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tailor-iOS-Tests/Pods-Tailor-iOS-Tests.release.xcconfig"; sourceTree = "<group>"; };
-		978C84DF86178C51FEDBBC43 /* Pods-Tailor-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tailor-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tailor-iOS/Pods-Tailor-iOS.release.xcconfig"; sourceTree = "<group>"; };
-		A2F5A30EAB105B3B901C8359 /* Pods_Tailor_iOS_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tailor_iOS_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F9C445A1ED3DD79A517DBE8 /* Pods-Tailor-Mac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tailor-Mac.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tailor-Mac/Pods-Tailor-Mac.release.xcconfig"; sourceTree = "<group>"; };
+		552BC9911B600FDDBAD5A7FE /* Pods_Tailor_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tailor_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		571BCAF2780510B46D5D9A1F /* Pods_Tailor_Mac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tailor_Mac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D51004FA6202312868C109F /* Pods-Tailor-Mac-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tailor-Mac-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tailor-Mac-Tests/Pods-Tailor-Mac-Tests.release.xcconfig"; sourceTree = "<group>"; };
+		671221DFAE280620F8DDFA11 /* Pods-Tailor-Mac-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tailor-Mac-Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tailor-Mac-Tests/Pods-Tailor-Mac-Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		71554C7CBF8206BD968CE4B2 /* Pods-Tailor-Mac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tailor-Mac.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tailor-Mac/Pods-Tailor-Mac.debug.xcconfig"; sourceTree = "<group>"; };
+		79D569674E25F77CDF9DC8CE /* Pods_Tailor_iOS_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tailor_iOS_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD84096A1C3EF06300EB7C06 /* Tailor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Tailor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD8409861C3EF0EC00EB7C06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD8409881C3EF0EC00EB7C06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BD84098B1C3EF14500EB7C06 /* Tailor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tailor.swift; sourceTree = "<group>"; };
 		BD8409A41C3EF1B800EB7C06 /* Tailor-Mac-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tailor-Mac-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD8409B11C3EF20D00EB7C06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD8409B31C3EF20D00EB7C06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD8409B51C3EF20D00EB7C06 /* TestInspectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestInspectable.swift; sourceTree = "<group>"; };
 		BD8409B61C3EF20D00EB7C06 /* TestMappable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMappable.swift; sourceTree = "<group>"; };
 		BD8409B71C3EF20D00EB7C06 /* TestSubjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSubjects.swift; sourceTree = "<group>"; };
+		BDEC62271C3F1DF50036495A /* Sugar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sugar.framework; path = "Pods/../build/Debug/Pods-Tailor-Mac/Sugar.framework"; sourceTree = "<group>"; };
 		BDFF1ABB1C3F053E00D4B735 /* Tailor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Tailor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BDFF1AC51C3F065B00D4B735 /* Pods_Tailor_Mac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_Tailor_Mac.framework; path = "../../Library/Developer/Xcode/DerivedData/Tailor-dlyphmdfjfjekibysbpqblqsfhtu/Build/Products/Debug/Pods_Tailor_Mac.framework"; sourceTree = "<group>"; };
-		EEC7A51AEA9A8BB88DEAE7CE /* Pods_Tailor_Mac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tailor_Mac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDFF1AD31C3F0E5900D4B735 /* Sugar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sugar.framework; path = "Pods/../build/Debug/Pods-Tailor-Mac/Sugar.framework"; sourceTree = "<group>"; };
+		BDFF1AD51C3F0E7A00D4B735 /* Sugar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sugar.framework; path = "Pods/../build/Debug/Pods-Tailor-Mac/Sugar.framework"; sourceTree = "<group>"; };
+		BDFF1AE71C3F115E00D4B735 /* Tailor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tailor.swift; sourceTree = "<group>"; };
+		C08ACA7EA54A9ACEA3BCCC25 /* Pods-Tailor-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tailor-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tailor-iOS/Pods-Tailor-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		D0878E99A5047CA93758DFB9 /* Pods_Tailor_Mac_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tailor_Mac_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,7 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA11E9AAFFB80A7D13643B5B /* Pods_Tailor_iOS_Tests.framework in Frameworks */,
+				2635AB26A7B1C04CEADFD5FA /* Pods_Tailor_iOS_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,7 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				761458F89C098458D0C6C224 /* Pods_Tailor_iOS.framework in Frameworks */,
+				F6A6314B06861884A8FDBD29 /* Pods_Tailor_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,7 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				37E0DDABEDCF32A305EF4375 /* Pods_Tailor_Mac_Tests.framework in Frameworks */,
+				3C4B61654C4071BAEDCFBC8C /* Pods_Tailor_Mac_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,7 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BDFF1AC61C3F065B00D4B735 /* Pods_Tailor_Mac.framework in Frameworks */,
+				2E513082EFD0CCB46C31C28B /* Pods_Tailor_Mac.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,12 +107,12 @@
 		146D728A1AB782920058798C = {
 			isa = PBXGroup;
 			children = (
+				BDFF1AE61C3F115E00D4B735 /* Source */,
 				146D72941AB782920058798C /* Products */,
-				BD8409891C3EF14500EB7C06 /* Source */,
 				BD8409841C3EF0EC00EB7C06 /* Support Files */,
 				BD8409AF1C3EF20D00EB7C06 /* Tests */,
-				FC961D6897C492D5DE992D2F /* Pods */,
 				94619D9CC4275B7778C14F5D /* Frameworks */,
+				32E9266E9EA3C725CAE41758 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -137,14 +127,31 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		32E9266E9EA3C725CAE41758 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				71554C7CBF8206BD968CE4B2 /* Pods-Tailor-Mac.debug.xcconfig */,
+				3F9C445A1ED3DD79A517DBE8 /* Pods-Tailor-Mac.release.xcconfig */,
+				671221DFAE280620F8DDFA11 /* Pods-Tailor-Mac-Tests.debug.xcconfig */,
+				5D51004FA6202312868C109F /* Pods-Tailor-Mac-Tests.release.xcconfig */,
+				060B991253F244DC9527EE76 /* Pods-Tailor-iOS.debug.xcconfig */,
+				C08ACA7EA54A9ACEA3BCCC25 /* Pods-Tailor-iOS.release.xcconfig */,
+				09F4EA38E5FFC41B40B023E5 /* Pods-Tailor-iOS-Tests.debug.xcconfig */,
+				0342EB8A98BFDC0929B43E67 /* Pods-Tailor-iOS-Tests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		94619D9CC4275B7778C14F5D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BDFF1AC51C3F065B00D4B735 /* Pods_Tailor_Mac.framework */,
-				EEC7A51AEA9A8BB88DEAE7CE /* Pods_Tailor_Mac.framework */,
-				0C581C32AFFD59F5D066182D /* Pods_Tailor_Mac_Tests.framework */,
-				334CA2895ED00D954294830D /* Pods_Tailor_iOS.framework */,
-				A2F5A30EAB105B3B901C8359 /* Pods_Tailor_iOS_Tests.framework */,
+				BDEC62271C3F1DF50036495A /* Sugar.framework */,
+				BDFF1AD51C3F0E7A00D4B735 /* Sugar.framework */,
+				BDFF1AD31C3F0E5900D4B735 /* Sugar.framework */,
+				571BCAF2780510B46D5D9A1F /* Pods_Tailor_Mac.framework */,
+				D0878E99A5047CA93758DFB9 /* Pods_Tailor_Mac_Tests.framework */,
+				552BC9911B600FDDBAD5A7FE /* Pods_Tailor_iOS.framework */,
+				79D569674E25F77CDF9DC8CE /* Pods_Tailor_iOS_Tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -172,14 +179,6 @@
 				BD8409881C3EF0EC00EB7C06 /* Info.plist */,
 			);
 			path = Mac;
-			sourceTree = "<group>";
-		};
-		BD8409891C3EF14500EB7C06 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				BD84098B1C3EF14500EB7C06 /* Tailor.swift */,
-			);
-			path = Source;
 			sourceTree = "<group>";
 		};
 		BD8409AF1C3EF20D00EB7C06 /* Tests */ = {
@@ -218,19 +217,12 @@
 			path = Shared;
 			sourceTree = "<group>";
 		};
-		FC961D6897C492D5DE992D2F /* Pods */ = {
+		BDFF1AE61C3F115E00D4B735 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				24CBD67A60A0BD94C7CF0841 /* Pods-Tailor-Mac.debug.xcconfig */,
-				04F2A2DC0521B5E8607ACD3D /* Pods-Tailor-Mac.release.xcconfig */,
-				2CE7B809D1F9A3CCE6829A13 /* Pods-Tailor-Mac-Tests.debug.xcconfig */,
-				7815C99F3206D7AFDFD57A70 /* Pods-Tailor-Mac-Tests.release.xcconfig */,
-				4F9AD1F07C07AECD635C68D6 /* Pods-Tailor-iOS.debug.xcconfig */,
-				978C84DF86178C51FEDBBC43 /* Pods-Tailor-iOS.release.xcconfig */,
-				0F9C11AA88FF00E5182AFF57 /* Pods-Tailor-iOS-Tests.debug.xcconfig */,
-				7D8EA9DC3F509D6306CDD2F0 /* Pods-Tailor-iOS-Tests.release.xcconfig */,
+				BDFF1AE71C3F115E00D4B735 /* Tailor.swift */,
 			);
-			name = Pods;
+			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,12 +249,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 146D72B91AB782920058798C /* Build configuration list for PBXNativeTarget "Tailor-iOS-Tests" */;
 			buildPhases = (
-				997EE8DD7F5F75DD3E02D54C /* Check Pods Manifest.lock */,
+				915EAE2AC7F7BB38278643D8 /* Check Pods Manifest.lock */,
 				146D72A81AB782920058798C /* Sources */,
 				146D72A91AB782920058798C /* Frameworks */,
 				146D72AA1AB782920058798C /* Resources */,
-				35A47D15F2A65B8D0C17CDFC /* Embed Pods Frameworks */,
-				A3A607A49545744BA04DF189 /* Copy Pods Resources */,
+				59640D004013FC6CAD1C1CE6 /* Embed Pods Frameworks */,
+				1645AEA1AB4F27817E4DECB2 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -278,12 +270,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BD84096F1C3EF06300EB7C06 /* Build configuration list for PBXNativeTarget "Tailor-iOS" */;
 			buildPhases = (
-				3993E79778F9ACE57F970789 /* Check Pods Manifest.lock */,
+				349E6098C0B259EA9F899A59 /* Check Pods Manifest.lock */,
 				BD8409651C3EF06300EB7C06 /* Sources */,
 				BD8409661C3EF06300EB7C06 /* Frameworks */,
 				BD8409671C3EF06300EB7C06 /* Headers */,
 				BD8409681C3EF06300EB7C06 /* Resources */,
-				4D3FDE52948E71CE46AE9ADD /* Copy Pods Resources */,
+				F8712F586609762727DE97EE /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -298,12 +290,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BD8409AC1C3EF1B800EB7C06 /* Build configuration list for PBXNativeTarget "Tailor-Mac-Tests" */;
 			buildPhases = (
-				2CA9177A18EC73B49F08DDBC /* Check Pods Manifest.lock */,
+				0788C537BF9A63C25D5F6ED9 /* Check Pods Manifest.lock */,
 				BD8409A01C3EF1B800EB7C06 /* Sources */,
 				BD8409A11C3EF1B800EB7C06 /* Frameworks */,
 				BD8409A21C3EF1B800EB7C06 /* Resources */,
-				03AE14ED5CBAF4894F59168E /* Embed Pods Frameworks */,
-				BDFF1AD01C3F0C9500D4B735 /* CopyFiles */,
+				1F2A0CA07C9973B6C6AA05FA /* Embed Pods Frameworks */,
+				4A388491A25B8356CB0F7965 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -319,10 +311,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BDFF1AC01C3F053E00D4B735 /* Build configuration list for PBXNativeTarget "Tailor-Mac" */;
 			buildPhases = (
+				06A699C45AA8B4BE54AB6C78 /* Check Pods Manifest.lock */,
 				BDFF1AB61C3F053E00D4B735 /* Sources */,
 				BDFF1AB71C3F053E00D4B735 /* Frameworks */,
 				BDFF1AB81C3F053E00D4B735 /* Headers */,
 				BDFF1AB91C3F053E00D4B735 /* Resources */,
+				632E5A6C8C8CCDE34AF8F460 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -410,7 +404,52 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		03AE14ED5CBAF4894F59168E /* Embed Pods Frameworks */ = {
+		06A699C45AA8B4BE54AB6C78 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		0788C537BF9A63C25D5F6ED9 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		1645AEA1AB4F27817E4DECB2 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tailor-iOS-Tests/Pods-Tailor-iOS-Tests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1F2A0CA07C9973B6C6AA05FA /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -425,7 +464,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tailor-Mac-Tests/Pods-Tailor-Mac-Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		2CA9177A18EC73B49F08DDBC /* Check Pods Manifest.lock */ = {
+		349E6098C0B259EA9F899A59 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -440,7 +479,22 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		35A47D15F2A65B8D0C17CDFC /* Embed Pods Frameworks */ = {
+		4A388491A25B8356CB0F7965 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tailor-Mac-Tests/Pods-Tailor-Mac-Tests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		59640D004013FC6CAD1C1CE6 /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -455,7 +509,22 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tailor-iOS-Tests/Pods-Tailor-iOS-Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		3993E79778F9ACE57F970789 /* Check Pods Manifest.lock */ = {
+		632E5A6C8C8CCDE34AF8F460 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tailor-Mac/Pods-Tailor-Mac-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		915EAE2AC7F7BB38278643D8 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -470,7 +539,7 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		4D3FDE52948E71CE46AE9ADD /* Copy Pods Resources */ = {
+		F8712F586609762727DE97EE /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -483,36 +552,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tailor-iOS/Pods-Tailor-iOS-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		997EE8DD7F5F75DD3E02D54C /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		A3A607A49545744BA04DF189 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tailor-iOS-Tests/Pods-Tailor-iOS-Tests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -532,7 +571,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD84098E1C3EF14500EB7C06 /* Tailor.swift in Sources */,
+				BDFF1AE81C3F115E00D4B735 /* Tailor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -550,7 +589,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BDFF1AC31C3F05FF00D4B735 /* Tailor.swift in Sources */,
+				BDFF1AE91C3F115E00D4B735 /* Tailor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -589,6 +628,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_BITCODE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -634,6 +674,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_BITCODE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -655,7 +696,7 @@
 		};
 		146D72BA1AB782920058798C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0F9C11AA88FF00E5182AFF57 /* Pods-Tailor-iOS-Tests.debug.xcconfig */;
+			baseConfigurationReference = 09F4EA38E5FFC41B40B023E5 /* Pods-Tailor-iOS-Tests.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -678,7 +719,7 @@
 		};
 		146D72BB1AB782920058798C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7D8EA9DC3F509D6306CDD2F0 /* Pods-Tailor-iOS-Tests.release.xcconfig */;
+			baseConfigurationReference = 0342EB8A98BFDC0929B43E67 /* Pods-Tailor-iOS-Tests.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -696,7 +737,7 @@
 		};
 		BD8409701C3EF06300EB7C06 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4F9AD1F07C07AECD635C68D6 /* Pods-Tailor-iOS.debug.xcconfig */;
+			baseConfigurationReference = 060B991253F244DC9527EE76 /* Pods-Tailor-iOS.debug.xcconfig */;
 			buildSettings = {
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -723,7 +764,7 @@
 		};
 		BD8409711C3EF06300EB7C06 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 978C84DF86178C51FEDBBC43 /* Pods-Tailor-iOS.release.xcconfig */;
+			baseConfigurationReference = C08ACA7EA54A9ACEA3BCCC25 /* Pods-Tailor-iOS.release.xcconfig */;
 			buildSettings = {
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -749,10 +790,15 @@
 		};
 		BD8409AD1C3EF1B800EB7C06 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2CE7B809D1F9A3CCE6829A13 /* Pods-Tailor-Mac-Tests.debug.xcconfig */;
+			baseConfigurationReference = 671221DFAE280620F8DDFA11 /* Pods-Tailor-Mac-Tests.debug.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug/Pods-Tailor-Mac",
+				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Tests/Mac/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
@@ -768,10 +814,15 @@
 		};
 		BD8409AE1C3EF1B800EB7C06 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7815C99F3206D7AFDFD57A70 /* Pods-Tailor-Mac-Tests.release.xcconfig */;
+			baseConfigurationReference = 5D51004FA6202312868C109F /* Pods-Tailor-Mac-Tests.release.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug/Pods-Tailor-Mac",
+				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Tests/Mac/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
@@ -786,7 +837,7 @@
 		};
 		BDFF1AC11C3F053E00D4B735 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 24CBD67A60A0BD94C7CF0841 /* Pods-Tailor-Mac.debug.xcconfig */;
+			baseConfigurationReference = 71554C7CBF8206BD968CE4B2 /* Pods-Tailor-Mac.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -796,6 +847,11 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug/Pods-Tailor-Mac",
+				);
 				FRAMEWORK_VERSION = A;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Support Files/Mac/Info.plist";
@@ -815,7 +871,7 @@
 		};
 		BDFF1AC21C3F053E00D4B735 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 04F2A2DC0521B5E8607ACD3D /* Pods-Tailor-Mac.release.xcconfig */;
+			baseConfigurationReference = 3F9C445A1ED3DD79A517DBE8 /* Pods-Tailor-Mac.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -825,6 +881,11 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug/Pods-Tailor-Mac",
+				);
 				FRAMEWORK_VERSION = A;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Support Files/Mac/Info.plist";

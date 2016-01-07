@@ -1,5 +1,4 @@
 import Foundation
-import Sugar
 @testable import Tailor
 
 enum Sex: String {
@@ -11,7 +10,7 @@ enum Sex: String {
 struct Job: Mappable {
   var name: String = ""
 
-  init(_ map: JSONDictionary) {
+  init(_ map: [String : AnyObject]) {
     name <- map.property("name")
   }
 }
@@ -34,7 +33,7 @@ class TestPersonClass: NSObject, Inspectable, Mappable {
   var sex: Sex = .Unspecified
   var birthDate: NSDate?
 
-  required convenience init(_ map: JSONDictionary) {
+  required convenience init(_ map: [String : AnyObject]) {
     self.init()
     firstName <- map.property("firstName")
     lastName  <- map.property("lastName")
@@ -52,7 +51,7 @@ class TestPersonClass: NSObject, Inspectable, Mappable {
     }
   }
 
-  func mapping(map: JSONDictionary) {
+  func mapping(map: [String : AnyObject?]) {
     firstName <- map.property("firstName")
     lastName  <- map.property("lastName")
   }
@@ -67,7 +66,7 @@ struct TestPersonStruct: Inspectable, Mappable, Equatable {
   var relatives = [TestPersonStruct]()
   let children = [TestPersonStruct]()
 
-  init(_ map: JSONDictionary) {
+  init(_ map: [String : AnyObject]) {
     firstName <- map.property("firstName")
     lastName  <- map.property("lastName")
 

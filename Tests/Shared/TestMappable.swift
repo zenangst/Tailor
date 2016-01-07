@@ -1,5 +1,4 @@
 import XCTest
-import Sugar
 @testable import Tailor
 
 class TestMappable: XCTestCase {

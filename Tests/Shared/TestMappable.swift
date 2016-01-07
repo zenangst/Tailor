@@ -1,6 +1,6 @@
 import XCTest
-import Tailor
 import Sugar
+@testable import Tailor
 
 class TestMappable: XCTestCase {
 

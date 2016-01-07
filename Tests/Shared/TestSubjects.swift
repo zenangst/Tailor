@@ -1,6 +1,6 @@
 import Foundation
-import Tailor
 import Sugar
+@testable import Tailor
 
 enum Sex: String {
   case Unspecified = "unspecified"
@@ -10,7 +10,7 @@ enum Sex: String {
 
 struct Job: Mappable {
   var name: String = ""
-  
+
   init(_ map: JSONDictionary) {
     name <- map.property("name")
   }

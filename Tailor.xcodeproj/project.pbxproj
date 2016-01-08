@@ -11,12 +11,12 @@
 		BD793D4F1C3FCD29002BBB5F /* Sugar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD793D4A1C3FCD0D002BBB5F /* Sugar.framework */; };
 		BD793D541C3FCF34002BBB5F /* Sugar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD793D4D1C3FCD22002BBB5F /* Sugar.framework */; };
 		BD793D551C3FCFA2002BBB5F /* Tailor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD793D471C3FCC97002BBB5F /* Tailor.swift */; };
-		BD793D5A1C3FD303002BBB5F /* TestInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD793D571C3FD303002BBB5F /* TestInspectable.swift */; };
-		BD793D5B1C3FD303002BBB5F /* TestInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD793D571C3FD303002BBB5F /* TestInspectable.swift */; };
-		BD793D5C1C3FD303002BBB5F /* TestMappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD793D581C3FD303002BBB5F /* TestMappable.swift */; };
-		BD793D5D1C3FD303002BBB5F /* TestMappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD793D581C3FD303002BBB5F /* TestMappable.swift */; };
-		BD793D5E1C3FD303002BBB5F /* TestSubjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD793D591C3FD303002BBB5F /* TestSubjects.swift */; };
-		BD793D5F1C3FD303002BBB5F /* TestSubjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD793D591C3FD303002BBB5F /* TestSubjects.swift */; };
+		BDC182641C3FE45000B54DD7 /* TestInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC182611C3FE45000B54DD7 /* TestInspectable.swift */; };
+		BDC182651C3FE45000B54DD7 /* TestInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC182611C3FE45000B54DD7 /* TestInspectable.swift */; };
+		BDC182661C3FE45000B54DD7 /* TestMappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC182621C3FE45000B54DD7 /* TestMappable.swift */; };
+		BDC182671C3FE45000B54DD7 /* TestMappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC182621C3FE45000B54DD7 /* TestMappable.swift */; };
+		BDC182681C3FE45000B54DD7 /* TestSubjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC182631C3FE45000B54DD7 /* TestSubjects.swift */; };
+		BDC182691C3FE45000B54DD7 /* TestSubjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC182631C3FE45000B54DD7 /* TestSubjects.swift */; };
 		D5B2E8AA1C3A780C00C0327D /* Tailor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B2E89F1C3A780C00C0327D /* Tailor.framework */; };
 		D5C6294A1C3A7FAA007F7B7C /* Tailor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C629401C3A7FAA007F7B7C /* Tailor.framework */; };
 		D5C629771C3A878E007F7B7C /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C629751C3A878E007F7B7C /* Quick.framework */; };
@@ -46,9 +46,9 @@
 		BD793D471C3FCC97002BBB5F /* Tailor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tailor.swift; sourceTree = "<group>"; };
 		BD793D4A1C3FCD0D002BBB5F /* Sugar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sugar.framework; path = Carthage/Build/Mac/Sugar.framework; sourceTree = "<group>"; };
 		BD793D4D1C3FCD22002BBB5F /* Sugar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sugar.framework; path = Carthage/Build/iOS/Sugar.framework; sourceTree = "<group>"; };
-		BD793D571C3FD303002BBB5F /* TestInspectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestInspectable.swift; path = "../../../../Library/Mobile Documents/com~apple~CloudDocs/Tailor-master/Pod/Tests/TestInspectable.swift"; sourceTree = "<group>"; };
-		BD793D581C3FD303002BBB5F /* TestMappable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestMappable.swift; path = "../../../../Library/Mobile Documents/com~apple~CloudDocs/Tailor-master/Pod/Tests/TestMappable.swift"; sourceTree = "<group>"; };
-		BD793D591C3FD303002BBB5F /* TestSubjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestSubjects.swift; path = "../../../../Library/Mobile Documents/com~apple~CloudDocs/Tailor-master/Pod/Tests/TestSubjects.swift"; sourceTree = "<group>"; };
+		BDC182611C3FE45000B54DD7 /* TestInspectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestInspectable.swift; sourceTree = "<group>"; };
+		BDC182621C3FE45000B54DD7 /* TestMappable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestMappable.swift; sourceTree = "<group>"; };
+		BDC182631C3FE45000B54DD7 /* TestSubjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestSubjects.swift; sourceTree = "<group>"; };
 		D500FD121C3AAC8E00782D78 /* Playground-Mac.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "Playground-Mac.playground"; sourceTree = "<group>"; };
 		D5B2E89F1C3A780C00C0327D /* Tailor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Tailor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5B2E8A91C3A780C00C0327D /* Tailor-iOS-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tailor-iOS-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -186,9 +186,9 @@
 		D5C629961C3A8BDA007F7B7C /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				BD793D571C3FD303002BBB5F /* TestInspectable.swift */,
-				BD793D581C3FD303002BBB5F /* TestMappable.swift */,
-				BD793D591C3FD303002BBB5F /* TestSubjects.swift */,
+				BDC182611C3FE45000B54DD7 /* TestInspectable.swift */,
+				BDC182621C3FE45000B54DD7 /* TestMappable.swift */,
+				BDC182631C3FE45000B54DD7 /* TestSubjects.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -440,9 +440,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD793D5A1C3FD303002BBB5F /* TestInspectable.swift in Sources */,
-				BD793D5C1C3FD303002BBB5F /* TestMappable.swift in Sources */,
-				BD793D5E1C3FD303002BBB5F /* TestSubjects.swift in Sources */,
+				BDC182681C3FE45000B54DD7 /* TestSubjects.swift in Sources */,
+				BDC182641C3FE45000B54DD7 /* TestInspectable.swift in Sources */,
+				BDC182661C3FE45000B54DD7 /* TestMappable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,9 +458,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD793D5B1C3FD303002BBB5F /* TestInspectable.swift in Sources */,
-				BD793D5D1C3FD303002BBB5F /* TestMappable.swift in Sources */,
-				BD793D5F1C3FD303002BBB5F /* TestSubjects.swift in Sources */,
+				BDC182691C3FE45000B54DD7 /* TestSubjects.swift in Sources */,
+				BDC182651C3FE45000B54DD7 /* TestInspectable.swift in Sources */,
+				BDC182671C3FE45000B54DD7 /* TestMappable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -701,6 +701,7 @@
 		D5C629551C3A7FAA007F7B7C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -713,12 +714,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "no.hyper.Tailor-MacTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		D5C629561C3A7FAA007F7B7C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (

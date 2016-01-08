@@ -14,23 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BD8409691C3EF06300EB7C06"
+               BlueprintIdentifier = "D5B2E89E1C3A780C00C0327D"
                BuildableName = "Tailor.framework"
                BlueprintName = "Tailor-iOS"
-               ReferencedContainer = "container:Tailor.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "NO"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "146D72AB1AB782920058798C"
-               BuildableName = "Tailor-iOS-Tests.xctest"
-               BlueprintName = "Tailor-iOS-Tests"
                ReferencedContainer = "container:Tailor.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -46,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "146D72AB1AB782920058798C"
+               BlueprintIdentifier = "D5B2E8A81C3A780C00C0327D"
                BuildableName = "Tailor-iOS-Tests.xctest"
                BlueprintName = "Tailor-iOS-Tests"
                ReferencedContainer = "container:Tailor.xcodeproj">
@@ -56,7 +42,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "BD8409691C3EF06300EB7C06"
+            BlueprintIdentifier = "D5B2E89E1C3A780C00C0327D"
             BuildableName = "Tailor.framework"
             BlueprintName = "Tailor-iOS"
             ReferencedContainer = "container:Tailor.xcodeproj">
@@ -78,7 +64,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "BD8409691C3EF06300EB7C06"
+            BlueprintIdentifier = "D5B2E89E1C3A780C00C0327D"
             BuildableName = "Tailor.framework"
             BlueprintName = "Tailor-iOS"
             ReferencedContainer = "container:Tailor.xcodeproj">
@@ -96,7 +82,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "BD8409691C3EF06300EB7C06"
+            BlueprintIdentifier = "D5B2E89E1C3A780C00C0327D"
             BuildableName = "Tailor.framework"
             BlueprintName = "Tailor-iOS"
             ReferencedContainer = "container:Tailor.xcodeproj">

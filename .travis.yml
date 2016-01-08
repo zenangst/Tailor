@@ -8,7 +8,7 @@ before_install:
 - carthage update --platform iOS,Mac
 
 script:
-- xctool clean build -project Tailor.xcproject -scheme Tailor-iOS -sdk iphonesimulator
-- xctool test -project Tailor.xcproject -scheme Tailor-iOS -sdk iphonesimulator
-- xctool clean build -project Tailor.xcproject -scheme Tailor-Mac -sdk macosx
-- xctool test -project Tailor.xcproject -scheme Tailor-Mac -sdk macosx
+- xctool clean build -project Tailor.xcodeproj -scheme Tailor-iOS -sdk iphonesimulator
+- xctool test -project Tailor.xcodeproj -scheme Tailor-iOS -sdk iphonesimulator
+- xctool clean build -project Tailor.xcodeproj -scheme Tailor-Mac -sdk macosx
+- xctool test -project Tailor.xcodeproj -scheme Tailor-Mac -sdk macosx

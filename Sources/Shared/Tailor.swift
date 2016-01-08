@@ -1,3 +1,4 @@
+import Foundation
 import Sugar
 
 infix operator <- {}
@@ -43,7 +44,7 @@ public extension Inspectable {
     if let indexString = tail.first,
       index = Int(indexString) {
         result = (value as! [T])[index]
-        
+
         if tail.count > 1 {
           guard let range = key.rangeOfString(indexString) else { return nil }
           let key = key.substringFromIndex(range.startIndex.advancedBy(2))

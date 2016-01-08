@@ -18,8 +18,5 @@ Pod::Spec.new do |s|
   s.ios.source_files = 'Sources/{iOS,Shared}/**/*'
   s.osx.source_files = 'Sources/{Mac,Shared}/**/*'
 
-  # s.ios.frameworks = 'UIKit', 'Foundation'
-  # s.osx.frameworks = 'Cocoa', 'Foundation'
-
-  # s.dependency 'Whisper', '~> 1.0'
+  s.dependency 'Sugar'
 end

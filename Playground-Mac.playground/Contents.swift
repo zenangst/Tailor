@@ -20,3 +20,10 @@ func ==(lhs: Person, rhs: Person) -> Bool {
 let taylor = Person(["firstName" : "Taylor", "lastName" : "Swift"])
 print(taylor.firstName)
 print(taylor.lastName)
+
+
+var firstName: String
+firstName <- taylor.property("firstName") ?? ""
+
+
+print(taylor.properties())

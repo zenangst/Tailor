@@ -1,24 +1,147 @@
-# Tailor
+![Tailor Swift logo](https://raw.githubusercontent.com/zenangst/Tailor/master/Images/logo_v1.png)
 
-[![CI Status](http://img.shields.io/travis/zenangst/Tailor.svg?style=flat)](https://travis-ci.org/zenangst/Tailor)
-[![Version](https://img.shields.io/cocoapods/v/Tailor.svg?style=flat)](http://cocoadocs.org/docsets/Tailor)
-[![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![License](https://img.shields.io/cocoapods/l/Tailor.svg?style=flat)](http://cocoadocs.org/docsets/Tailor)
-[![Platform](https://img.shields.io/cocoapods/p/Tailor.svg?style=flat)](http://cocoadocs.org/docsets/Tailor)
+A super fast & convenient object mapper tailored for your needs.
 
-## Description
+Mapping objects to arrays or dictionaries can be a really cumbersome task, but those
+days are over. Tailor features a whole bunch of nifty methods for your model sewing needs.
 
-**Tailor** description.
+## Mapping properties
 
-## Usage
+Tailor features property, object(s) mapping for both `struct` and `class` objects.
 
+## Struct
 ```swift
-<API>
+struct Person: Mappable {
+
+  var firstName: String? = ""
+  var lastName: String? = ""
+
+  init(_ map: JSONDictionary) {
+    firstName <- map.property("first_name")
+    lastName  <- map.property("last_name")
+  }
+}
+
+let dictionary = ["first_name" : "Taylor", "last_name" : "Swift"]
+let model = Person(dictionary)
 ```
 
-## Author
+## Class
+```swift
+class Person: Mappable {
 
-Christoffer Winterkvist, christoffer@winterkvist.com
+  var firstName: String? = ""
+  var lastName: String? = ""
+
+  required convenience init(_ map: [String : AnyObject]) {
+    self.init()
+    firstName <- map.property("first_name")
+    lastName  <- map.property("last_name")
+  }
+}
+
+let dictionary = ["first_name" : "Taylor", "last_name" : "Swift"]
+let model = Person(dictionary)
+```
+
+## Object mapping
+
+```swift
+struct Person: Mappable {
+
+  var firstName: String? = ""
+  var lastName: String? = ""
+  var spouse: Person?
+
+  init(_ map: JSONDictionary) {
+    firstName <- map.property("first_name")
+    lastName  <- map.property("last_name")
+    spouse    <- map.object("spouse")
+  }
+}
+
+let dictionary = [
+  "first_name" : "Taylor", 
+  "last_name" : "Swift",
+  "spouse" : ["first_name" : "Calvin", 
+              "last_name" : "Harris"]
+]
+let model = Person(dictionary)
+```
+
+## Mapping objects
+
+```swift
+struct Person: Mappable {
+
+  var firstName: String? = ""
+  var lastName: String? = ""
+  var spouse: Person?
+  var parents = [Person]()
+
+  init(_ map: JSONDictionary) {
+    firstName <- map.property("first_name")
+    lastName  <- map.property("last_name")
+    spouse    <- map.object("spouse")
+    parents   <- map.objects("parents")
+  }
+}
+
+let dictionary = [
+  "first_name" : "Taylor", 
+  "last_name" : "Swift",
+  "spouse" : ["first_name" : "Calvin", 
+              "last_name" : "Harris"],
+  "parents" : [
+             ["first_name" : "Andrea", 
+              "last_name" : "Swift"],
+              ["first_name" : "Scott", 
+              "last_name" : "Swift"]
+  ]
+]
+let model = Person(dictionary)
+```
+
+## Transforms
+
+```swift
+struct Person: Mappable {
+
+  var firstName: String? = ""
+  var lastName: String? = ""
+  var spouse: Person?
+  var parents = [Person]()
+  var birthDate = NSDate?
+
+  init(_ map: JSONDictionary) {
+    firstName <- map.property("first_name")
+    lastName  <- map.property("last_name")
+    spouse    <- map.object("spouse")
+    parents   <- map.objects("parents")
+    birthDate <- map.transform("birth_date", transformer: { (value: String?) -> NSDate? in
+      guard let value = value else { return nil }
+      let dateFormatter = NSDateFormatter()
+      dateFormatter.dateFormat = "yyyy-MM-dd"
+      return dateFormatter.dateFromString(value)
+    })
+  }
+}
+
+let dictionary = [
+  "first_name" : "Taylor", 
+  "last_name" : "Swift",
+  "spouse" : ["first_name" : "Calvin", 
+              "last_name" : "Harris"],
+  "parents" : [
+             ["first_name" : "Andrea", 
+              "last_name" : "Swift"],
+              ["first_name" : "Scott", 
+              "last_name" : "Swift"]
+  ],
+  "birth_date": "1989-12-13"
+]
+let model = Person(dictionary)
+```
 
 ## Installation
 
@@ -29,21 +152,16 @@ it, simply add the following line to your Podfile:
 pod 'Tailor'
 ```
 
-**Tailor** is also available through [Carthage](https://github.com/Carthage/Carthage).
-To install just write into your Cartfile:
+## Contribute
 
-```ruby
-github "zenangst/Tailor"
-```
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create pull request
 
-## Author
 
-Christoffer Winterkvist, christoffer@winterkvist.com
+## Who made this?
 
-## Contributing
-
-We would love you to contribute to **Tailor**, check the [CONTRIBUTING](https://github.com/zenangst/Tailor/blob/master/CONTRIBUTING.md) file for more info.
-
-## License
-
-**Tailor** is available under the MIT license. See the [LICENSE](https://github.com/zenangst/Tailor/blob/master/LICENSE.md) file for more info.
+- Christoffer Winterkvist ([@zenangst](https://twitter.com/zenangst))
+- Vadym Markov ([@vadymmarkov](https://twitter.com/vadymmarkov))

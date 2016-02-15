@@ -21,6 +21,10 @@ func ==(lhs: Person, rhs: Person) -> Bool {
 
 let taylor = Person(["firstName" : "Taylor", "lastName" : "Swift", "age" : 27])
 
-taylor.value("firstName", String.self)
-taylor.value("lastName", OptionalString.self)
-taylor.value("age", Int.self)
+do {
+  let firstName: String = try taylor.value("firstName")
+  let lastName: String? = try taylor.value("lastName")
+  let age: Int = try taylor.value("age")
+} catch { print(error) }
+
+

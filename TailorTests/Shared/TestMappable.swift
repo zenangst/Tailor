@@ -143,4 +143,20 @@ class TestMappable: XCTestCase {
     XCTAssert(testStruct.relatives.count == 2)
   }
 
+  func testValueLookupSuccess() {
+    let personStruct = TestPersonStruct([
+      "firstName" : "Mini",
+      "lastName" : "Swift",
+      "sex": "female",
+      "birth_date": "2014-07-15"
+      ])
+
+    do {
+      let firstName: String = try personStruct.value("firstName")
+      let lastName: String? = try personStruct.value("lastName")
+      XCTAssertEqual(firstName, "Mini")
+      XCTAssertEqual(lastName, "Swift")
+    } catch {}
+  }
+
 }

@@ -33,6 +33,18 @@ public protocol Mappable {
   init(_ map: JSONDictionary)
 }
 
+public extension Mappable {
+
+  public func value<T>(key: String, _ type: T.Type) -> T? {
+    let value = Mirror(reflecting: self)
+      .children
+      .filter { $0.0 == key }
+      .map { $1 }
+
+    return value.first as? T
+  }
+}
+
 public extension Inspectable {
 
   public func property<T>(key: String, dictionary: T? = nil) -> T? {

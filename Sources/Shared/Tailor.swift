@@ -33,18 +33,6 @@ public protocol Mappable {
   init(_ map: JSONDictionary)
 }
 
-public extension Mappable {
-
-  public func value<T>(key: String, _ type: T.Type) -> T? {
-    let value = Mirror(reflecting: self)
-      .children
-      .filter { $0.0 == key }
-      .map { $1 }
-
-    return value.first as? T
-  }
-}
-
 public extension Inspectable {
 
   public func property<T>(key: String, dictionary: T? = nil) -> T? {
@@ -102,6 +90,31 @@ public extension Inspectable {
 
   public func keys() -> [String] { return Mirror(reflecting: self).children.map { $0.0! } }
   public func values() -> [Any]  { return Mirror(reflecting: self).children.map { $1 } }
+}
+
+public enum MappableError: ErrorType {
+  case TypeError(message: String)
+}
+
+public enum Result<T, Error: ErrorType> {
+  case Success(T)
+  case Failure(Error)
+}
+
+public extension Mappable where Self : Inspectable {
+
+  public func value<T>(key: String) throws -> T {
+    let value = Mirror(reflecting: self)
+      .children
+      .filter { $0.label == key }
+      .map { $1 }.first
+
+    guard let objectValue = value as? T else {
+      throw MappableError.TypeError(message: "Tried to get value \(value!) for \(key) as \(T.self) when expecting \(types()[key]!)")
+    }
+
+    return objectValue
+  }
 }
 
 public extension Array {

@@ -159,4 +159,18 @@ class TestMappable: XCTestCase {
     } catch {}
   }
 
+  func testValueLookupFailure() {
+    let personStruct = TestPersonStruct([
+      "firstName" : "Mini",
+      "lastName" : "Swift",
+      "sex": "female",
+      "birth_date": "2014-07-15"
+      ])
+
+    do {
+      let _: String? = try personStruct.value("firstName")
+    } catch {
+      XCTAssertNotNil(error)
+    }
+  }
 }

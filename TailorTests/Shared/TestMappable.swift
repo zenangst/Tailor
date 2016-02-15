@@ -173,4 +173,5 @@ class TestMappable: XCTestCase {
       XCTAssertNotNil(error)
     }
   }
+
 }

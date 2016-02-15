@@ -377,7 +377,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks --platform Mac";
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
 		BD793D561C3FD00F002BBB5F /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -391,7 +391,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks --platform iOS";
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
 		D5C629731C3A86E3007F7B7C /* Copy frameworks with Carthage */ = {
 			isa = PBXShellScriptBuildPhase;

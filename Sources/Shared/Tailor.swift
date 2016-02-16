@@ -156,7 +156,10 @@ public extension Array {
 public extension Dictionary {
 
   func property<T>(name: String) -> T? {
-    guard let key = name as? Key, value = self[key] else { return nil }
+    guard let key = name as? Key,
+      value = self[key]
+      else { return nil }
+
     return value as? T
   }
 
@@ -165,19 +168,19 @@ public extension Dictionary {
     return transformer(value: value as? U)
   }
 
-  func object<T : Mappable>(name: String? = nil) -> T? {
-    guard let value = self[name as! Key] else { return nil }
-    guard let dictionary = value as? JSONDictionary else { return nil }
+  func relation<T : Mappable>(name: String) -> T? {
+    guard let value = self[name as! Key],
+      dictionary = value as? JSONDictionary
+      else { return nil }
+
     return T(dictionary)
   }
 
-  func objects<T : Mappable>(name: String) -> [T]? {
-    guard let key = name as? Key, value = self[key] else { return nil }
-    guard let array = value as? JSONArray else { return nil }
-    var objects = [T]()
-    for dictionary in array {
-      objects.append(T(dictionary))
-    }
-    return objects
+  func relations<T : Mappable>(name: String) -> [T]? {
+    guard let key = name as? Key, value = self[key],
+      array = value as? JSONArray
+      else { return nil }
+
+    return array.map { T($0) }
   }
 }

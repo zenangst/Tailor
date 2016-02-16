@@ -78,8 +78,8 @@ struct TestPersonStruct: Inspectable, Mappable, Equatable {
 
     birthDate <- map.transform("birth_date", transformer: dateTransformer)
 
-    relatives <- map.objects("relatives")
-    job <- map.object("job")
+    relatives <- map.relations("relatives")
+    job <- map.relation("job")
   }
 }
 

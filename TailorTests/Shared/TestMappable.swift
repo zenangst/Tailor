@@ -135,7 +135,7 @@ class TestMappable: XCTestCase {
         "sex": "female",
         "birth_date": "2014-07-17"]]
 
-    testStruct.relatives <+ relatives.object("first")
+    testStruct.relatives <+ relatives.relation("first")
     XCTAssert(testStruct.relatives.count == 1)
 
     let copy = testStruct

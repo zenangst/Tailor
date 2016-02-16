@@ -10,7 +10,7 @@ enum Sex: String {
 
 struct Job: Mappable {
   var name: String = ""
-  
+
   init(_ map: JSONDictionary) {
     name <- map.property("name")
   }
@@ -80,6 +80,18 @@ struct TestPersonStruct: Inspectable, Mappable, Equatable {
 
     relatives <- map.objects("relatives")
     job <- map.object("job")
+  }
+}
+
+struct TestImmutable: MappableOnce {
+  var firstName: String
+  var lastName: String
+
+  init(_ map: JSONDictionary) throws {
+    do {
+      firstName = try map.property("firstName")
+      lastName = try map.property("lastName")
+    }
   }
 }
 

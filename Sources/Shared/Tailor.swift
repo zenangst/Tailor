@@ -6,8 +6,16 @@ public typealias OptionalInt = Optional<Int>
 public typealias OptionalFloat  = Optional<Float>
 public typealias OptionalDouble  = Optional<Double>
 
+prefix operator <- {}
 infix operator <- {}
 infix operator <+ {}
+
+public prefix func <-<T>(rhs: T?) throws -> T {
+  guard let rhs = rhs else {
+    throw MappableError.TypeError(message: "Unable to unrwap value")
+  }
+  return rhs
+}
 
 public func <- <T>(inout left: T, right: T) {
   left = right
@@ -15,6 +23,7 @@ public func <- <T>(inout left: T, right: T) {
 
 public func <- <T>(inout left: T, right: T?) {
   guard let right = right else { return }
+
   left = right
 }
 
@@ -29,6 +38,10 @@ public func <+ <T>(inout left: [T], right: T?) {
 }
 
 public protocol Inspectable { }
+public protocol MappableOnce {
+  init?(_ map: JSONDictionary) throws
+}
+
 public protocol Mappable {
   init(_ map: JSONDictionary)
 }

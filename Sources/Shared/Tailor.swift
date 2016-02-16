@@ -87,6 +87,31 @@ public extension Inspectable {
   public func values() -> [Any]  { return Mirror(reflecting: self).children.map { $1 } }
 }
 
+public enum MappableError: ErrorType {
+  case TypeError(message: String)
+}
+
+public enum Result<T, Error: ErrorType> {
+  case Success(T)
+  case Failure(Error)
+}
+
+public extension Mappable where Self : Inspectable {
+
+  public func value<T>(key: String) throws -> T {
+    let value = Mirror(reflecting: self)
+      .children
+      .filter { $0.label == key }
+      .map { $1 }.first
+
+    guard let objectValue = value as? T else {
+      throw MappableError.TypeError(message: "Tried to get value \(value!) for \(key) as \(T.self) when expecting \(types()[key]!)")
+    }
+
+    return objectValue
+  }
+}
+
 public extension Array {
   func objects<T : Mappable>(name: String? = nil) -> [T]? {
     var objects = [T]()

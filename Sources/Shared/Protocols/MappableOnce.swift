@@ -1,5 +1,5 @@
 import Sugar
 
-public protocol MappableOnce {
+public protocol SafeMappable {
   init(_ map: JSONDictionary) throws
 }

@@ -83,7 +83,7 @@ struct TestPersonStruct: Mappable, Equatable {
   }
 }
 
-struct TestImmutable: MappableOnce {
+struct TestImmutable: SafeMappable {
   let firstName: String
   let lastName: String
 

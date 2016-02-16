@@ -84,8 +84,8 @@ struct TestPersonStruct: Mappable, Equatable {
 }
 
 struct TestImmutable: MappableOnce {
-  var firstName: String
-  var lastName: String
+  let firstName: String
+  let lastName: String
 
   init(_ map: JSONDictionary) throws {
     do {

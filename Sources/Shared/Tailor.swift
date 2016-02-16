@@ -1,11 +1,6 @@
 import Foundation
 import Sugar
 
-public typealias OptionalString = Optional<String>
-public typealias OptionalInt = Optional<Int>
-public typealias OptionalFloat  = Optional<Float>
-public typealias OptionalDouble  = Optional<Double>
-
 infix operator <- {}
 infix operator <+ {}
 

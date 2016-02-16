@@ -54,9 +54,10 @@ public extension Mappable {
 
   public func properties() -> [String : Any] {
     var properties = [String : Any]()
-    for (key, object) in Mirror(reflecting: self).children {
-      guard let key = key else { continue }
-      properties[key] = object
+
+    for tuple in Mirror(reflecting: self).children {
+      guard let key = tuple.label else { continue }
+      properties[key] = tuple.value
     }
 
     return properties
@@ -65,9 +66,8 @@ public extension Mappable {
   public func types() -> [String : String] {
     var types = [String : String]()
     for tuple in Mirror(reflecting: self).children {
-      let (key, value) = tuple
-      let valueMirror = Mirror(reflecting: value)
-      types[key!] = "\(valueMirror.subjectType)"
+      guard let key = tuple.label else { continue }
+      types[key] = "\(Mirror(reflecting: tuple.value).subjectType)"
     }
     return types
   }

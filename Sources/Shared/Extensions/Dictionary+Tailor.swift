@@ -2,6 +2,14 @@ import Sugar
 
 public extension Dictionary {
 
+  func propertyOrThrow<T>(name: String) throws -> T {
+    guard let key = name as? Key,
+      value = self[key] as? T
+      else { throw MappableError.TypeError(message: "Tried to get value for \(name) as \(T.self)") }
+
+    return value
+  }
+
   func property<T>(name: String) -> T? {
     guard let key = name as? Key,
       value = self[key]

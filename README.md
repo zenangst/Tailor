@@ -56,7 +56,7 @@ struct Person: Mappable {
   init(_ map: JSONDictionary) {
     firstName <- map.property("first_name")
     lastName  <- map.property("last_name")
-    spouse    <- map.relation("spouse")
+    spouse    <- map.property("spouse")
   }
 }
 
@@ -82,8 +82,8 @@ struct Person: Mappable {
   init(_ map: JSONDictionary) {
     firstName <- map.property("first_name")
     lastName  <- map.property("last_name")
-    spouse    <- map.relation("spouse")
-    parents   <- map.relations("parents")
+    spouse    <- map.property("spouse")
+    parents   <- map.properties("parents")
   }
 }
 
@@ -116,8 +116,8 @@ struct Person: Mappable {
   init(_ map: JSONDictionary) {
     firstName <- map.property("first_name")
     lastName  <- map.property("last_name")
-    spouse    <- map.relation("spouse")
-    parents   <- map.relations("parents")
+    spouse    <- map.property("spouse")
+    parents   <- map.properties("parents")
     birthDate <- map.transform("birth_date", transformer: { (value: String?) -> NSDate? in
       guard let value = value else { return nil }
       let dateFormatter = NSDateFormatter()

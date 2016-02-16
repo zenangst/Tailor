@@ -175,9 +175,13 @@ class TestMappable: XCTestCase {
   }
 
   func testImmutableObjectMapping() {
-    let immutableStruct = try! TestImmutable(["firstName" : "foo" , "lastName" : "bar"])
-
-    XCTAssertEqual(immutableStruct.firstName, "foo")
-    XCTAssertEqual(immutableStruct.lastName, "bar")
+    let immutableStruct: TestImmutable
+    do {
+      immutableStruct = try TestImmutable(["firstName" : "foo" , "lastName" : "bar"])
+      XCTAssertEqual(immutableStruct.firstName, "foo")
+      XCTAssertEqual(immutableStruct.lastName, "bar")
+    } catch {
+      print(error)
+    }
   }
 }

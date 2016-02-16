@@ -89,8 +89,8 @@ struct TestImmutable: MappableOnce {
 
   init(_ map: JSONDictionary) throws {
     do {
-      firstName = try! map.property("firstName")!
-      lastName = try! map.property("lastName")!
+      firstName = try <-map.property("firstName")
+      lastName = try <-map.property("lastName")
     }
   }
 }

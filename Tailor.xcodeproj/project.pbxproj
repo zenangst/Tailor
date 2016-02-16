@@ -11,6 +11,16 @@
 		BD793D4F1C3FCD29002BBB5F /* Sugar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD793D4A1C3FCD0D002BBB5F /* Sugar.framework */; };
 		BD793D541C3FCF34002BBB5F /* Sugar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD793D4D1C3FCD22002BBB5F /* Sugar.framework */; };
 		BD793D551C3FCFA2002BBB5F /* Tailor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD793D471C3FCC97002BBB5F /* Tailor.swift */; };
+		BD81A1421C73A493009955E3 /* Dictionary+Tailor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD81A1411C73A493009955E3 /* Dictionary+Tailor.swift */; };
+		BD81A1431C73A493009955E3 /* Dictionary+Tailor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD81A1411C73A493009955E3 /* Dictionary+Tailor.swift */; };
+		BD81A1451C73A49D009955E3 /* Array+Tailor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD81A1441C73A49D009955E3 /* Array+Tailor.swift */; };
+		BD81A1461C73A49D009955E3 /* Array+Tailor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD81A1441C73A49D009955E3 /* Array+Tailor.swift */; };
+		BD81A1481C73A4DF009955E3 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD81A1471C73A4DF009955E3 /* Operators.swift */; };
+		BD81A1491C73A4DF009955E3 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD81A1471C73A4DF009955E3 /* Operators.swift */; };
+		BD81A14E1C73A644009955E3 /* Mappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD81A14D1C73A644009955E3 /* Mappable.swift */; };
+		BD81A14F1C73A644009955E3 /* Mappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD81A14D1C73A644009955E3 /* Mappable.swift */; };
+		BD81A1511C73A66D009955E3 /* MappableOnce.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD81A1501C73A66D009955E3 /* MappableOnce.swift */; };
+		BD81A1521C73A66D009955E3 /* MappableOnce.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD81A1501C73A66D009955E3 /* MappableOnce.swift */; };
 		BDC182641C3FE45000B54DD7 /* TestInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC182611C3FE45000B54DD7 /* TestInspectable.swift */; };
 		BDC182651C3FE45000B54DD7 /* TestInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC182611C3FE45000B54DD7 /* TestInspectable.swift */; };
 		BDC182661C3FE45000B54DD7 /* TestMappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC182621C3FE45000B54DD7 /* TestMappable.swift */; };
@@ -46,6 +56,11 @@
 		BD793D471C3FCC97002BBB5F /* Tailor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tailor.swift; sourceTree = "<group>"; };
 		BD793D4A1C3FCD0D002BBB5F /* Sugar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sugar.framework; path = Carthage/Build/Mac/Sugar.framework; sourceTree = "<group>"; };
 		BD793D4D1C3FCD22002BBB5F /* Sugar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sugar.framework; path = Carthage/Build/iOS/Sugar.framework; sourceTree = "<group>"; };
+		BD81A1411C73A493009955E3 /* Dictionary+Tailor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Tailor.swift"; sourceTree = "<group>"; };
+		BD81A1441C73A49D009955E3 /* Array+Tailor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Tailor.swift"; sourceTree = "<group>"; };
+		BD81A1471C73A4DF009955E3 /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
+		BD81A14D1C73A644009955E3 /* Mappable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mappable.swift; sourceTree = "<group>"; };
+		BD81A1501C73A66D009955E3 /* MappableOnce.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MappableOnce.swift; sourceTree = "<group>"; };
 		BDC182611C3FE45000B54DD7 /* TestInspectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestInspectable.swift; sourceTree = "<group>"; };
 		BDC182621C3FE45000B54DD7 /* TestMappable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestMappable.swift; sourceTree = "<group>"; };
 		BDC182631C3FE45000B54DD7 /* TestSubjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestSubjects.swift; sourceTree = "<group>"; };
@@ -104,6 +119,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BD81A13E1C73A468009955E3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BD81A1411C73A493009955E3 /* Dictionary+Tailor.swift */,
+				BD81A1441C73A49D009955E3 /* Array+Tailor.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BD81A13F1C73A468009955E3 /* Operators */ = {
+			isa = PBXGroup;
+			children = (
+				BD81A1471C73A4DF009955E3 /* Operators.swift */,
+			);
+			path = Operators;
+			sourceTree = "<group>";
+		};
+		BD81A1401C73A468009955E3 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				BD81A14D1C73A644009955E3 /* Mappable.swift */,
+				BD81A1501C73A66D009955E3 /* MappableOnce.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		D5B2E8951C3A780C00C0327D = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +209,9 @@
 		D5C6296E1C3A809D007F7B7C /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				BD81A13E1C73A468009955E3 /* Extensions */,
+				BD81A13F1C73A468009955E3 /* Operators */,
+				BD81A1401C73A468009955E3 /* Protocols */,
 				BD793D471C3FCC97002BBB5F /* Tailor.swift */,
 			);
 			path = Shared;
@@ -432,6 +476,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD81A1451C73A49D009955E3 /* Array+Tailor.swift in Sources */,
+				BD81A14E1C73A644009955E3 /* Mappable.swift in Sources */,
+				BD81A1481C73A4DF009955E3 /* Operators.swift in Sources */,
+				BD81A1421C73A493009955E3 /* Dictionary+Tailor.swift in Sources */,
+				BD81A1511C73A66D009955E3 /* MappableOnce.swift in Sources */,
 				BD793D481C3FCC97002BBB5F /* Tailor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -450,6 +499,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD81A1461C73A49D009955E3 /* Array+Tailor.swift in Sources */,
+				BD81A14F1C73A644009955E3 /* Mappable.swift in Sources */,
+				BD81A1491C73A4DF009955E3 /* Operators.swift in Sources */,
+				BD81A1431C73A493009955E3 /* Dictionary+Tailor.swift in Sources */,
+				BD81A1521C73A66D009955E3 /* MappableOnce.swift in Sources */,
 				BD793D551C3FCFA2002BBB5F /* Tailor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

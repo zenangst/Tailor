@@ -27,7 +27,7 @@ func ==(lhs: Job, rhs: Job) -> Bool {
   return lhs.name == rhs.name
 }
 
-class TestPersonClass: NSObject, Inspectable, Mappable {
+class TestPersonClass: NSObject, Mappable {
 
   var firstName: String = ""
   var lastName: String? = ""
@@ -58,7 +58,7 @@ class TestPersonClass: NSObject, Inspectable, Mappable {
   }
 }
 
-struct TestPersonStruct: Inspectable, Mappable, Equatable {
+struct TestPersonStruct: Mappable, Equatable {
   var firstName: String = ""
   var lastName: String? = ""
   var sex: Sex?
@@ -89,8 +89,8 @@ struct TestImmutable: MappableOnce {
 
   init(_ map: JSONDictionary) throws {
     do {
-      firstName = try map.property("firstName")
-      lastName = try map.property("lastName")
+      firstName = try! map.property("firstName")
+      lastName = try! map.property("lastName")
     }
   }
 }

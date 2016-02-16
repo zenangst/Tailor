@@ -10,7 +10,7 @@ public extension Dictionary {
     return value
   }
 
-  func property<T>(name: String) -> T? {
+  func property<T : Hashable>(name: String) -> T? {
     guard let key = name as? Key,
       value = self[key]
       else { return nil }
@@ -23,7 +23,7 @@ public extension Dictionary {
     return transformer(value: value as? U)
   }
 
-  func relation<T : Mappable>(name: String) -> T? {
+  func property<T : Mappable>(name: String) -> T? {
     guard let value = self[name as! Key],
       dictionary = value as? JSONDictionary
       else { return nil }
@@ -31,7 +31,7 @@ public extension Dictionary {
     return T(dictionary)
   }
 
-  func relations<T : Mappable>(name: String) -> [T]? {
+  func properties<T : Mappable>(name: String) -> [T]? {
     guard let key = name as? Key, value = self[key],
       array = value as? JSONArray
       else { return nil }

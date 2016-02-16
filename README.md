@@ -7,7 +7,7 @@ days are over. Tailor features a whole bunch of nifty methods for your model sew
 
 ## Mapping properties
 
-Tailor features property, object(s) mapping for both `struct` and `class` objects.
+Tailor features property, relation(s) mapping for both `struct` and `class` objects.
 
 ## Struct
 ```swift
@@ -56,14 +56,14 @@ struct Person: Mappable {
   init(_ map: JSONDictionary) {
     firstName <- map.property("first_name")
     lastName  <- map.property("last_name")
-    spouse    <- map.object("spouse")
+    spouse    <- map.relation("spouse")
   }
 }
 
 let dictionary = [
-  "first_name" : "Taylor", 
+  "first_name" : "Taylor",
   "last_name" : "Swift",
-  "spouse" : ["first_name" : "Calvin", 
+  "spouse" : ["first_name" : "Calvin",
               "last_name" : "Harris"]
 ]
 let model = Person(dictionary)
@@ -82,20 +82,20 @@ struct Person: Mappable {
   init(_ map: JSONDictionary) {
     firstName <- map.property("first_name")
     lastName  <- map.property("last_name")
-    spouse    <- map.object("spouse")
-    parents   <- map.objects("parents")
+    spouse    <- map.relation("spouse")
+    parents   <- map.relations("parents")
   }
 }
 
 let dictionary = [
-  "first_name" : "Taylor", 
+  "first_name" : "Taylor",
   "last_name" : "Swift",
-  "spouse" : ["first_name" : "Calvin", 
+  "spouse" : ["first_name" : "Calvin",
               "last_name" : "Harris"],
   "parents" : [
-             ["first_name" : "Andrea", 
+             ["first_name" : "Andrea",
               "last_name" : "Swift"],
-              ["first_name" : "Scott", 
+              ["first_name" : "Scott",
               "last_name" : "Swift"]
   ]
 ]
@@ -116,8 +116,8 @@ struct Person: Mappable {
   init(_ map: JSONDictionary) {
     firstName <- map.property("first_name")
     lastName  <- map.property("last_name")
-    spouse    <- map.object("spouse")
-    parents   <- map.objects("parents")
+    spouse    <- map.relation("spouse")
+    parents   <- map.relations("parents")
     birthDate <- map.transform("birth_date", transformer: { (value: String?) -> NSDate? in
       guard let value = value else { return nil }
       let dateFormatter = NSDateFormatter()
@@ -128,14 +128,14 @@ struct Person: Mappable {
 }
 
 let dictionary = [
-  "first_name" : "Taylor", 
+  "first_name" : "Taylor",
   "last_name" : "Swift",
-  "spouse" : ["first_name" : "Calvin", 
+  "spouse" : ["first_name" : "Calvin",
               "last_name" : "Harris"],
   "parents" : [
-             ["first_name" : "Andrea", 
+             ["first_name" : "Andrea",
               "last_name" : "Swift"],
-              ["first_name" : "Scott", 
+              ["first_name" : "Scott",
               "last_name" : "Swift"]
   ],
   "birth_date": "1989-12-13"

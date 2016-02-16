@@ -3,7 +3,7 @@
 import Cocoa
 import Tailor
 
-struct Person: Inspectable, Mappable, Equatable {
+struct Person: Mappable, Equatable {
   var firstName: String = ""
   var lastName: String? = ""
   var age: Int = 0

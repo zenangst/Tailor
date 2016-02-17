@@ -21,18 +21,26 @@ public extension Mappable {
 
   public func property<T>(key: String, dictionary: T? = nil) -> T? {
     // TODO: Improve this to support nested attributes
-    let components = ArraySlice(key.componentsSeparatedByString("."))
-    let value = Mirror(reflecting: self)
+    let components = key.split(".")
+    let values = Mirror(reflecting: self)
       .children
-      .filter({$0.0! == components.first!})
-      .map({ $1 }).first!
+      .filter({$0.0 == components.first})
+      .map({ $1 })
 
+    guard let value = values.first else { return nil }
     var result = value as? T
 
     let tail = components.dropFirst()
+    let type:_MirrorType = _reflect(value)
+
+    if type.disposition == .Optional && type.count != 0 {
+      let (_, some) = type[0]
+      result = some.value as? T
+    }
+
     if let indexString = tail.first,
       index = Int(indexString) {
-        result = (value as! [T])[index]
+        guard let result = (value as? [T])?[index] else { return nil }
 
         if tail.count > 1 {
           guard let range = key.rangeOfString(indexString) else { return nil }
@@ -41,12 +49,6 @@ public extension Mappable {
         } else {
           return result
         }
-    }
-
-    let type:_MirrorType = _reflect(value)
-    if type.disposition == .Optional && type.count != 0 {
-      let (_, some) = type[0]
-      result = some.value as? T
     }
 
     return result

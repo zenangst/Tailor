@@ -78,8 +78,8 @@ struct TestPersonStruct: Mappable, Equatable {
 
     birthDate <- map.transform("birth_date", transformer: dateTransformer)
 
-    relatives <- map.properties("relatives")
-    job <- map.property("job")
+    relatives <- map.relations("relatives")
+    job <- map.relation("job")
   }
 }
 
@@ -90,6 +90,22 @@ struct TestImmutable: SafeMappable {
   init(_ map: JSONDictionary) throws {
     firstName = try <-map.property("firstName")
     lastName = try <-map.property("lastName")
+  }
+}
+
+struct MultipleTypeStruct : Mappable {
+  var stringArray = [String]()
+  var stringDictionary = [String : String]()
+  var boolProperty = false
+  var people = [TestPersonStruct]()
+  var peopleDictionary = [String : TestPersonStruct]()
+
+  init(_ map: JSONDictionary) {
+    stringArray <- map.property("stringArray")
+    stringDictionary <- map.property("stringDictionary")
+    boolProperty <- map.property("boolProperty")
+    people <- map.relations("people")
+    peopleDictionary <- map.directory("peopleDictionary")
   }
 }
 

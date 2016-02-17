@@ -135,7 +135,7 @@ class TestMappable: XCTestCase {
         "sex": "female",
         "birth_date": "2014-07-17"]]
 
-    testStruct.relatives <+ relatives.object("first")
+    testStruct.relatives <+ relatives.property("first")
     XCTAssert(testStruct.relatives.count == 1)
 
     let copy = testStruct
@@ -174,4 +174,14 @@ class TestMappable: XCTestCase {
     }
   }
 
+  func testImmutableObjectMapping() {
+    let immutableStruct: TestImmutable
+    do {
+      immutableStruct = try TestImmutable(["firstName" : "foo" , "lastName" : "bar"])
+      XCTAssertEqual(immutableStruct.firstName, "foo")
+      XCTAssertEqual(immutableStruct.lastName, "bar")
+    } catch {
+      print(error)
+    }
+  }
 }

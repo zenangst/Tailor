@@ -10,7 +10,7 @@ enum Sex: String {
 
 struct Job: Mappable {
   var name: String = ""
-  
+
   init(_ map: JSONDictionary) {
     name <- map.property("name")
   }
@@ -27,7 +27,7 @@ func ==(lhs: Job, rhs: Job) -> Bool {
   return lhs.name == rhs.name
 }
 
-class TestPersonClass: NSObject, Inspectable, Mappable {
+class TestPersonClass: NSObject, Mappable {
 
   var firstName: String = ""
   var lastName: String? = ""
@@ -58,7 +58,7 @@ class TestPersonClass: NSObject, Inspectable, Mappable {
   }
 }
 
-struct TestPersonStruct: Inspectable, Mappable, Equatable {
+struct TestPersonStruct: Mappable, Equatable {
   var firstName: String = ""
   var lastName: String? = ""
   var sex: Sex?
@@ -78,8 +78,18 @@ struct TestPersonStruct: Inspectable, Mappable, Equatable {
 
     birthDate <- map.transform("birth_date", transformer: dateTransformer)
 
-    relatives <- map.objects("relatives")
-    job <- map.object("job")
+    relatives <- map.properties("relatives")
+    job <- map.property("job")
+  }
+}
+
+struct TestImmutable: SafeMappable {
+  let firstName: String
+  let lastName: String
+
+  init(_ map: JSONDictionary) throws {
+    firstName = try <-map.property("firstName")
+    lastName = try <-map.property("lastName")
   }
 }
 

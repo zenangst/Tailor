@@ -19,8 +19,8 @@
 		BD81A1491C73A4DF009955E3 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD81A1471C73A4DF009955E3 /* Operators.swift */; };
 		BD81A14E1C73A644009955E3 /* Mappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD81A14D1C73A644009955E3 /* Mappable.swift */; };
 		BD81A14F1C73A644009955E3 /* Mappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD81A14D1C73A644009955E3 /* Mappable.swift */; };
-		BD81A1511C73A66D009955E3 /* MappableOnce.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD81A1501C73A66D009955E3 /* MappableOnce.swift */; };
-		BD81A1521C73A66D009955E3 /* MappableOnce.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD81A1501C73A66D009955E3 /* MappableOnce.swift */; };
+		BD81A1511C73A66D009955E3 /* SafeMappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD81A1501C73A66D009955E3 /* SafeMappable.swift */; };
+		BD81A1521C73A66D009955E3 /* SafeMappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD81A1501C73A66D009955E3 /* SafeMappable.swift */; };
 		BDC182641C3FE45000B54DD7 /* TestInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC182611C3FE45000B54DD7 /* TestInspectable.swift */; };
 		BDC182651C3FE45000B54DD7 /* TestInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC182611C3FE45000B54DD7 /* TestInspectable.swift */; };
 		BDC182661C3FE45000B54DD7 /* TestMappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC182621C3FE45000B54DD7 /* TestMappable.swift */; };
@@ -60,7 +60,7 @@
 		BD81A1441C73A49D009955E3 /* Array+Tailor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Tailor.swift"; sourceTree = "<group>"; };
 		BD81A1471C73A4DF009955E3 /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
 		BD81A14D1C73A644009955E3 /* Mappable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mappable.swift; sourceTree = "<group>"; };
-		BD81A1501C73A66D009955E3 /* MappableOnce.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MappableOnce.swift; sourceTree = "<group>"; };
+		BD81A1501C73A66D009955E3 /* SafeMappable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafeMappable.swift; sourceTree = "<group>"; };
 		BDC182611C3FE45000B54DD7 /* TestInspectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestInspectable.swift; sourceTree = "<group>"; };
 		BDC182621C3FE45000B54DD7 /* TestMappable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestMappable.swift; sourceTree = "<group>"; };
 		BDC182631C3FE45000B54DD7 /* TestSubjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestSubjects.swift; sourceTree = "<group>"; };
@@ -140,7 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				BD81A14D1C73A644009955E3 /* Mappable.swift */,
-				BD81A1501C73A66D009955E3 /* MappableOnce.swift */,
+				BD81A1501C73A66D009955E3 /* SafeMappable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -480,7 +480,7 @@
 				BD81A14E1C73A644009955E3 /* Mappable.swift in Sources */,
 				BD81A1481C73A4DF009955E3 /* Operators.swift in Sources */,
 				BD81A1421C73A493009955E3 /* Dictionary+Tailor.swift in Sources */,
-				BD81A1511C73A66D009955E3 /* MappableOnce.swift in Sources */,
+				BD81A1511C73A66D009955E3 /* SafeMappable.swift in Sources */,
 				BD793D481C3FCC97002BBB5F /* Tailor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -503,7 +503,7 @@
 				BD81A14F1C73A644009955E3 /* Mappable.swift in Sources */,
 				BD81A1491C73A4DF009955E3 /* Operators.swift in Sources */,
 				BD81A1431C73A493009955E3 /* Dictionary+Tailor.swift in Sources */,
-				BD81A1521C73A66D009955E3 /* MappableOnce.swift in Sources */,
+				BD81A1521C73A66D009955E3 /* SafeMappable.swift in Sources */,
 				BD793D551C3FCFA2002BBB5F /* Tailor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -102,6 +102,26 @@ let dictionary = [
 let model = Person(dictionary)
 ```
 
+## SafeMappable
+```swift
+struct ImmutablePerson: SafeMappable {
+  let firstName: String
+  let lastName: String
+
+  init(_ map: JSONDictionary) throws {
+    firstName = try <-map.property("firstName")
+    lastName = try <-map.property("lastName")
+  }
+}
+
+let immutablePerson: ImmutablePerson
+do {
+  immutablePerson = try TestImmutable(["firstName" : "foo" , "lastName" : "bar"])
+} catch {
+  print(error)
+}
+```
+
 ## Transforms
 
 ```swift

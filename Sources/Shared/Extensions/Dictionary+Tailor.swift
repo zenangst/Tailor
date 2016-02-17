@@ -38,4 +38,19 @@ public extension Dictionary {
 
     return array.map { T($0) }
   }
+
+  func directory<T : Mappable>(name: String) -> [String : T]? {
+    guard let key = name as? Key, value = self[key],
+      dictionary = value as? JSONDictionary
+      else { return nil }
+
+    var directory = [String : T]()
+
+    for (key, value) in dictionary {
+      guard let value = value as? JSONDictionary else { continue }
+      directory[key] = T(value)
+    }
+
+    return directory
+  }
 }

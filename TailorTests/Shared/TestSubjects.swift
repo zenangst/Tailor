@@ -93,6 +93,22 @@ struct TestImmutable: SafeMappable {
   }
 }
 
+struct MultipleTypeStruct : Mappable {
+  var stringArray = [String]()
+  var stringDictionary = [String : String]()
+  var boolProperty = false
+  var people = [TestPersonStruct]()
+  var peopleDictionary = [String : TestPersonStruct]()
+
+  init(_ map: JSONDictionary) {
+    stringArray <- map.property("stringArray")
+    stringDictionary <- map.property("stringDictionary")
+    boolProperty <- map.property("boolProperty")
+    people <- map.relations("people")
+    peopleDictionary <- map.directory("peopleDictionary")
+  }
+}
+
 func ==(lhs: TestPersonStruct, rhs: TestPersonStruct) -> Bool {
   return lhs.firstName == rhs.firstName && lhs.lastName == rhs.lastName
 }

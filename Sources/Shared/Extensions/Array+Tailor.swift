@@ -1,6 +1,11 @@
 import Sugar
 
 public extension Array {
+
+  /**
+   - Parameter name: String
+   - Returns: A mappable object array, otherwise it returns nil
+   */
   func objects<T : Mappable>(name: String? = nil) -> [T]? {
     var objects = [T]()
 

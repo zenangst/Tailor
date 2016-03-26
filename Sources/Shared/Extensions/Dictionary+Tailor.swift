@@ -2,6 +2,10 @@ import Sugar
 
 public extension Dictionary {
 
+  /**
+   - Parameter name: The name of the property that you want to map
+   - Returns: A generic type if casting succeeds, otherwise it throws
+   */
   func propertyOrThrow<T>(name: String) throws -> T {
     guard let key = name as? Key,
       value = self[key] as? T
@@ -10,6 +14,10 @@ public extension Dictionary {
     return value
   }
 
+  /**
+   - Parameter name: The name of the property that you want to map
+   - Returns: A generic type if casting succeeds, otherwise it returns nil
+   */
   func property<T>(name: String) -> T? {
     guard let key = name as? Key,
       value = self[key] as? T
@@ -18,11 +26,20 @@ public extension Dictionary {
     return value
   }
 
+  /**
+   - Parameter name: The name of the property that you want to map
+   - Parameter transformer: A transformation closure
+   - Returns: A generic type if casting succeeds, otherwise it returns nil
+   */
   func transform<T, U>(name: String, transformer: ((value: U?) -> T?)) -> T? {
     guard let value = self[name as! Key] else { return nil }
     return transformer(value: value as? U)
   }
 
+  /**
+   - Parameter name: The name of the property that you want to map
+   - Returns: A mappable object, otherwise it returns nil
+   */
   func relation<T : Mappable>(name: String) -> T? {
     guard let value = self[name as! Key],
       dictionary = value as? JSONDictionary
@@ -31,6 +48,10 @@ public extension Dictionary {
     return T(dictionary)
   }
 
+  /**
+   - Parameter name: The name of the property that you want to map
+   - Returns: A mappable object array, otherwise it returns nil
+   */
   func relations<T : Mappable>(name: String) -> [T]? {
     guard let key = name as? Key, value = self[key],
       array = value as? JSONArray
@@ -39,6 +60,10 @@ public extension Dictionary {
     return array.map { T($0) }
   }
 
+  /**
+   - Parameter name: The name of the property that you want to map
+   - Returns: A mappable object directory, otherwise it returns nil
+   */
   func directory<T : Mappable>(name: String) -> [String : T]? {
     guard let key = name as? Key, value = self[key],
       dictionary = value as? JSONDictionary

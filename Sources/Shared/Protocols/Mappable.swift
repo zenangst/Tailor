@@ -6,6 +6,10 @@ public protocol Mappable {
 
 public extension Mappable {
 
+  /**
+   - Parameter key: The key name of the property you want to lookup
+   - Returns: A generic value on success, otherwise it throws a MappableError.
+   */
   public func value<T>(key: String) throws -> T {
     let value = Mirror(reflecting: self)
       .children
@@ -19,6 +23,10 @@ public extension Mappable {
     return objectValue
   }
 
+  /**
+   - Parameter key: The key name of the property you want to lookup
+   - Returns: An optional generic value.
+   */
   public func property<T>(key: String, dictionary: T? = nil) -> T? {
     // TODO: Improve this to support nested attributes
     let components = key.split(".")
@@ -54,6 +62,9 @@ public extension Mappable {
     return result
   }
 
+  /**
+   - Returns: A key-value dictionary.
+   */
   public func properties() -> [String : Any] {
     var properties = [String : Any]()
 
@@ -65,6 +76,9 @@ public extension Mappable {
     return properties
   }
 
+  /**
+  - Returns: A string based dictionary.
+  */
   public func types() -> [String : String] {
     var types = [String : String]()
     for tuple in Mirror(reflecting: self).children {

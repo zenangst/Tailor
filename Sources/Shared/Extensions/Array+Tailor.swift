@@ -24,4 +24,26 @@ public extension Array {
 
     return objects
   }
+ 
+  /**
+   - Parameter name: The index
+   - Returns: A child dictionary at that index, otherwise it returns nil
+   */
+  func dictionary(index: Int) -> JSONDictionary? {
+    guard let value = self[index] as? JSONDictionary where index < self.count
+      else { return nil }
+    
+    return value
+  }
+ 
+  /**
+   - Parameter name: The index
+   - Returns: A child array at that index, otherwise it returns nil
+   */
+  func array(index: Int) -> JSONArray? {
+    guard let value = self[index] as? JSONArray where index < self.count
+      else { return nil }
+    
+    return value
+  }
 }

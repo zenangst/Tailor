@@ -30,7 +30,7 @@ public extension Array {
    - Returns: A child dictionary at that index, otherwise it returns nil
    */
   func dictionary(index: Int) -> JSONDictionary? {
-    guard let value = self[index] as? JSONDictionary where index < self.count
+    guard index < self.count, let value = self[index] as? JSONDictionary
       else { return nil }
     
     return value
@@ -41,7 +41,7 @@ public extension Array {
    - Returns: A child array at that index, otherwise it returns nil
    */
   func array(index: Int) -> JSONArray? {
-    guard let value = self[index] as? JSONArray where index < self.count
+    guard index < self.count, let value = self[index] as? JSONArray
       else { return nil }
     
     return value

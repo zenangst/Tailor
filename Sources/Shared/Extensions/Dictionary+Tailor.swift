@@ -50,6 +50,26 @@ public extension Dictionary {
 
   /**
    - Parameter name: The name of the property that you want to map
+   - Returns: A mappable object, otherwise it returns nil
+   */
+  func relation<T : SafeMappable>(name: String) -> T? {
+    guard let value = self[name as! Key],
+      dictionary = value as? JSONDictionary
+      else { return nil }
+
+    let result: T?
+
+    do {
+      result = try T(dictionary)
+    } catch {
+      result = nil
+    }
+
+    return result
+  }
+
+  /**
+   - Parameter name: The name of the property that you want to map
    - Returns: A mappable object array, otherwise it returns nil
    */
   func relations<T : Mappable>(name: String) -> [T]? {
@@ -78,7 +98,7 @@ public extension Dictionary {
 
     return directory
   }
-  
+
   /**
    - Parameter name: The name of the key
    - Returns: A child dictionary for that key, otherwise it returns nil
@@ -87,10 +107,10 @@ public extension Dictionary {
     guard let key = name as? Key,
       value = self[key] as? JSONDictionary
       else { return nil }
-    
+
     return value
   }
-  
+
   /**
    - Parameter name: The name of the key
    - Returns: A child array for that key, otherwise it returns nil
@@ -99,7 +119,7 @@ public extension Dictionary {
     guard let key = name as? Key,
       value = self[key] as? JSONArray
       else { return nil }
-    
+
     return value
   }
 }

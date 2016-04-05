@@ -82,6 +82,28 @@ public extension Dictionary {
 
   /**
    - Parameter name: The name of the property that you want to map
+   - Returns: A mappable object array, otherwise it returns nil
+   */
+  func relations<T : SafeMappable>(name: String) -> [T]? {
+    guard let key = name as? Key, value = self[key],
+      array = value as? JSONArray
+      else { return nil }
+
+    var result = [T]()
+
+    for item in array {
+      do {
+        result.append(try T(item) )
+      } catch {
+        continue
+      }
+    }
+
+    return result
+  }
+
+  /**
+   - Parameter name: The name of the property that you want to map
    - Returns: A mappable object directory, otherwise it returns nil
    */
   func directory<T : Mappable>(name: String) -> [String : T]? {

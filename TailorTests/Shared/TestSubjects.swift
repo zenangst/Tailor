@@ -86,10 +86,14 @@ struct TestPersonStruct: Mappable, Equatable {
 struct TestImmutable: SafeMappable {
   let firstName: String
   let lastName: String
+  let job: Job
+  let hobbies: [Job]
 
   init(_ map: JSONDictionary) throws {
     firstName = try <-map.property("firstName")
     lastName = try <-map.property("lastName")
+    job = try <-map.relationOrThrow("job")
+    hobbies = try <-map.relationsOrThrow("hobbies")
   }
 }
 

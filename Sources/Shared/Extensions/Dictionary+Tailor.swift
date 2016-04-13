@@ -1,5 +1,7 @@
 import Sugar
 
+// MARK: - Basic
+
 public extension Dictionary {
 
   /**
@@ -34,72 +36,6 @@ public extension Dictionary {
   func transform<T, U>(name: String, transformer: ((value: U?) -> T?)) -> T? {
     guard let value = self[name as! Key] else { return nil }
     return transformer(value: value as? U)
-  }
-
-  /**
-   - Parameter name: The name of the property that you want to map
-   - Returns: A mappable object, otherwise it returns nil
-   */
-  func relation<T : Mappable>(name: String) -> T? {
-    guard let value = self[name as! Key],
-      dictionary = value as? JSONDictionary
-      else { return nil }
-
-    return T(dictionary)
-  }
-
-  /**
-   - Parameter name: The name of the property that you want to map
-   - Returns: A mappable object, otherwise it returns nil
-   */
-  func relation<T : SafeMappable>(name: String) -> T? {
-    guard let value = self[name as! Key],
-      dictionary = value as? JSONDictionary
-      else { return nil }
-
-    let result: T?
-
-    do {
-      result = try T(dictionary)
-    } catch {
-      result = nil
-    }
-
-    return result
-  }
-
-  /**
-   - Parameter name: The name of the property that you want to map
-   - Returns: A mappable object array, otherwise it returns nil
-   */
-  func relations<T : Mappable>(name: String) -> [T]? {
-    guard let key = name as? Key, value = self[key],
-      array = value as? JSONArray
-      else { return nil }
-
-    return array.map { T($0) }
-  }
-
-  /**
-   - Parameter name: The name of the property that you want to map
-   - Returns: A mappable object array, otherwise it returns nil
-   */
-  func relations<T : SafeMappable>(name: String) -> [T]? {
-    guard let key = name as? Key, value = self[key],
-      array = value as? JSONArray
-      else { return nil }
-
-    var result = [T]()
-
-    for item in array {
-      do {
-        result.append(try T(item) )
-      } catch {
-        continue
-      }
-    }
-
-    return result
   }
 
   /**
@@ -145,3 +81,127 @@ public extension Dictionary {
     return value
   }
 }
+
+// MARK: - Relation
+
+public extension Dictionary {
+
+  /**
+   - Parameter name: The name of the property that you want to map
+   - Returns: A mappable object, otherwise it returns nil
+   */
+  func relation<T : Mappable>(name: String) -> T? {
+    guard let value = self[name as! Key],
+      dictionary = value as? JSONDictionary
+      else { return nil }
+
+    return T(dictionary)
+  }
+
+  /**
+   - Parameter name: The name of the property that you want to map
+   - Returns: A generic type if casting succeeds, otherwise it throws
+   */
+  func relationOrThrow<T : Mappable>(name: String) throws -> T {
+    guard let key = name as? Key,
+      value = self[key],
+      dictionary = value as? JSONDictionary
+      else { throw MappableError.TypeError(message: "Tried to get value for \(name) as \(T.self)") }
+
+    return T(dictionary)
+  }
+
+  /**
+   - Parameter name: The name of the property that you want to map
+   - Returns: A mappable object, otherwise it returns nil
+   */
+  func relation<T : SafeMappable>(name: String) -> T? {
+    guard let value = self[name as! Key],
+      dictionary = value as? JSONDictionary
+      else { return nil }
+
+    let result: T?
+
+    do {
+      result = try T(dictionary)
+    } catch {
+      result = nil
+    }
+
+    return result
+  }
+
+  /**
+   - Parameter name: The name of the property that you want to map
+   - Returns: A generic type if casting succeeds, otherwise it throws
+   */
+  func relationOrThrow<T : SafeMappable>(name: String) throws -> T {
+    guard let key = name as? Key,
+      value = self[key],
+      dictionary = value as? JSONDictionary
+      else { throw MappableError.TypeError(message: "Tried to get value for \(name) as \(T.self)") }
+
+    return try T(dictionary)
+  }
+}
+
+// MARK: - Relations
+
+public extension Dictionary {
+
+  /**
+   - Parameter name: The name of the property that you want to map
+   - Returns: A mappable object array, otherwise it returns nil
+   */
+  func relations<T : Mappable>(name: String) -> [T]? {
+    guard let key = name as? Key, value = self[key],
+      array = value as? JSONArray
+      else { return nil }
+
+    return array.map { T($0) }
+  }
+
+  /**
+   - Parameter name: The name of the property that you want to map
+   - Returns: A mappable object array, otherwise it throws
+   */
+  func relationsOrThrow<T : Mappable>(name: String) throws -> [T] {
+    guard let key = name as? Key,
+      value = self[key],
+      array = value as? JSONArray
+      else { throw MappableError.TypeError(message: "Tried to get value for \(name) as \(T.self)") }
+
+    return array.map { T($0) }
+  }
+
+  /**
+   - Parameter name: The name of the property that you want to map
+   - Returns: A mappable object array, otherwise it returns nil
+   */
+  func relations<T : SafeMappable>(name: String) -> [T]? {
+    guard let key = name as? Key, value = self[key],
+      array = value as? JSONArray
+      else { return nil }
+
+    var result = [T]()
+
+    do {
+      result = try array.map { try T($0) }
+    } catch {}
+
+    return result
+  }
+
+  /**
+   - Parameter name: The name of the property that you want to map
+   - Returns: A mappable object array, otherwise it throws
+   */
+  func relationsOrThrow<T : SafeMappable>(name: String) throws -> [T] {
+    guard let key = name as? Key, value = self[key],
+      array = value as? JSONArray
+      else { throw MappableError.TypeError(message: "Tried to get value for \(name) as \(T.self)") }
+
+    return try array.map { try T($0) }
+  }
+}
+

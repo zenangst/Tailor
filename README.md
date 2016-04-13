@@ -107,10 +107,12 @@ let model = Person(dictionary)
 struct ImmutablePerson: SafeMappable {
   let firstName: String
   let lastName: String
+  let spouse: Person
 
   init(_ map: JSONDictionary) throws {
     firstName = try <-map.property("firstName")
     lastName = try <-map.property("lastName")
+    spouse = try <-map.relationOrThrow("spouse")
   }
 }
 

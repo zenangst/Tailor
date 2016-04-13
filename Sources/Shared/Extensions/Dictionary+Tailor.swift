@@ -131,7 +131,18 @@ public extension Dictionary {
     return result
   }
 
-  
+  /**
+   - Parameter name: The name of the property that you want to map
+   - Returns: A generic type if casting succeeds, otherwise it throws
+   */
+  func relation<T : SafeMappable>(name: String) throws -> T {
+    guard let key = name as? Key,
+      value = self[key],
+      dictionary = value as? JSONDictionary
+      else { throw MappableError.TypeError(message: "Tried to get value for \(name) as \(T.self)") }
+
+    return try T(dictionary)
+  }
 }
 
 // MARK: - Relations

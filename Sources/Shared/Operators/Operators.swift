@@ -9,6 +9,10 @@ public prefix func <-<T>(rhs: T?) throws -> T {
   return rhs
 }
 
+public prefix func <-<T>(rhs: T) throws -> T {
+  return rhs
+}
+
 public func <- <T>(inout left: T, right: T) {
   left = right
 }

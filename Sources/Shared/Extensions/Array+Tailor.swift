@@ -4,9 +4,9 @@ public extension Array {
 
   /**
    - Parameter name: String
-   - Returns: A mappable object array, otherwise it returns nil
+   - Returns: A mappable object array, otherwise it returns empty array
    */
-  func objects<T : Mappable>(name: String? = nil) -> [T]? {
+  func objects<T : Mappable>(name: String? = nil) -> [T] {
     var objects = [T]()
 
     if let name = name {

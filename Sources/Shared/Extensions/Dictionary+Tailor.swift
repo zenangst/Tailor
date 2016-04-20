@@ -71,12 +71,36 @@ public extension Dictionary {
 
   /**
    - Parameter name: The name of the key
+   - Returns: A child dictionary for that key, otherwise it throws
+   */
+  func dictionaryOrThrow(name: String) throws -> JSONDictionary {
+    guard let key = name as? Key,
+      value = self[key] as? JSONDictionary
+      else { throw MappableError.TypeError(message: "Tried to get value for \(name) as JSONDictionary") }
+
+    return value
+  }
+
+  /**
+   - Parameter name: The name of the key
    - Returns: A child array for that key, otherwise it returns nil
    */
   func array(name: String) -> JSONArray? {
     guard let key = name as? Key,
       value = self[key] as? JSONArray
       else { return nil }
+
+    return value
+  }
+
+  /**
+   - Parameter name: The name of the key
+   - Returns: A child array for that key, otherwise it throws
+   */
+  func arrayOrThrow(name: String) throws -> JSONArray {
+    guard let key = name as? Key,
+      value = self[key] as? JSONArray
+      else { throw MappableError.TypeError(message: "Tried to get value for \(name) as JSONArray") }
 
     return value
   }
@@ -204,4 +228,3 @@ public extension Dictionary {
     return try array.map { try T($0) }
   }
 }
-

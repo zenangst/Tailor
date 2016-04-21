@@ -104,6 +104,18 @@ public extension Dictionary {
 
     return value
   }
+
+  /**
+   - Parameter name: The name of the key
+   - Returns: An enum if casting succeeds, otherwise it returns nil
+   */
+  func `enum`<T: RawRepresentable>(name: String) -> T? {
+    guard let key = name as? Key,
+      value = self[key] as? T.RawValue
+      else { return nil }
+
+    return T(rawValue: value)
+  }
 }
 
 // MARK: - Relation

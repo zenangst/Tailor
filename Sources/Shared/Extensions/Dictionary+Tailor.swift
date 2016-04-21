@@ -6,18 +6,6 @@ public extension Dictionary {
 
   /**
    - Parameter name: The name of the property that you want to map
-   - Returns: A generic type if casting succeeds, otherwise it throws
-   */
-  func propertyOrThrow<T>(name: String) throws -> T {
-    guard let key = name as? Key,
-      value = self[key] as? T
-      else { throw MappableError.TypeError(message: "Tried to get value for \(name) as \(T.self)") }
-
-    return value
-  }
-
-  /**
-   - Parameter name: The name of the property that you want to map
    - Returns: A generic type if casting succeeds, otherwise it returns nil
    */
   func property<T>(name: String) -> T? {
@@ -26,6 +14,17 @@ public extension Dictionary {
       else { return nil }
 
     return value
+  }
+
+  /**
+   - Parameter name: The name of the property that you want to map
+   - Returns: A generic type if casting succeeds, otherwise it throws
+   */
+  func propertyOrThrow<T>(name: String) throws -> T {
+    guard let result: T = property(name)
+      else { throw MappableError.TypeError(message: "Tried to get value for \(name) as \(T.self)") }
+
+    return result
   }
 
   /**
@@ -74,11 +73,10 @@ public extension Dictionary {
    - Returns: A child dictionary for that key, otherwise it throws
    */
   func dictionaryOrThrow(name: String) throws -> JSONDictionary {
-    guard let key = name as? Key,
-      value = self[key] as? JSONDictionary
+    guard let result = dictionary(name)
       else { throw MappableError.TypeError(message: "Tried to get value for \(name) as JSONDictionary") }
 
-    return value
+    return result
   }
 
   /**
@@ -98,11 +96,10 @@ public extension Dictionary {
    - Returns: A child array for that key, otherwise it throws
    */
   func arrayOrThrow(name: String) throws -> JSONArray {
-    guard let key = name as? Key,
-      value = self[key] as? JSONArray
+    guard let result = array(name)
       else { throw MappableError.TypeError(message: "Tried to get value for \(name) as JSONArray") }
 
-    return value
+    return result
   }
 
   /**
@@ -115,6 +112,17 @@ public extension Dictionary {
       else { return nil }
 
     return T(rawValue: value)
+  }
+
+  /**
+   - Parameter name: The name of the key
+   - Returns: An enum if casting succeeds, otherwise it throws
+   */
+  func enumOrThrow<T: RawRepresentable>(name: String) throws -> T {
+    guard let result: T = `enum`(name)
+      else { throw MappableError.TypeError(message: "Tried to get value for \(name) as enum") }
+
+    return result
   }
 }
 
@@ -139,12 +147,10 @@ public extension Dictionary {
    - Returns: A generic type if casting succeeds, otherwise it throws
    */
   func relationOrThrow<T : Mappable>(name: String) throws -> T {
-    guard let key = name as? Key,
-      value = self[key],
-      dictionary = value as? JSONDictionary
+    guard let result: T = relation(name)
       else { throw MappableError.TypeError(message: "Tried to get value for \(name) as \(T.self)") }
 
-    return T(dictionary)
+    return result
   }
 
   /**
@@ -172,12 +178,10 @@ public extension Dictionary {
    - Returns: A generic type if casting succeeds, otherwise it throws
    */
   func relationOrThrow<T : SafeMappable>(name: String) throws -> T {
-    guard let key = name as? Key,
-      value = self[key],
-      dictionary = value as? JSONDictionary
+    guard let result: T = relation(name)
       else { throw MappableError.TypeError(message: "Tried to get value for \(name) as \(T.self)") }
 
-    return try T(dictionary)
+    return result
   }
 }
 
@@ -202,12 +206,10 @@ public extension Dictionary {
    - Returns: A mappable object array, otherwise it throws
    */
   func relationsOrThrow<T : Mappable>(name: String) throws -> [T] {
-    guard let key = name as? Key,
-      value = self[key],
-      array = value as? JSONArray
+    guard let result: [T] = relations(name)
       else { throw MappableError.TypeError(message: "Tried to get value for \(name) as \(T.self)") }
 
-    return array.map { T($0) }
+    return result
   }
 
   /**
@@ -233,10 +235,9 @@ public extension Dictionary {
    - Returns: A mappable object array, otherwise it throws
    */
   func relationsOrThrow<T : SafeMappable>(name: String) throws -> [T] {
-    guard let key = name as? Key, value = self[key],
-      array = value as? JSONArray
+    guard let result: [T] = relations(name)
       else { throw MappableError.TypeError(message: "Tried to get value for \(name) as \(T.self)") }
 
-    return try array.map { try T($0) }
+    return result
   }
 }

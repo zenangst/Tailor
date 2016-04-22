@@ -16,8 +16,7 @@ struct Job: Mappable {
   }
 }
 
-let dateTransformer = { (value: String?) -> NSDate? in
-  guard let value = value else { return nil }
+let dateTransformer = { (value: String) -> NSDate? in
   let dateFormatter = NSDateFormatter()
   dateFormatter.dateFormat = "yyyy-MM-dd"
   return dateFormatter.dateFromString(value)
@@ -39,13 +38,11 @@ class TestPersonClass: NSObject, Mappable {
     firstName <- map.property("firstName")
     lastName  <- map.property("lastName")
 
-    sex <- map.transform("sex") { (value: String?) -> Sex? in
-      guard let value = value else { return nil }
+    sex <- map.transform("sex") { (value: String) -> Sex? in
       return Sex(rawValue: value)
     }
 
-    birthDate <- map.transform("birth_date") { (value: String?) -> NSDate? in
-      guard let value = value else { return nil }
+    birthDate <- map.transform("birth_date") { (value: String) -> NSDate? in
       let dateFormatter = NSDateFormatter()
       dateFormatter.dateFormat = "yyyy-MM-dd"
       return dateFormatter.dateFromString(value)
@@ -71,8 +68,7 @@ struct TestPersonStruct: Mappable, Equatable {
     firstName <- map.property("firstName")
     lastName  <- map.property("lastName")
 
-    sex <- map.transform("sex") { (value: String?) -> Sex? in
-      guard let value = value else { return nil }
+    sex <- map.transform("sex") { (value: String) -> Sex? in
       return Sex(rawValue: value)
     }
 

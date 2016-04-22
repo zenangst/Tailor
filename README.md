@@ -142,8 +142,7 @@ struct Person: Mappable {
     lastName  <- map.property("last_name")
     spouse    <- map.relation("spouse")
     parents   <- map.relations("parents")
-    birthDate <- map.transform("birth_date", transformer: { (value: String?) -> NSDate? in
-      guard let value = value else { return nil }
+    birthDate <- map.transform("birth_date", transformer: { (value: String) -> NSDate? in
       let dateFormatter = NSDateFormatter()
       dateFormatter.dateFormat = "yyyy-MM-dd"
       return dateFormatter.dateFromString(value)

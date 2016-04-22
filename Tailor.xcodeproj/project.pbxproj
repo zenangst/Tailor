@@ -27,6 +27,8 @@
 		BDC182671C3FE45000B54DD7 /* TestMappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC182621C3FE45000B54DD7 /* TestMappable.swift */; };
 		BDC182681C3FE45000B54DD7 /* TestSubjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC182631C3FE45000B54DD7 /* TestSubjects.swift */; };
 		BDC182691C3FE45000B54DD7 /* TestSubjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC182631C3FE45000B54DD7 /* TestSubjects.swift */; };
+		D22829E71CCA2ECF00466A1C /* PathAccessible.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22829E61CCA2ECF00466A1C /* PathAccessible.swift */; };
+		D22829E81CCA2ECF00466A1C /* PathAccessible.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22829E61CCA2ECF00466A1C /* PathAccessible.swift */; };
 		D2E827DA1CAD25FA003151A6 /* TestAccessible.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E827D91CAD25FA003151A6 /* TestAccessible.swift */; };
 		D2E827DB1CAD25FA003151A6 /* TestAccessible.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E827D91CAD25FA003151A6 /* TestAccessible.swift */; };
 		D5B2E8AA1C3A780C00C0327D /* Tailor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B2E89F1C3A780C00C0327D /* Tailor.framework */; };
@@ -66,6 +68,7 @@
 		BDC182611C3FE45000B54DD7 /* TestInspectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestInspectable.swift; sourceTree = "<group>"; };
 		BDC182621C3FE45000B54DD7 /* TestMappable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestMappable.swift; sourceTree = "<group>"; };
 		BDC182631C3FE45000B54DD7 /* TestSubjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestSubjects.swift; sourceTree = "<group>"; };
+		D22829E61CCA2ECF00466A1C /* PathAccessible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathAccessible.swift; sourceTree = "<group>"; };
 		D2E827D91CAD25FA003151A6 /* TestAccessible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestAccessible.swift; sourceTree = "<group>"; };
 		D500FD121C3AAC8E00782D78 /* Playground-Mac.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "Playground-Mac.playground"; sourceTree = "<group>"; };
 		D5B2E89F1C3A780C00C0327D /* Tailor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Tailor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -144,6 +147,7 @@
 			children = (
 				BD81A14D1C73A644009955E3 /* Mappable.swift */,
 				BD81A1501C73A66D009955E3 /* SafeMappable.swift */,
+				D22829E61CCA2ECF00466A1C /* PathAccessible.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -486,6 +490,7 @@
 				BD81A1421C73A493009955E3 /* Dictionary+Tailor.swift in Sources */,
 				BD81A1511C73A66D009955E3 /* SafeMappable.swift in Sources */,
 				BD793D481C3FCC97002BBB5F /* Tailor.swift in Sources */,
+				D22829E71CCA2ECF00466A1C /* PathAccessible.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -510,6 +515,7 @@
 				BD81A1431C73A493009955E3 /* Dictionary+Tailor.swift in Sources */,
 				BD81A1521C73A66D009955E3 /* SafeMappable.swift in Sources */,
 				BD793D551C3FCFA2002BBB5F /* Tailor.swift in Sources */,
+				D22829E81CCA2ECF00466A1C /* PathAccessible.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

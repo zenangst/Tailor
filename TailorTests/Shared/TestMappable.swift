@@ -266,4 +266,59 @@ class TestMappable: XCTestCase {
     XCTAssertEqual(issue.state, State.Open)
     XCTAssertEqual(issue.priority, Priority.High)
   }
+
+  func testPath() {
+    let json = [
+      "info": [
+        "name": "Elliot Alderson",
+        "true_info": [
+          "true_name": "Mr. Robot"
+        ]
+      ],
+      "chaos": [
+        [
+          "$": "@",
+          "!": "&"
+        ],
+        [
+          "way": [
+            "light": [
+              [
+                "±": "§",
+                "_": "="
+              ],
+              [
+                "secret": "secret"
+              ]
+            ],
+            "dark": ">\"<",
+            "identity": [
+              "day": "security",
+              "night": "hacker"
+            ]
+          ]
+        ]
+      ]
+    ]
+
+    struct Person: Mappable {
+      var name: String = ""
+      var trueName: String = ""
+      var secret: String = ""
+      var identity: String = ""
+
+      init(_ map: JSONDictionary) {
+        self.name <- map.path(["info"])?.property("name")
+        self.trueName <- map.path(["info", "true_info"])?.property("true_name")
+        self.secret <- map.path(["chaos", 1, "way", "light", 1])?.property("secret")
+        self.identity <- map.path("chaos.1.way.identity")?.property("night")
+      }
+    }
+
+    let person = Person(json)
+    XCTAssertEqual(person.name, "Elliot Alderson")
+    XCTAssertEqual(person.trueName, "Mr. Robot")
+    XCTAssertEqual(person.secret, "secret")
+    XCTAssertEqual(person.identity, "hacker")
+  }
 }

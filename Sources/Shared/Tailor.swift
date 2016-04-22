@@ -1,9 +1,13 @@
 import Foundation
 import Sugar
 
+// MARK: - Error
+
 public enum MappableError: ErrorType {
   case TypeError(message: String)
 }
+
+// MARK: - SubscriptKind
 
 public enum SubscriptKind {
   case Index(Int)

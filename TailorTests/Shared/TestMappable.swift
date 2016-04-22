@@ -291,7 +291,11 @@ class TestMappable: XCTestCase {
                 "secret": "secret"
               ]
             ],
-            "dark": ">\"<"
+            "dark": ">\"<",
+            "identity": [
+              "day": "security",
+              "night": "hacker"
+            ]
           ]
         ]
       ]
@@ -301,11 +305,13 @@ class TestMappable: XCTestCase {
       var name: String = ""
       var trueName: String = ""
       var secret: String = ""
+      var identity: String = ""
 
       init(_ map: JSONDictionary) {
         self.name <- map.path(["info"])?.property("name")
         self.trueName <- map.path(["info", "true_info"])?.property("true_name")
         self.secret <- map.path(["chaos", 1, "way", "light", 1])?.property("secret")
+        self.identity <- map.path("chaos.1.way.identity")?.property("night")
       }
     }
 
@@ -313,5 +319,6 @@ class TestMappable: XCTestCase {
     XCTAssertEqual(person.name, "Elliot Alderson")
     XCTAssertEqual(person.trueName, "Mr. Robot")
     XCTAssertEqual(person.secret, "secret")
+    XCTAssertEqual(person.identity, "hacker")
   }
 }

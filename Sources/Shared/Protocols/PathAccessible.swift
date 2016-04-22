@@ -1,14 +1,21 @@
 import Sugar
 
 public protocol PathAccessible {
-  func path(path: [SubscriptKind]) -> JSONDictionary?
-}
 
-public extension PathAccessible {
   /**
    - Parameter name: The array of path, can be index or key
    - Returns: A child dictionary for that path, otherwise it returns nil
    */
+  func path(path: [SubscriptKind]) -> JSONDictionary?
+
+  /**
+   - Parameter name: The key path, separated by dot
+   - Returns: A child dictionary for that path, otherwise it returns nil
+   */
+  func path(keyPath: String) -> JSONDictionary?
+}
+
+public extension PathAccessible {
   func path(path: [SubscriptKind]) -> JSONDictionary? {
     var castedPath = path.dropFirst()
     castedPath.append(.Key(""))
@@ -30,6 +37,18 @@ public extension PathAccessible {
     }
 
     return result as? JSONDictionary
+  }
+
+  func path(keyPath: String) -> JSONDictionary? {
+    let kinds: [SubscriptKind] = keyPath.componentsSeparatedByString(".").map {
+      if let index = Int($0) {
+        return .Index(index)
+      } else {
+        return .Key($0)
+      }
+    }
+
+    return path(kinds)
   }
 }
 

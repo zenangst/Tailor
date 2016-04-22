@@ -32,9 +32,12 @@ public extension Dictionary {
    - Parameter transformer: A transformation closure
    - Returns: A generic type if casting succeeds, otherwise it returns nil
    */
-  func transform<T, U>(name: String, transformer: ((value: U?) -> T?)) -> T? {
-    guard let value = self[name as! Key] else { return nil }
-    return transformer(value: value as? U)
+  func transform<T, U>(name: String, transformer: ((value: U) -> T?)) -> T? {
+    guard let key = name as? Key,
+      value = self[key] as? U
+      else { return nil }
+
+    return transformer(value: value)
   }
 
   /**

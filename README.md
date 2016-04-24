@@ -195,3 +195,4 @@ pod 'Tailor'
 
 - Christoffer Winterkvist ([@zenangst](https://twitter.com/zenangst))
 - Vadym Markov ([@vadymmarkov](https://twitter.com/vadymmarkov))
+- Khoa Pham ([@onmyway133](https://twitter.com/onmyway133))

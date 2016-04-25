@@ -1,4 +1,5 @@
 prefix operator <- {}
+prefix operator <? {}
 infix operator <- {}
 infix operator <+ {}
 
@@ -11,6 +12,10 @@ public prefix func <-<T>(rhs: T?) throws -> T {
 
 public prefix func <-<T>(rhs: T) throws -> T {
   return rhs
+}
+
+public prefix func <? <T: DefaultType>(value: T?) -> T {
+  return value ?? T.defaultValue
 }
 
 public func <- <T>(inout left: T, right: T) {

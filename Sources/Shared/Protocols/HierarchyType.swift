@@ -1,6 +1,9 @@
 import Foundation
 import Sugar
 
+/**
+ Anything that supports hierarchy, say subclassing
+*/
 public protocol HierarchyType {
 
   /**

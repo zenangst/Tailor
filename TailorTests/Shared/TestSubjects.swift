@@ -48,11 +48,6 @@ class TestPersonClass: NSObject, Mappable {
       return dateFormatter.dateFromString(value)
     }
   }
-
-  func mapping(map: JSONDictionary) {
-    firstName <- map.property("firstName")
-    lastName  <- map.property("lastName")
-  }
 }
 
 struct TestPersonStruct: Mappable, Equatable {

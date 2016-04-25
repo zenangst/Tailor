@@ -5,6 +5,7 @@
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![License](https://img.shields.io/cocoapods/l/Tailor.svg?style=flat)](http://cocoadocs.org/docsets/Tailor)
 [![Platform](https://img.shields.io/cocoapods/p/Tailor.svg?style=flat)](http://cocoadocs.org/docsets/Tailor)
+[![Documentation](https://img.shields.io/cocoapods/metrics/doc-percent/Tailor.svg?style=flat)](http://cocoadocs.org/docsets/Tailor)
 ![Swift](https://img.shields.io/badge/%20in-swift%202.2-orange.svg)
 
 A super fast & convenient object mapper tailored for your needs.

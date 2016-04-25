@@ -31,6 +31,10 @@
 		D22829E81CCA2ECF00466A1C /* PathAccessible.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22829E61CCA2ECF00466A1C /* PathAccessible.swift */; };
 		D2E827DA1CAD25FA003151A6 /* TestAccessible.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E827D91CAD25FA003151A6 /* TestAccessible.swift */; };
 		D2E827DB1CAD25FA003151A6 /* TestAccessible.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E827D91CAD25FA003151A6 /* TestAccessible.swift */; };
+		D2F488761CCDFFC7005DD009 /* HierarchyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F488751CCDFFC7005DD009 /* HierarchyType.swift */; };
+		D2F488771CCDFFC7005DD009 /* HierarchyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F488751CCDFFC7005DD009 /* HierarchyType.swift */; };
+		D2F488791CCE00F2005DD009 /* TestHierarchyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F488781CCE00F2005DD009 /* TestHierarchyType.swift */; };
+		D2F4887A1CCE00F2005DD009 /* TestHierarchyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F488781CCE00F2005DD009 /* TestHierarchyType.swift */; };
 		D5B2E8AA1C3A780C00C0327D /* Tailor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B2E89F1C3A780C00C0327D /* Tailor.framework */; };
 		D5C6294A1C3A7FAA007F7B7C /* Tailor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C629401C3A7FAA007F7B7C /* Tailor.framework */; };
 		D5C629771C3A878E007F7B7C /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C629751C3A878E007F7B7C /* Quick.framework */; };
@@ -70,6 +74,8 @@
 		BDC182631C3FE45000B54DD7 /* TestSubjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestSubjects.swift; sourceTree = "<group>"; };
 		D22829E61CCA2ECF00466A1C /* PathAccessible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathAccessible.swift; sourceTree = "<group>"; };
 		D2E827D91CAD25FA003151A6 /* TestAccessible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestAccessible.swift; sourceTree = "<group>"; };
+		D2F488751CCDFFC7005DD009 /* HierarchyType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HierarchyType.swift; sourceTree = "<group>"; };
+		D2F488781CCE00F2005DD009 /* TestHierarchyType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestHierarchyType.swift; sourceTree = "<group>"; };
 		D500FD121C3AAC8E00782D78 /* Playground-Mac.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "Playground-Mac.playground"; sourceTree = "<group>"; };
 		D5B2E89F1C3A780C00C0327D /* Tailor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Tailor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5B2E8A91C3A780C00C0327D /* Tailor-iOS-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tailor-iOS-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -148,6 +154,7 @@
 				BD81A14D1C73A644009955E3 /* Mappable.swift */,
 				BD81A1501C73A66D009955E3 /* SafeMappable.swift */,
 				D22829E61CCA2ECF00466A1C /* PathAccessible.swift */,
+				D2F488751CCDFFC7005DD009 /* HierarchyType.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -241,6 +248,7 @@
 				BDC182621C3FE45000B54DD7 /* TestMappable.swift */,
 				BDC182631C3FE45000B54DD7 /* TestSubjects.swift */,
 				D2E827D91CAD25FA003151A6 /* TestAccessible.swift */,
+				D2F488781CCE00F2005DD009 /* TestHierarchyType.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -491,6 +499,7 @@
 				BD81A1511C73A66D009955E3 /* SafeMappable.swift in Sources */,
 				BD793D481C3FCC97002BBB5F /* Tailor.swift in Sources */,
 				D22829E71CCA2ECF00466A1C /* PathAccessible.swift in Sources */,
+				D2F488761CCDFFC7005DD009 /* HierarchyType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -501,6 +510,7 @@
 				BDC182681C3FE45000B54DD7 /* TestSubjects.swift in Sources */,
 				D2E827DA1CAD25FA003151A6 /* TestAccessible.swift in Sources */,
 				BDC182641C3FE45000B54DD7 /* TestInspectable.swift in Sources */,
+				D2F488791CCE00F2005DD009 /* TestHierarchyType.swift in Sources */,
 				BDC182661C3FE45000B54DD7 /* TestMappable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -516,6 +526,7 @@
 				BD81A1521C73A66D009955E3 /* SafeMappable.swift in Sources */,
 				BD793D551C3FCFA2002BBB5F /* Tailor.swift in Sources */,
 				D22829E81CCA2ECF00466A1C /* PathAccessible.swift in Sources */,
+				D2F488771CCDFFC7005DD009 /* HierarchyType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -526,6 +537,7 @@
 				BDC182691C3FE45000B54DD7 /* TestSubjects.swift in Sources */,
 				D2E827DB1CAD25FA003151A6 /* TestAccessible.swift in Sources */,
 				BDC182651C3FE45000B54DD7 /* TestInspectable.swift in Sources */,
+				D2F4887A1CCE00F2005DD009 /* TestHierarchyType.swift in Sources */,
 				BDC182671C3FE45000B54DD7 /* TestMappable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

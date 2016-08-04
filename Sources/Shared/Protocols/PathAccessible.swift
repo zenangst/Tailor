@@ -16,7 +16,8 @@ public protocol PathAccessible {
 }
 
 public extension PathAccessible {
-  func path(path: [SubscriptKind]) -> JSONDictionary? {
+
+  private func resolve<T>(path: [SubscriptKind]) -> T? {
     var castedPath = path.dropFirst()
     castedPath.append(.Key(""))
 
@@ -36,11 +37,11 @@ public extension PathAccessible {
       }
     }
 
-    return result as? JSONDictionary
+    return result as? T
   }
 
-  func path(keyPath: String) -> JSONDictionary? {
-    let kinds: [SubscriptKind] = keyPath.componentsSeparatedByString(".").map {
+  private func resolve<T>(path: String) -> T? {
+    let kinds: [SubscriptKind] = path.componentsSeparatedByString(".").map {
       if let index = Int($0) {
         return .Index(index)
       } else {
@@ -48,7 +49,38 @@ public extension PathAccessible {
       }
     }
 
-    return path(kinds)
+    return resolve(kinds)
+  }
+
+  private func extractKey(path: String) -> (key: String, keyPath: String) {
+    return (key: path.split(".").last!,
+            keyPath: Array(path.split(".").dropLast()).joinWithSeparator("."))
+  }
+
+  func path(path: [SubscriptKind]) -> JSONDictionary? {
+    return resolve(path)
+  }
+
+  func path(keyPath: String) -> JSONDictionary? {
+    return resolve(keyPath)
+  }
+
+  func path(keyPath: String) -> String? {
+    let (key, keyPath) = extractKey(keyPath)
+    let result: JSONDictionary? = resolve(keyPath)
+    return result?.property(key)
+  }
+
+  func path(keyPath: String) -> Int? {
+    let (key, keyPath) = extractKey(keyPath)
+    let result: JSONDictionary? = resolve(keyPath)
+    return result?.property(key)
+  }
+
+  func path(keyPath: String) -> JSONArray? {
+    let (key, keyPath) = extractKey(keyPath)
+    let result: JSONDictionary? = resolve(keyPath)
+    return result?.array(key)
   }
 }
 

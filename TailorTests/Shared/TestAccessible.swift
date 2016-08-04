@@ -95,8 +95,6 @@ class TestAccessible: XCTestCase {
       XCTAssertEqual(hulk.lastName, "Banner")
     }
 
-    XCTAssertNotNil(json.path("school.clubs.0.detail"))
-
     XCTAssertEqual(json.path("school.clubs.0.detail")?.property("name"), "DC")
     XCTAssertEqual(json.path("school.clubs.1.detail")?.property("name"), "Marvel")
 

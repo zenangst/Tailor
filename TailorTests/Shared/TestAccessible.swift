@@ -23,7 +23,7 @@ struct Person: Mappable {
 
 class TestAccessible: XCTestCase {
   func testAccessible() {
-    let json = [
+    let json: [String: AnyObject] = [
       "school": [
         "name": "Hyper",
         "clubs": [

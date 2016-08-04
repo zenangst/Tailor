@@ -33,11 +33,13 @@ class TestAccessible: XCTestCase {
               "people": [
                 [
                   "first_name": "Clark",
-                  "last_name": "Kent"
+                  "last_name": "Kent",
+                  "age" : 78
                 ],
                 [
                   "first_name": "Bruce",
-                  "last_name": "Wayne"
+                  "last_name": "Wayne",
+                  "age" : 77
                 ]
               ]
             ]
@@ -48,11 +50,13 @@ class TestAccessible: XCTestCase {
               "people": [
                 [
                   "first_name": "Tony",
-                  "last_name": "Stark"
+                  "last_name": "Stark",
+                  "age" : 53
                 ],
                 [
                   "first_name": "Bruce",
-                  "last_name": "Banner"
+                  "last_name": "Banner",
+                  "age" : 54
                 ]
               ]
             ]
@@ -63,14 +67,17 @@ class TestAccessible: XCTestCase {
 
     XCTAssertEqual(json.path("school.clubs.0.detail.name"), "DC")
     XCTAssertEqual(json.path("school.clubs.0.detail.people.0.first_name"), "Clark")
+    XCTAssertEqual(json.path("school.clubs.0.detail.people.0.age"), 78)
     XCTAssertEqual(json.path("school.clubs.0.detail.people")!, [
       [
         "first_name": "Clark",
-        "last_name": "Kent"
+        "last_name": "Kent",
+        "age" : 78
       ],
       [
         "first_name": "Bruce",
-        "last_name": "Wayne"
+        "last_name": "Wayne",
+        "age" : 77
       ]
       ])
 

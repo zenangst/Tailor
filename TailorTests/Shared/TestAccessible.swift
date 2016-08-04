@@ -61,6 +61,18 @@ class TestAccessible: XCTestCase {
       ]
     ]
     
+    XCTAssertEqual(json.path("school.clubs.0.detail.name"), "DC")
+    XCTAssertEqual(json.path("school.clubs.0.detail.people.0.first_name"), "Clark")
+    XCTAssertEqual(json.path("school.clubs.0.detail.people")!, [
+      [
+        "first_name": "Clark",
+        "last_name": "Kent"
+      ],
+      [
+        "first_name": "Bruce",
+        "last_name": "Wayne"
+      ]
+      ])
     if let marvelClubJSON = json.dictionary("school")?.array("clubs")?.dictionary(1) {
       let club = Club(marvelClubJSON)
       

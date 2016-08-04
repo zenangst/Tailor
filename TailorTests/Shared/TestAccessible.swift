@@ -23,7 +23,7 @@ struct Person: Mappable {
 
 class TestAccessible: XCTestCase {
   func testAccessible() {
-    let json = [
+    let json: [String: AnyObject] = [
       "school": [
         "name": "Hyper",
         "clubs": [
@@ -74,5 +74,12 @@ class TestAccessible: XCTestCase {
       XCTAssertEqual(hulk.firstName, "Bruce")
       XCTAssertEqual(hulk.lastName, "Banner")
     }
+
+    XCTAssertNotNil(json.path("school.clubs.0.detail"))
+    
+    XCTAssertEqual(json.path("school.clubs.0.detail")?.property("name"), "DC")
+    XCTAssertEqual(json.path("school.clubs.1.detail")?.property("name"), "Marvel")
+
+    XCTAssertEqual(json.path("school.clubs.0.detail.people.1")?.property("first_name"), "Bruce")
   }
 }

@@ -35,7 +35,7 @@ public extension PathAccessible {
   }
 
   private func internalResolve<T>(path: String) -> T? {
-    if !path.contains(".") {
+    guard path.contains(".") else {
       if let index = Int(path) {
         return [index] as? T
       } else {
@@ -60,7 +60,7 @@ public extension PathAccessible {
     return (key: lastSplit,
             keyPath: Array(path.split(".").dropLast()).joinWithSeparator("."))
   }
-  
+
   @available(*, deprecated=1.1.3, message="Use resolve(keyPath:)")
   public func path(path: [SubscriptKind]) -> JSONDictionary? { return internalResolve(path) }
   @available(*, deprecated=1.1.3, message="Use resolve(keyPath:)")

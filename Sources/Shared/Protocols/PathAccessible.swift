@@ -52,8 +52,10 @@ public extension PathAccessible {
     return resolve(kinds)
   }
 
-  private func extractKey(path: String) -> (key: String, keyPath: String) {
-    return (key: path.split(".").last!,
+  private func extractKey(path: String) -> (key: String, keyPath: String)? {
+    guard let lastSplit = path.split(".").last else { return nil }
+
+    return (key: lastSplit,
             keyPath: Array(path.split(".").dropLast()).joinWithSeparator("."))
   }
 
@@ -66,19 +68,19 @@ public extension PathAccessible {
   }
 
   func path(keyPath: String) -> String? {
-    let (key, keyPath) = extractKey(keyPath)
+    guard let (key, keyPath) = extractKey(keyPath) else { return nil }
     let result: JSONDictionary? = resolve(keyPath)
     return result?.property(key)
   }
 
   func path(keyPath: String) -> Int? {
-    let (key, keyPath) = extractKey(keyPath)
+    guard let (key, keyPath) = extractKey(keyPath) else { return nil }
     let result: JSONDictionary? = resolve(keyPath)
     return result?.property(key)
   }
 
   func path(keyPath: String) -> JSONArray? {
-    let (key, keyPath) = extractKey(keyPath)
+    guard let (key, keyPath) = extractKey(keyPath) else { return nil }
     let result: JSONDictionary? = resolve(keyPath)
     return result?.array(key)
   }

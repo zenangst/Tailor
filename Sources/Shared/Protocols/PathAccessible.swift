@@ -34,15 +34,15 @@ public extension PathAccessible {
     return result as? T
   }
 
-  private func internalResolve<T>(path: String) -> T? {
-    guard path.contains(".") else {
-      if let index = Int(path) {
-        return [index] as? T
-      } else {
-        return (self as? JSONDictionary)?[path] as? T
-      }
+  private func resolveSubscript<T>(key: String) -> T? {
+    if let index = Int(key) {
+      return [index] as? T
+    } else {
+      return (self as? JSONDictionary)?[key] as? T
     }
+  }
 
+  private func internalResolve<T>(path: String) -> T? {
     let kinds: [SubscriptKind] = path.componentsSeparatedByString(".").map {
       if let index = Int($0) {
         return .Index(index)
@@ -97,7 +97,9 @@ public extension PathAccessible {
    - Returns: An Optional String
    */
   func resolve(keyPath path: String) -> String? {
+    guard path.contains(".") else { return resolveSubscript(path) }
     guard let (key, path) = extractKey(path) else { return nil }
+
     let result: JSONDictionary? = internalResolve(path)
     return result?.property(key)
   }
@@ -109,7 +111,9 @@ public extension PathAccessible {
    - Returns: An Optional Int
    */
   func resolve(keyPath path: String) -> Int? {
+    guard path.contains(".") else { return resolveSubscript(path) }
     guard let (key, path) = extractKey(path) else { return nil }
+
     let result: JSONDictionary? = internalResolve(path)
     return result?.property(key)
   }
@@ -121,7 +125,9 @@ public extension PathAccessible {
   - Returns: An Optional [AnyObject]
   */
   func resolve(keyPath path: String) -> JSONArray? {
+    guard path.contains(".") else { return resolveSubscript(path) }
     guard let (key, path) = extractKey(path) else { return nil }
+
     let result: JSONDictionary? = internalResolve(path)
     return result?.array(key)
   }

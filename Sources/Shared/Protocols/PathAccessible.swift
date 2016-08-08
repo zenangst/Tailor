@@ -41,6 +41,15 @@ public extension PathAccessible {
   }
 
   private func resolve<T>(path: String) -> T? {
+  private func internalResolve<T>(path: String) -> T? {
+    if !path.contains(".") {
+      if let index = Int(path) {
+        return [index] as? T
+      } else {
+        return (self as? JSONDictionary)?[path] as? T
+      }
+    }
+
     let kinds: [SubscriptKind] = path.componentsSeparatedByString(".").map {
       if let index = Int($0) {
         return .Index(index)

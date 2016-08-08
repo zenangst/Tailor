@@ -74,9 +74,6 @@ public extension PathAccessible {
   @available(*, deprecated=1.1.3, message="Use resolve(keyPath:)")
   public func path(path: String) -> JSONDictionary? { return resolve(keyPath: path) }
 
-  func resolve(keyPath path: [SubscriptKind]) -> JSONDictionary? {
-    return internalResolve(path)
-  }
   /**
    Resolve key path to Dictionary
 

@@ -1,5 +1,27 @@
 # Change Log
 
+## [Unreleased](https://github.com/zenangst/Tailor/tree/HEAD)
+
+[Full Changelog](https://github.com/zenangst/Tailor/compare/1.1.1...HEAD)
+
+**Closed issues:**
+
+- Boolean properties [\#44](https://github.com/zenangst/Tailor/issues/44)
+- Simple assignment [\#41](https://github.com/zenangst/Tailor/issues/41)
+- Figure out why Travis refuses to build the project [\#32](https://github.com/zenangst/Tailor/issues/32)
+
+**Merged pull requests:**
+
+- Improve resolving paths [\#47](https://github.com/zenangst/Tailor/pull/47) ([zenangst](https://github.com/zenangst))
+- Add type information [\#46](https://github.com/zenangst/Tailor/pull/46) ([onmyway133](https://github.com/onmyway133))
+
+## [1.1.1](https://github.com/zenangst/Tailor/tree/1.1.1) (2016-04-25)
+[Full Changelog](https://github.com/zenangst/Tailor/compare/1.1.0...1.1.1)
+
+**Merged pull requests:**
+
+- Add CHANGELOG.md [\#43](https://github.com/zenangst/Tailor/pull/43) ([zenangst](https://github.com/zenangst))
+
 ## [1.1.0](https://github.com/zenangst/Tailor/tree/1.1.0) (2016-04-25)
 [Full Changelog](https://github.com/zenangst/Tailor/compare/1.0.0...1.1.0)
 

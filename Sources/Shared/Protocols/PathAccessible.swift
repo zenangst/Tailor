@@ -3,21 +3,15 @@ import Sugar
 public protocol PathAccessible {
 
   /**
-   - Parameter name: The array of path, can be index or key
-   - Returns: A child dictionary for that path, otherwise it returns nil
-   */
-  func path(path: [SubscriptKind]) -> JSONDictionary?
-
-  /**
    - Parameter name: The key path, separated by dot
    - Returns: A child dictionary for that path, otherwise it returns nil
    */
-  func path(keyPath: String) -> JSONDictionary?
+  func resolve(keyPath path: String) -> JSONDictionary?
 }
 
 public extension PathAccessible {
 
-  private func resolve<T>(path: [SubscriptKind]) -> T? {
+  private func internalResolve<T>(path: [SubscriptKind]) -> T? {
     var castedPath = path.dropFirst()
     castedPath.append(.Key(""))
 
@@ -40,7 +34,15 @@ public extension PathAccessible {
     return result as? T
   }
 
-  private func resolve<T>(path: String) -> T? {
+  private func resolveSubscript<T>(key: String) -> T? {
+    if let index = Int(key) {
+      return [index] as? T
+    } else {
+      return (self as? JSONDictionary)?[key] as? T
+    }
+  }
+
+  private func internalResolve<T>(path: String) -> T? {
     let kinds: [SubscriptKind] = path.componentsSeparatedByString(".").map {
       if let index = Int($0) {
         return .Index(index)
@@ -49,39 +51,87 @@ public extension PathAccessible {
       }
     }
 
-    return resolve(kinds)
+    return internalResolve(kinds)
   }
 
+  /**
+   Extract last key from key path
+
+   - Parameter path: A key path
+   - Returns: A tuple with the first key and the remaining key path
+   */
   private func extractKey(path: String) -> (key: String, keyPath: String)? {
-    guard let lastSplit = path.split(".").last else { return nil }
+    guard let lastSplit = path.split(".").last where path.contains(".") else { return nil }
 
     return (key: lastSplit,
             keyPath: Array(path.split(".").dropLast()).joinWithSeparator("."))
   }
 
-  func path(path: [SubscriptKind]) -> JSONDictionary? {
-    return resolve(path)
+  @available(*, deprecated=1.1.3, message="Use resolve(keyPath:)")
+  public func path(path: [SubscriptKind]) -> JSONDictionary? { return internalResolve(path) }
+  @available(*, deprecated=1.1.3, message="Use resolve(keyPath:)")
+  public func path<T>(path: String) -> T? { return resolve(keyPath: path) as? T }
+  @available(*, deprecated=1.1.3, message="Use resolve(keyPath:)")
+  public func path(path: String) -> String? { return resolve(keyPath: path) }
+  @available(*, deprecated=1.1.3, message="Use resolve(keyPath:)")
+  public func path(path: String) -> Int? { return resolve(keyPath: path) }
+  @available(*, deprecated=1.1.3, message="Use resolve(keyPath:)")
+  public func path(path: String) -> JSONArray? { return resolve(keyPath: path) }
+  @available(*, deprecated=1.1.3, message="Use resolve(keyPath:)")
+  public func path(path: String) -> JSONDictionary? { return resolve(keyPath: path) }
+
+  /**
+   Resolve key path to Dictionary
+
+   - Parameter path: A key path string
+   - Returns: An Optional [String : AnyObject]
+   */
+  func resolve(keyPath path: String) -> JSONDictionary? {
+    return internalResolve(path)
   }
 
-  func path(keyPath: String) -> JSONDictionary? {
-    return resolve(keyPath)
-  }
+  /**
+   Resolve key path to String
 
-  func path(keyPath: String) -> String? {
-    guard let (key, keyPath) = extractKey(keyPath) else { return nil }
-    let result: JSONDictionary? = resolve(keyPath)
+   - Parameter path: A key path string
+   - Returns: An Optional String
+   */
+  func resolve(keyPath path: String) -> String? {
+    guard let (key, keyPath) = extractKey(path) else {
+      return resolveSubscript(path)
+    }
+
+    let result: JSONDictionary? = internalResolve(keyPath)
     return result?.property(key)
   }
 
-  func path(keyPath: String) -> Int? {
-    guard let (key, keyPath) = extractKey(keyPath) else { return nil }
-    let result: JSONDictionary? = resolve(keyPath)
+  /**
+   Resolve key path to Int
+
+   - Parameter path: A key path string
+   - Returns: An Optional Int
+   */
+  func resolve(keyPath path: String) -> Int? {
+    guard let (key, keyPath) = extractKey(path) else {
+      return resolveSubscript(path)
+    }
+
+    let result: JSONDictionary? = internalResolve(keyPath)
     return result?.property(key)
   }
 
-  func path(keyPath: String) -> JSONArray? {
-    guard let (key, keyPath) = extractKey(keyPath) else { return nil }
-    let result: JSONDictionary? = resolve(keyPath)
+  /**
+   Resolve key path to [AnyObject]
+
+  - Parameter path: A key path string
+  - Returns: An Optional [AnyObject]
+  */
+  func resolve(keyPath path: String) -> JSONArray? {
+    guard let (key, keyPath) = extractKey(path) else {
+      return resolveSubscript(path)
+    }
+
+    let result: JSONDictionary? = internalResolve(keyPath)
     return result?.array(key)
   }
 }

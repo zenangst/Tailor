@@ -54,6 +54,12 @@ public extension PathAccessible {
     return internalResolve(kinds)
   }
 
+  /**
+   Extract last key from key path
+
+   - Parameter path: A key path
+   - Returns: A tuple with the first key and the remaining key path
+   */
   private func extractKey(path: String) -> (key: String, keyPath: String)? {
     guard let lastSplit = path.split(".").last else { return nil }
 

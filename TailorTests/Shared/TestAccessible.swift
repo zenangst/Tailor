@@ -65,10 +65,10 @@ class TestAccessible: XCTestCase {
       ]
     ]
 
-    XCTAssertEqual(json.path("school.clubs.0.detail.name"), "DC")
-    XCTAssertEqual(json.path("school.clubs.0.detail.people.0.first_name"), "Clark")
-    XCTAssertEqual(json.path("school.clubs.0.detail.people.0.age"), 78)
-    XCTAssertEqual(json.path("school.clubs.0.detail.people")!, [
+    XCTAssertEqual(json.resolve(keyPath: "school.clubs.0.detail.name"), "DC")
+    XCTAssertEqual(json.resolve(keyPath: "school.clubs.0.detail.people.0.first_name"), "Clark")
+    XCTAssertEqual(json.resolve(keyPath: "school.clubs.0.detail.people.0.age"), 78)
+    XCTAssertEqual(json.resolve(keyPath: "school.clubs.0.detail.people")!, [
       [
         "first_name": "Clark",
         "last_name": "Kent",
@@ -98,9 +98,9 @@ class TestAccessible: XCTestCase {
       XCTAssertEqual(hulk.lastName, "Banner")
     }
 
-    XCTAssertEqual(json.path("school.clubs.0.detail")?.property("name"), "DC")
-    XCTAssertEqual(json.path("school.clubs.1.detail")?.property("name"), "Marvel")
+    XCTAssertEqual(json.resolve(keyPath: "school.clubs.0.detail.name"), "DC")
+    XCTAssertEqual(json.resolve(keyPath: "school.clubs.1.detail.name"), "Marvel")
 
-    XCTAssertEqual(json.path("school.clubs.0.detail.people.1")?.property("first_name"), "Bruce")
+    XCTAssertEqual(json.resolve(keyPath: "school.clubs.0.detail.people.1.first_name"), "Bruce")
   }
 }

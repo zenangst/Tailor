@@ -77,23 +77,46 @@ public extension PathAccessible {
   func resolve(keyPath path: [SubscriptKind]) -> JSONDictionary? {
     return internalResolve(path)
   }
+  /**
+   Resolve key path to Dictionary
 
+   - Parameter path: A key path string
+   - Returns: An Optional [String : AnyObject]
+   */
   func resolve(keyPath path: String) -> JSONDictionary? {
     return internalResolve(path)
   }
 
+  /**
+   Resolve key path to String
+
+   - Parameter path: A key path string
+   - Returns: An Optional String
+   */
   func resolve(keyPath path: String) -> String? {
     guard let (key, path) = extractKey(path) else { return nil }
     let result: JSONDictionary? = internalResolve(path)
     return result?.property(key)
   }
 
+  /**
+   Resolve key path to Int
+
+   - Parameter path: A key path string
+   - Returns: An Optional Int
+   */
   func resolve(keyPath path: String) -> Int? {
     guard let (key, path) = extractKey(path) else { return nil }
     let result: JSONDictionary? = internalResolve(path)
     return result?.property(key)
   }
 
+  /**
+   Resolve key path to [AnyObject]
+
+  - Parameter path: A key path string
+  - Returns: An Optional [AnyObject]
+  */
   func resolve(keyPath path: String) -> JSONArray? {
     guard let (key, path) = extractKey(path) else { return nil }
     let result: JSONDictionary? = internalResolve(path)

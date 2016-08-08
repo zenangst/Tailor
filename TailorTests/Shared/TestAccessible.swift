@@ -81,6 +81,9 @@ class TestAccessible: XCTestCase {
       ]
       ])
 
+    let array: [String : AnyObject]? = json.resolve(keyPath: "school")
+    XCTAssertNotNil(array)
+
     if let marvelClubJSON = json.dictionary("school")?.array("clubs")?.dictionary(1) {
       let club = Club(marvelClubJSON)
 

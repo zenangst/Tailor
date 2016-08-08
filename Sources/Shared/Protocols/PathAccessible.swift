@@ -3,12 +3,6 @@ import Sugar
 public protocol PathAccessible {
 
   /**
-   - Parameter name: The array of path, can be index or key
-   - Returns: A child dictionary for that path, otherwise it returns nil
-   */
-  func resolve(keyPath path: [SubscriptKind]) -> JSONDictionary?
-
-  /**
    - Parameter name: The key path, separated by dot
    - Returns: A child dictionary for that path, otherwise it returns nil
    */

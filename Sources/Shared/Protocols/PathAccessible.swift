@@ -61,7 +61,7 @@ public extension PathAccessible {
    - Returns: A tuple with the first key and the remaining key path
    */
   private func extractKey(path: String) -> (key: String, keyPath: String)? {
-    guard let lastSplit = path.split(".").last else { return nil }
+    guard let lastSplit = path.split(".").last where path.contains(".") else { return nil }
 
     return (key: lastSplit,
             keyPath: Array(path.split(".").dropLast()).joinWithSeparator("."))
@@ -97,10 +97,11 @@ public extension PathAccessible {
    - Returns: An Optional String
    */
   func resolve(keyPath path: String) -> String? {
-    guard path.contains(".") else { return resolveSubscript(path) }
-    guard let (key, path) = extractKey(path) else { return nil }
+    guard let (key, keyPath) = extractKey(path) else {
+      return resolveSubscript(path)
+    }
 
-    let result: JSONDictionary? = internalResolve(path)
+    let result: JSONDictionary? = internalResolve(keyPath)
     return result?.property(key)
   }
 
@@ -111,10 +112,11 @@ public extension PathAccessible {
    - Returns: An Optional Int
    */
   func resolve(keyPath path: String) -> Int? {
-    guard path.contains(".") else { return resolveSubscript(path) }
-    guard let (key, path) = extractKey(path) else { return nil }
+    guard let (key, keyPath) = extractKey(path) else {
+      return resolveSubscript(path)
+    }
 
-    let result: JSONDictionary? = internalResolve(path)
+    let result: JSONDictionary? = internalResolve(keyPath)
     return result?.property(key)
   }
 
@@ -125,10 +127,11 @@ public extension PathAccessible {
   - Returns: An Optional [AnyObject]
   */
   func resolve(keyPath path: String) -> JSONArray? {
-    guard path.contains(".") else { return resolveSubscript(path) }
-    guard let (key, path) = extractKey(path) else { return nil }
+    guard let (key, keyPath) = extractKey(path) else {
+      return resolveSubscript(path)
+    }
 
-    let result: JSONDictionary? = internalResolve(path)
+    let result: JSONDictionary? = internalResolve(keyPath)
     return result?.array(key)
   }
 }

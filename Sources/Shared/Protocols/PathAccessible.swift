@@ -121,6 +121,21 @@ public extension PathAccessible {
   }
 
   /**
+   Resolve key path to Int
+
+   - Parameter path: A key path string
+   - Returns: An Optional Int
+   */
+  func resolve<T>(keyPath path: String) -> T? {
+    guard let (key, keyPath) = extractKey(path) else {
+      return resolveSubscript(path)
+    }
+
+    let result: JSONDictionary? = internalResolve(keyPath)
+    return result?.property(key)
+  }
+
+  /**
    Resolve key path to [AnyObject]
 
   - Parameter path: A key path string

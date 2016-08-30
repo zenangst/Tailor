@@ -91,48 +91,18 @@ public extension PathAccessible {
   }
 
   /**
-   Resolve key path to String
+   Resolve key path to Generic type
 
    - Parameter path: A key path string
-   - Returns: An Optional String
+   - Returns: An generic type
    */
-  func resolve(keyPath path: String) -> String? {
+  func resolve<T>(keyPath path: String) -> T? {
     guard let (key, keyPath) = extractKey(path) else {
       return resolveSubscript(path)
     }
 
     let result: JSONDictionary? = internalResolve(keyPath)
     return result?.property(key)
-  }
-
-  /**
-   Resolve key path to Int
-
-   - Parameter path: A key path string
-   - Returns: An Optional Int
-   */
-  func resolve(keyPath path: String) -> Int? {
-    guard let (key, keyPath) = extractKey(path) else {
-      return resolveSubscript(path)
-    }
-
-    let result: JSONDictionary? = internalResolve(keyPath)
-    return result?.property(key)
-  }
-
-  /**
-   Resolve key path to [AnyObject]
-
-  - Parameter path: A key path string
-  - Returns: An Optional [AnyObject]
-  */
-  func resolve(keyPath path: String) -> JSONArray? {
-    guard let (key, keyPath) = extractKey(path) else {
-      return resolveSubscript(path)
-    }
-
-    let result: JSONDictionary? = internalResolve(keyPath)
-    return result?.array(key)
   }
 }
 

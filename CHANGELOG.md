@@ -2,7 +2,14 @@
 
 ## [Unreleased](https://github.com/zenangst/Tailor/tree/HEAD)
 
-[Full Changelog](https://github.com/zenangst/Tailor/compare/1.1.2...HEAD)
+[Full Changelog](https://github.com/zenangst/Tailor/compare/1.2.0...HEAD)
+
+**Merged pull requests:**
+
+- Improve/resolve [\#49](https://github.com/zenangst/Tailor/pull/49) ([zenangst](https://github.com/zenangst))
+
+## [1.2.0](https://github.com/zenangst/Tailor/tree/1.2.0) (2016-08-08)
+[Full Changelog](https://github.com/zenangst/Tailor/compare/1.1.2...1.2.0)
 
 **Merged pull requests:**
 

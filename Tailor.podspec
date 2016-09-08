@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name             = "Tailor"
   s.summary          = "A super fast & convenient object mapper tailored for your needs."
-  s.version          = "1.2.0"
+  s.version          = "1.2.1"
   s.homepage         = "https://github.com/zenangst/Tailor"
   s.license          = 'MIT'
   s.author           = { "Christoffer Winterkvist" => "christoffer@winterkvist.com" }

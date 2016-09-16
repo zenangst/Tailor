@@ -51,7 +51,6 @@ public extension Mappable {
         if tail.count > 1 {
           guard let range = key.range(of: indexString) else { return nil }
           let key = key.substring(from: range.lowerBound)
-//          let key = key.substring(from: <#T##String.CharacterView corresponding to your index##String.CharacterView#>.index(range.lowerBound, offsetBy: 2))
           return property(key, dictionary: result)
         } else {
           return result

@@ -1,11 +1,10 @@
 import XCTest
 import Tailor
-import Sugar
 
 class TestMappable: XCTestCase {
 
-  lazy var dateFormatter: NSDateFormatter = {
-    var dateFormatter = NSDateFormatter()
+  lazy var dateFormatter: DateFormatter = {
+    var dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy-MM-dd"
 
     return dateFormatter
@@ -16,15 +15,15 @@ class TestMappable: XCTestCase {
     expectedStruct.firstName = "Taylor"
     expectedStruct.lastName = "Swift"
     expectedStruct.sex = .Female
-    expectedStruct.birthDate = dateFormatter.dateFromString("2014-07-15")!
-    let expectedJob = Job(["name" : "Musician"])
+    expectedStruct.birthDate = dateFormatter.date(from: "2014-07-15")!
+    let expectedJob = Job(["name" : "Musician" as AnyObject])
 
     let testStruct = TestPersonStruct([
-      "firstName" : "Taylor",
-      "lastName" : "Swift",
-      "job" : ["name" : "Musician"],
-      "sex": "female",
-      "birth_date": "2014-07-15"
+      "firstName" : "Taylor" as AnyObject,
+      "lastName" : "Swift" as AnyObject,
+      "job" : ["name" : "Musician"] as AnyObject,
+      "sex": "female" as AnyObject,
+      "birth_date": "2014-07-15" as AnyObject
       ])
 
     XCTAssertEqual(testStruct.firstName, expectedStruct.firstName)
@@ -39,13 +38,13 @@ class TestMappable: XCTestCase {
     expectedClass.firstName = "Taylor"
     expectedClass.lastName = "Swift"
     expectedClass.sex = .Female
-    expectedClass.birthDate = dateFormatter.dateFromString("2014-07-15")
+    expectedClass.birthDate = dateFormatter.date(from: "2014-07-15")
 
     let testClass = TestPersonClass([
-      "firstName" : "Taylor",
-      "lastName" : "Swift",
-      "sex": "female",
-      "birth_date": "2014-07-15"
+      "firstName" : "Taylor" as AnyObject,
+      "lastName" : "Swift" as AnyObject,
+      "sex": "female" as AnyObject,
+      "birth_date": "2014-07-15" as AnyObject
       ])
 
     XCTAssertEqual(testClass.firstName, expectedClass.firstName)
@@ -56,23 +55,23 @@ class TestMappable: XCTestCase {
 
   func testRelations() {
     let relationStruct = TestPersonStruct([
-        "firstName" : "Mini",
-        "lastName" : "Swift",
-        "sex": "female",
-        "birth_date": "2014-07-15"
+        "firstName" : "Mini" as AnyObject,
+        "lastName" : "Swift" as AnyObject,
+        "sex": "female" as AnyObject,
+        "birth_date": "2014-07-15" as AnyObject
         ])
     var expectedStruct = TestPersonStruct([:])
     expectedStruct.firstName = "Taylor"
     expectedStruct.lastName = "Swift"
     expectedStruct.sex = .Female
-    expectedStruct.birthDate = dateFormatter.dateFromString("2014-07-15")!
+    expectedStruct.birthDate = dateFormatter.date(from: "2014-07-15")!
     expectedStruct.relatives.append(relationStruct)
 
     let testStruct = TestPersonStruct([
-      "firstName" : "Taylor",
-      "lastName" : "Swift",
-      "sex": "female",
-      "birth_date": "2014-07-15",
+      "firstName" : "Taylor" as AnyObject,
+      "lastName" : "Swift" as AnyObject,
+      "sex": "female" as AnyObject,
+      "birth_date": "2014-07-15" as AnyObject,
       "relatives" : [
         ["firstName" : "Mini",
         "lastName" : "Swift",
@@ -82,7 +81,7 @@ class TestMappable: XCTestCase {
         "lastName" : "Swift",
         "sex": "female",
         "birth_date": "2014-07-18"]
-      ]
+      ] as AnyObject
       ])
 
     XCTAssertEqual(testStruct.firstName, expectedStruct.firstName)
@@ -98,14 +97,14 @@ class TestMappable: XCTestCase {
   func testMapArrayOfObjects() {
     var testStruct = TestPersonStruct([:])
     let relatives: [[String : AnyObject]] = [
-      ["firstName" : "Mini",
-        "lastName" : "Swift",
-        "sex": "female",
-        "birth_date": "2014-07-17"],
-      ["firstName" : "Mini-Mini",
-        "lastName" : "Swift",
-        "sex": "female",
-        "birth_date": "2014-07-18"]]
+      ["firstName" : "Mini" as AnyObject,
+        "lastName" : "Swift" as AnyObject,
+        "sex": "female" as AnyObject,
+        "birth_date": "2014-07-17" as AnyObject],
+      ["firstName" : "Mini-Mini" as AnyObject,
+        "lastName" : "Swift" as AnyObject,
+        "sex": "female" as AnyObject,
+        "birth_date": "2014-07-18" as AnyObject]]
 
     testStruct.relatives <- relatives.objects()
     XCTAssert(testStruct.relatives.count == 2)
@@ -114,14 +113,14 @@ class TestMappable: XCTestCase {
   func testAppendingObjects() {
     var testStruct = TestPersonStruct([:])
     let relatives: [[String : AnyObject]] = [
-      ["firstName" : "Mini",
-        "lastName" : "Swift",
-        "sex": "female",
-        "birth_date": "2014-07-17"],
-      ["firstName" : "Mini-Mini",
-        "lastName" : "Swift",
-        "sex": "female",
-        "birth_date": "2014-07-18"]]
+      ["firstName" : "Mini" as AnyObject,
+        "lastName" : "Swift" as AnyObject,
+        "sex": "female" as AnyObject,
+        "birth_date": "2014-07-17" as AnyObject],
+      ["firstName" : "Mini-Mini" as AnyObject,
+        "lastName" : "Swift" as AnyObject,
+        "sex": "female" as AnyObject,
+        "birth_date": "2014-07-18" as AnyObject]]
 
     testStruct.relatives <+ relatives.objects()
     XCTAssert(testStruct.relatives.count == 2)
@@ -130,10 +129,10 @@ class TestMappable: XCTestCase {
   func testAppendingObject() {
     var testStruct = TestPersonStruct([:])
     let relatives: [String : AnyObject] = ["first" :
-      ["firstName" : "Mini",
-        "lastName" : "Swift",
-        "sex": "female",
-        "birth_date": "2014-07-17"]]
+      ["firstName" : "Mini" as AnyObject,
+        "lastName" : "Swift" as AnyObject,
+        "sex": "female" as AnyObject,
+      "birth_date": "2014-07-17" as AnyObject] as AnyObject]
 
     testStruct.relatives <+ relatives.relation("first")
     XCTAssert(testStruct.relatives.count == 1)
@@ -145,10 +144,10 @@ class TestMappable: XCTestCase {
 
   func testValueLookupSuccess() {
     let personStruct = TestPersonStruct([
-      "firstName" : "Mini",
-      "lastName" : "Swift",
-      "sex": "female",
-      "birth_date": "2014-07-15"
+      "firstName" : "Mini" as AnyObject,
+      "lastName" : "Swift" as AnyObject,
+      "sex": "female" as AnyObject,
+      "birth_date": "2014-07-15" as AnyObject
       ])
 
     do {
@@ -161,10 +160,10 @@ class TestMappable: XCTestCase {
 
   func testValueLookupFailure() {
     let personStruct = TestPersonStruct([
-      "firstName" : "Mini",
-      "lastName" : "Swift",
-      "sex": "female",
-      "birth_date": "2014-07-15"
+      "firstName" : "Mini" as AnyObject,
+      "lastName" : "Swift" as AnyObject,
+      "sex": "female" as AnyObject,
+      "birth_date": "2014-07-15" as AnyObject
       ])
 
     do {
@@ -177,12 +176,12 @@ class TestMappable: XCTestCase {
   func testImmutableObjectMapping() {
     let immutableStruct: TestImmutable
     do {
-      immutableStruct = try TestImmutable(["firstName" : "foo" ,
-        "lastName" : "bar",
-        "job" : ["name" : "Musician"],
-        "hobbies" : [["name" : "Musician"]]
+      immutableStruct = try TestImmutable(["firstName" : "foo" as AnyObject ,
+        "lastName" : "bar" as AnyObject,
+        "job" : ["name" : "Musician"] as AnyObject,
+        "hobbies" : [["name" : "Musician"]] as AnyObject
         ])
-      let expectedJob = Job(["name" : "Musician"])
+      let expectedJob = Job((["name" : "Musician"] as AnyObject) as! [String : AnyObject])
 
       XCTAssertEqual(immutableStruct.firstName, "foo")
       XCTAssertEqual(immutableStruct.lastName, "bar")
@@ -197,9 +196,9 @@ class TestMappable: XCTestCase {
   func testMultipleTypes() {
     let multiTypeStruct = MultipleTypeStruct(
       [
-        "stringArray" : ["a", "b", "c"],
-        "stringDictionary" : ["a" : "a" , "b" : "b", "c" : "c"],
-        "boolProperty" : true,
+        "stringArray" : ["a", "b", "c"] as AnyObject,
+        "stringDictionary" : ["a" : "a" , "b" : "b", "c" : "c"] as AnyObject,
+        "boolProperty" : true as AnyObject,
         "people" : [
           [
             "firstName" : "foo",
@@ -213,21 +212,21 @@ class TestMappable: XCTestCase {
             "sex": "female",
             "birth_date": "2014-07-15"
           ]
-        ],
+        ] as AnyObject,
         "peopleDictionary" : ["Mini" : [
           "firstName" : "Mini",
           "lastName" : "Swift",
           "sex": "female",
           "birth_date": "2014-07-15"
-          ]]
+          ]] as AnyObject
       ]
     )
 
     XCTAssertEqual(multiTypeStruct.stringArray, ["a", "b", "c"])
     XCTAssertEqual(multiTypeStruct.stringDictionary, ["a" : "a" , "b" : "b", "c" : "c"])
     XCTAssertEqual(multiTypeStruct.boolProperty, true)
-    XCTAssertEqual(multiTypeStruct.people.first?.firstName, TestPersonStruct(["firstName" : "foo"]).firstName)
-    XCTAssertEqual(multiTypeStruct.peopleDictionary["Mini"]?.firstName, TestPersonStruct(["firstName" : "Mini"]).firstName)
+    XCTAssertEqual(multiTypeStruct.people.first?.firstName, TestPersonStruct(["firstName" : "foo" as AnyObject]).firstName)
+    XCTAssertEqual(multiTypeStruct.peopleDictionary["Mini"]?.firstName, TestPersonStruct(["firstName" : "Mini" as AnyObject]).firstName)
     XCTAssertEqual(multiTypeStruct.people[1].firstName, "bar")
   }
 
@@ -238,17 +237,17 @@ class TestMappable: XCTestCase {
     }
 
     enum Priority: Int {
-      case Low = 0
-      case Medium = 1
-      case High = 2
+      case low = 0
+      case medium = 1
+      case high = 2
     }
 
     struct Issue: Mappable {
       var name: String = ""
       var state: State = .Closed
-      var priority: Priority = .Low
+      var priority: Priority = .low
 
-      init(_ map: JSONDictionary) {
+      init(_ map: [String : AnyObject]) {
         self.name <- map.property("name")
         self.state <- map.`enum`("state")
         self.priority <- map.`enum`("priority")
@@ -259,12 +258,12 @@ class TestMappable: XCTestCase {
       "name": "Swift 3 support",
       "state": "open",
       "priority": 2
-    ]
+    ] as [String : Any]
 
-    let issue = Issue(json)
+    let issue = Issue(json as [String : AnyObject])
     XCTAssertEqual(issue.name, "Swift 3 support")
     XCTAssertEqual(issue.state, State.Open)
-    XCTAssertEqual(issue.priority, Priority.High)
+    XCTAssertEqual(issue.priority, Priority.high)
   }
 
   func testPath() {
@@ -299,7 +298,7 @@ class TestMappable: XCTestCase {
           ]
         ]
       ]
-    ]
+    ] as [String : Any]
 
     struct Person: Mappable {
       var name: String = ""
@@ -307,7 +306,7 @@ class TestMappable: XCTestCase {
       var secret: String = ""
       var identity: String = ""
 
-      init(_ map: JSONDictionary) {
+      init(_ map: [String : AnyObject]) {
         self.name <- map.resolve(keyPath: "info")?.property("name")
         self.trueName <- map.resolve(keyPath: "info.true_info")?.property("true_name")
         self.secret <- map.resolve(keyPath: "chaos.1.way.light.1")?.property("secret")
@@ -315,7 +314,7 @@ class TestMappable: XCTestCase {
       }
     }
 
-    let person = Person(json)
+    let person = Person(json as [String : AnyObject])
     XCTAssertEqual(person.name, "Elliot Alderson")
     XCTAssertEqual(person.trueName, "Mr. Robot")
     XCTAssertEqual(person.secret, "secret")

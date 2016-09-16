@@ -1,16 +1,15 @@
 import XCTest
 import Tailor
-import Sugar
 
 struct Book: Mappable {
   let name: String
   let pageCount: Int
-  let website: NSURL?
+  let website: URL?
 
-  init(_ map: JSONDictionary) {
+  init(_ map: [String : AnyObject]) {
     name = <?map.property("name")
     pageCount = <?map.property("page_count")
-    website = map.transform("website_url", transformer: NSURL.init(string: ))
+    website = map.transform("website_url", transformer: URL.init(string: ))
   }
 }
 
@@ -28,11 +27,11 @@ class TestDefaultType: XCTestCase {
       "name": "Advanced Swift",
       "page_count": 400,
       "website_url": "https://www.objc.io/books/advanced-swift/"
-    ]
+    ] as [String : Any]
 
-    let book = Book(json)
+    let book = Book(json as [String : AnyObject])
     XCTAssertEqual(book.name, "Advanced Swift")
     XCTAssertEqual(book.pageCount, 400)
-    XCTAssertEqual(book.website, NSURL(string: "https://www.objc.io/books/advanced-swift/"))
+    XCTAssertEqual(book.website, URL(string: "https://www.objc.io/books/advanced-swift/"))
   }
 }

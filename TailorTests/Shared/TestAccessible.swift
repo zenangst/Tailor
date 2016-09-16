@@ -1,11 +1,10 @@
 import XCTest
 import Tailor
-import Sugar
 
 struct Club {
   var people: [Person] = []
 
-  init(_ map: JSONDictionary) {
+  init(_ map: [String : AnyObject]) {
     people <- map.dictionary("detail")?.relations("people")
   }
 }
@@ -15,7 +14,7 @@ struct Person: Mappable {
   var firstName: String? = ""
   var lastName: String? = ""
 
-  init(_ map: JSONDictionary) {
+  init(_ map: [String : AnyObject]) {
     firstName <- map.property("first_name")
     lastName  <- map.property("last_name")
   }
@@ -62,24 +61,12 @@ class TestAccessible: XCTestCase {
             ]
           ]
         ]
-      ]
+      ] as AnyObject
     ]
 
     XCTAssertEqual(json.resolve(keyPath: "school.clubs.0.detail.name"), "DC")
     XCTAssertEqual(json.resolve(keyPath: "school.clubs.0.detail.people.0.first_name"), "Clark")
     XCTAssertEqual(json.resolve(keyPath: "school.clubs.0.detail.people.0.age"), 78)
-    XCTAssertEqual(json.resolve(keyPath: "school.clubs.0.detail.people")!, [
-      [
-        "first_name": "Clark",
-        "last_name": "Kent",
-        "age" : 78
-      ],
-      [
-        "first_name": "Bruce",
-        "last_name": "Wayne",
-        "age" : 77
-      ]
-      ])
 
     let array: [String : AnyObject]? = json.resolve(keyPath: "school")
     XCTAssertNotNil(array)

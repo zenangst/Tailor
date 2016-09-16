@@ -1,53 +1,51 @@
-import Sugar
-
 public protocol PathAccessible {
 
   /**
    - Parameter name: The key path, separated by dot
    - Returns: A child dictionary for that path, otherwise it returns nil
    */
-  func resolve(keyPath path: String) -> JSONDictionary?
+  func resolve(keyPath path: String) -> [String : AnyObject]?
 }
 
 public extension PathAccessible {
 
-  private func internalResolve<T>(path: [SubscriptKind]) -> T? {
+  fileprivate func internalResolve<T>(_ path: [SubscriptKind]) -> T? {
     var castedPath = path.dropFirst()
-    castedPath.append(.Key(""))
+    castedPath.append(.key(""))
 
     let pairs = zip(path, Array(castedPath))
     var result: Any = self
 
     for (kind, castedKind) in pairs {
       switch (kind, castedKind) {
-      case (let .Key(name), .Key):
-        result = (result as? JSONDictionary)?.dictionary(name)
-      case (let .Key(name), .Index):
-        result = (result as? JSONDictionary)?.array(name)
-      case (let .Index(index), .Key):
-        result = (result as? JSONArray)?.dictionary(index)
-      case (let .Index(index), .Index):
-        result = (result as? JSONArray)?.array(index)
+      case (let .key(name), .key):
+        result = (result as? [String : AnyObject])?.dictionary(name)
+      case (let .key(name), .index):
+        result = (result as? [String : AnyObject])?.array(name)
+      case (let .index(index), .key):
+        result = (result as? [[String : AnyObject]])?.dictionary(index)
+      case (let .index(index), .index):
+        result = (result as? [[String : AnyObject]])?.array(index)
       }
     }
 
     return result as? T
   }
 
-  private func resolveSubscript<T>(key: String) -> T? {
+  fileprivate func resolveSubscript<T>(_ key: String) -> T? {
     if let index = Int(key) {
       return [index] as? T
     } else {
-      return (self as? JSONDictionary)?[key] as? T
+      return (self as? [String : AnyObject])?[key] as? T
     }
   }
 
-  private func internalResolve<T>(path: String) -> T? {
-    let kinds: [SubscriptKind] = path.componentsSeparatedByString(".").map {
+  fileprivate func internalResolve<T>(_ path: String) -> T? {
+    let kinds: [SubscriptKind] = path.components(separatedBy: ".").map {
       if let index = Int($0) {
-        return .Index(index)
+        return .index(index)
       } else {
-        return .Key($0)
+        return .key($0)
       }
     }
 
@@ -60,25 +58,12 @@ public extension PathAccessible {
    - Parameter path: A key path
    - Returns: A tuple with the first key and the remaining key path
    */
-  private func extractKey(path: String) -> (key: String, keyPath: String)? {
-    guard let lastSplit = path.split(".").last where path.contains(".") else { return nil }
+  fileprivate func extractKey(_ path: String) -> (key: String, keyPath: String)? {
+    guard let lastSplit = path.components(separatedBy: ".").last, path.contains(".") else { return nil }
 
     return (key: lastSplit,
-            keyPath: Array(path.split(".").dropLast()).joinWithSeparator("."))
+            keyPath: Array(path.components(separatedBy: ".").dropLast()).joined(separator: "."))
   }
-
-  @available(*, deprecated=1.1.3, message="Use resolve(keyPath:)")
-  public func path(path: [SubscriptKind]) -> JSONDictionary? { return internalResolve(path) }
-  @available(*, deprecated=1.1.3, message="Use resolve(keyPath:)")
-  public func path<T>(path: String) -> T? { return resolve(keyPath: path) as? T }
-  @available(*, deprecated=1.1.3, message="Use resolve(keyPath:)")
-  public func path(path: String) -> String? { return resolve(keyPath: path) }
-  @available(*, deprecated=1.1.3, message="Use resolve(keyPath:)")
-  public func path(path: String) -> Int? { return resolve(keyPath: path) }
-  @available(*, deprecated=1.1.3, message="Use resolve(keyPath:)")
-  public func path(path: String) -> JSONArray? { return resolve(keyPath: path) }
-  @available(*, deprecated=1.1.3, message="Use resolve(keyPath:)")
-  public func path(path: String) -> JSONDictionary? { return resolve(keyPath: path) }
 
   /**
    Resolve key path to Dictionary
@@ -86,7 +71,7 @@ public extension PathAccessible {
    - Parameter path: A key path string
    - Returns: An Optional [String : AnyObject]
    */
-  func resolve(keyPath path: String) -> JSONDictionary? {
+  func resolve(keyPath path: String) -> [String : AnyObject]? {
     return internalResolve(path)
   }
 
@@ -101,7 +86,7 @@ public extension PathAccessible {
       return resolveSubscript(path)
     }
 
-    let result: JSONDictionary? = internalResolve(keyPath)
+    let result: [String : AnyObject]? = internalResolve(keyPath)
     return result?.property(key)
   }
 }

@@ -1,7 +1,5 @@
-import Sugar
-
 public protocol Mappable {
-  init(_ map: JSONDictionary)
+  init(_ map: [String : AnyObject])
 }
 
 public extension Mappable {
@@ -10,14 +8,14 @@ public extension Mappable {
    - Parameter key: The key name of the property you want to lookup
    - Returns: A generic value on success, otherwise it throws a MappableError.
    */
-  public func value<T>(key: String) throws -> T {
+  public func value<T>(_ key: String) throws -> T {
     let value = Mirror(reflecting: self)
       .children
       .filter { $0.label == key }
       .map { $1 }.first
 
     guard let objectValue = value as? T else {
-      throw MappableError.TypeError(message: "Tried to get value \(value!) for \(key) as \(T.self) when expecting \(types()[key]!)")
+      throw MappableError.typeError(message: "Tried to get value \(value!) for \(key) as \(T.self) when expecting \(types()[key]!)")
     }
 
     return objectValue
@@ -27,32 +25,34 @@ public extension Mappable {
    - Parameter key: The key name of the property you want to lookup
    - Returns: An optional generic value.
    */
-  public func property<T>(key: String, dictionary: T? = nil) -> T? {
+  public func property<T>(_ key: String, dictionary: T? = nil) -> T? {
     // TODO: Improve this to support nested attributes
-    let components = key.split(".")
+    let components = key.components(separatedBy: ".")
     let values = Mirror(reflecting: self)
       .children
       .filter({$0.0 == components.first})
       .map({ $1 })
 
     guard let value = values.first else { return nil }
-    var result = value as? T
+    let result = value as? T
 
     let tail = components.dropFirst()
-    let type:_MirrorType = _reflect(value)
+    let type = Mirror.init(reflecting: value)
 
-    if type.disposition == .Optional && type.count != 0 {
-      let (_, some) = type[0]
-      result = some.value as? T
+    if type.displayStyle == .optional && type.children.count != 0 {
+    // TODO Fix this!
+//      let (_, some) = type[0]
+//      result = some.value as? T
     }
 
     if let indexString = tail.first,
-      index = Int(indexString) {
+      let index = Int(indexString) {
         guard let result = (value as? [T])?[index] else { return nil }
 
         if tail.count > 1 {
-          guard let range = key.rangeOfString(indexString) else { return nil }
-          let key = key.substringFromIndex(range.startIndex.advancedBy(2))
+          guard let range = key.range(of: indexString) else { return nil }
+          let key = key.substring(from: range.lowerBound)
+//          let key = key.substring(from: <#T##String.CharacterView corresponding to your index##String.CharacterView#>.index(range.lowerBound, offsetBy: 2))
           return property(key, dictionary: result)
         } else {
           return result

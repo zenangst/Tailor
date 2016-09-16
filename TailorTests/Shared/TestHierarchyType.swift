@@ -1,11 +1,10 @@
 import XCTest
 import Tailor
-import Sugar
 
 class Event: Mappable {
   var name: String = ""
 
-  required init(_ map: JSONDictionary) {
+  required init(_ map: [String : AnyObject]) {
     self.name <- map.property("name")
   }
 }
@@ -13,7 +12,7 @@ class Event: Mappable {
 class PushEvent: Event {
   var SHA: String = ""
 
-  required init(_ map: JSONDictionary) {
+  required init(_ map: [String : AnyObject]) {
     super.init(map)
 
     self.SHA <- map.property("sha")
@@ -23,7 +22,7 @@ class PushEvent: Event {
 class IssueEvent: Event {
   var number: Int = 0
 
-  required init(_ map: JSONDictionary) {
+  required init(_ map: [String : AnyObject]) {
     super.init(map)
 
     self.number <- map.property("number")
@@ -31,13 +30,13 @@ class IssueEvent: Event {
 }
 
 extension Event: HierarchyType {
-  static func cluster(map: JSONDictionary) -> AnyObject {
+  static func cluster(_ map: [String : AnyObject]) -> AnyObject {
     let kinds: [String: Event.Type] = [
       "push": PushEvent.self,
       "issue": IssueEvent.self
     ]
 
-    if let kind = map["type"] as? String, type = kinds[kind] {
+    if let kind = map["type"] as? String, let type = kinds[kind] {
       return type.init(map)
     } else {
       return self.init(map)
@@ -48,14 +47,14 @@ extension Event: HierarchyType {
 class Notification: Mappable {
   var events: [Event] = []
 
-  required init(_ map: JSONDictionary) {
+  required init(_ map: [String : AnyObject]) {
     self.events <- map.relationsHierarchically("events")
   }
 }
 
 class TestHierarchyType: XCTestCase {
   func testHierarchyType() {
-    let json = [
+    let json: [String : AnyObject] = [
       "events": [
         [
           "type": "push",
@@ -67,7 +66,7 @@ class TestHierarchyType: XCTestCase {
           "name": "Add HierarchyType",
           "number": 3
         ]
-      ]
+      ] as AnyObject
     ]
 
     let notification = Notification(json)

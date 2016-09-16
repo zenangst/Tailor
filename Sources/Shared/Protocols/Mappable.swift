@@ -34,15 +34,14 @@ public extension Mappable {
       .map({ $1 })
 
     guard let value = values.first else { return nil }
-    let result = value as? T
+    var result = value as? T
 
     let tail = components.dropFirst()
     let type = Mirror.init(reflecting: value)
 
-    if type.displayStyle == .optional && type.children.count != 0 {
-    // TODO Fix this!
-//      let (_, some) = type[0]
-//      result = some.value as? T
+    if type.displayStyle == .optional && type.children.count != 0,
+      let (_, value) = type.children.first {
+      result = value as? T
     }
 
     if let indexString = tail.first,

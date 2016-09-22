@@ -1,6 +1,5 @@
 import XCTest
 import Tailor
-import Sugar
 
 class TestMappable: XCTestCase {
 
@@ -248,7 +247,7 @@ class TestMappable: XCTestCase {
       var state: State = .Closed
       var priority: Priority = .Low
 
-      init(_ map: JSONDictionary) {
+      init(_ map: [String : AnyObject]) {
         self.name <- map.property("name")
         self.state <- map.`enum`("state")
         self.priority <- map.`enum`("priority")
@@ -307,7 +306,7 @@ class TestMappable: XCTestCase {
       var secret: String = ""
       var identity: String = ""
 
-      init(_ map: JSONDictionary) {
+      init(_ map: [String : AnyObject]) {
         self.name <- map.resolve(keyPath: "info")?.property("name")
         self.trueName <- map.resolve(keyPath: "info.true_info")?.property("true_name")
         self.secret <- map.resolve(keyPath: "chaos.1.way.light.1")?.property("secret")

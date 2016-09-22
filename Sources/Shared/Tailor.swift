@@ -1,6 +1,4 @@
 import Foundation
-import Sugar
-
 // MARK: - Error
 
 public enum MappableError: ErrorType {

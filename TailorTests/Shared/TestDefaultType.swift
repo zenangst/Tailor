@@ -1,13 +1,12 @@
 import XCTest
 import Tailor
-import Sugar
 
 struct Book: Mappable {
   let name: String
   let pageCount: Int
   let website: NSURL?
 
-  init(_ map: JSONDictionary) {
+  init(_ map: [String : AnyObject]) {
     name = <?map.property("name")
     pageCount = <?map.property("page_count")
     website = map.transform("website_url", transformer: NSURL.init(string: ))

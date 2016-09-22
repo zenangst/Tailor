@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		BD793D481C3FCC97002BBB5F /* Tailor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD793D471C3FCC97002BBB5F /* Tailor.swift */; };
-		BD793D4F1C3FCD29002BBB5F /* Sugar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD793D4A1C3FCD0D002BBB5F /* Sugar.framework */; };
-		BD793D541C3FCF34002BBB5F /* Sugar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD793D4D1C3FCD22002BBB5F /* Sugar.framework */; };
 		BD793D551C3FCFA2002BBB5F /* Tailor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD793D471C3FCC97002BBB5F /* Tailor.swift */; };
 		BD81A1421C73A493009955E3 /* Dictionary+Tailor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD81A1411C73A493009955E3 /* Dictionary+Tailor.swift */; };
 		BD81A1431C73A493009955E3 /* Dictionary+Tailor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD81A1411C73A493009955E3 /* Dictionary+Tailor.swift */; };
@@ -21,6 +19,8 @@
 		BD81A14F1C73A644009955E3 /* Mappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD81A14D1C73A644009955E3 /* Mappable.swift */; };
 		BD81A1511C73A66D009955E3 /* SafeMappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD81A1501C73A66D009955E3 /* SafeMappable.swift */; };
 		BD81A1521C73A66D009955E3 /* SafeMappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD81A1501C73A66D009955E3 /* SafeMappable.swift */; };
+		BD8B1EB61D93E36F000C3F53 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8B1EB51D93E36F000C3F53 /* String+Extensions.swift */; };
+		BD8B1EB71D93E36F000C3F53 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8B1EB51D93E36F000C3F53 /* String+Extensions.swift */; };
 		BDC182641C3FE45000B54DD7 /* TestInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC182611C3FE45000B54DD7 /* TestInspectable.swift */; };
 		BDC182651C3FE45000B54DD7 /* TestInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC182611C3FE45000B54DD7 /* TestInspectable.swift */; };
 		BDC182661C3FE45000B54DD7 /* TestMappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC182621C3FE45000B54DD7 /* TestMappable.swift */; };
@@ -62,13 +62,12 @@
 
 /* Begin PBXFileReference section */
 		BD793D471C3FCC97002BBB5F /* Tailor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tailor.swift; sourceTree = "<group>"; };
-		BD793D4A1C3FCD0D002BBB5F /* Sugar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sugar.framework; path = Carthage/Build/Mac/Sugar.framework; sourceTree = "<group>"; };
-		BD793D4D1C3FCD22002BBB5F /* Sugar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sugar.framework; path = Carthage/Build/iOS/Sugar.framework; sourceTree = "<group>"; };
 		BD81A1411C73A493009955E3 /* Dictionary+Tailor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Tailor.swift"; sourceTree = "<group>"; };
 		BD81A1441C73A49D009955E3 /* Array+Tailor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Tailor.swift"; sourceTree = "<group>"; };
 		BD81A1471C73A4DF009955E3 /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
 		BD81A14D1C73A644009955E3 /* Mappable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mappable.swift; sourceTree = "<group>"; };
 		BD81A1501C73A66D009955E3 /* SafeMappable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafeMappable.swift; sourceTree = "<group>"; };
+		BD8B1EB51D93E36F000C3F53 /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		BDC182611C3FE45000B54DD7 /* TestInspectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestInspectable.swift; sourceTree = "<group>"; };
 		BDC182621C3FE45000B54DD7 /* TestMappable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestMappable.swift; sourceTree = "<group>"; };
 		BDC182631C3FE45000B54DD7 /* TestSubjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestSubjects.swift; sourceTree = "<group>"; };
@@ -94,7 +93,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD793D541C3FCF34002BBB5F /* Sugar.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,7 +108,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD793D4F1C3FCD29002BBB5F /* Sugar.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,6 +127,7 @@
 			children = (
 				BD81A1411C73A493009955E3 /* Dictionary+Tailor.swift */,
 				BD81A1441C73A49D009955E3 /* Array+Tailor.swift */,
+				BD8B1EB51D93E36F000C3F53 /* String+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -157,8 +155,6 @@
 		D5B2E8951C3A780C00C0327D = {
 			isa = PBXGroup;
 			children = (
-				BD793D4D1C3FCD22002BBB5F /* Sugar.framework */,
-				BD793D4A1C3FCD0D002BBB5F /* Sugar.framework */,
 				D500FD121C3AAC8E00782D78 /* Playground-Mac.playground */,
 				D5C629691C3A809D007F7B7C /* Sources */,
 				D5C6295C1C3A800E007F7B7C /* Tailor */,
@@ -273,7 +269,6 @@
 				D5B2E89B1C3A780C00C0327D /* Frameworks */,
 				D5B2E89C1C3A780C00C0327D /* Headers */,
 				D5B2E89D1C3A780C00C0327D /* Resources */,
-				BD793D561C3FD00F002BBB5F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -310,7 +305,6 @@
 				D5C6293C1C3A7FAA007F7B7C /* Frameworks */,
 				D5C6293D1C3A7FAA007F7B7C /* Headers */,
 				D5C6293E1C3A7FAA007F7B7C /* Resources */,
-				BD793D501C3FCDF6002BBB5F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -414,42 +408,12 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		BD793D501C3FCDF6002BBB5F /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/Mac/Sugar.framework",
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
-		};
-		BD793D561C3FD00F002BBB5F /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Sugar.framework",
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		D5B2E89A1C3A780C00C0327D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD8B1EB61D93E36F000C3F53 /* String+Extensions.swift in Sources */,
 				BD81A1451C73A49D009955E3 /* Array+Tailor.swift in Sources */,
 				BD81A14E1C73A644009955E3 /* Mappable.swift in Sources */,
 				BD81A1481C73A4DF009955E3 /* Operators.swift in Sources */,
@@ -479,6 +443,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD8B1EB71D93E36F000C3F53 /* String+Extensions.swift in Sources */,
 				BD81A1461C73A49D009955E3 /* Array+Tailor.swift in Sources */,
 				BD81A14F1C73A644009955E3 /* Mappable.swift in Sources */,
 				BD81A1491C73A4DF009955E3 /* Operators.swift in Sources */,

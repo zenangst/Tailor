@@ -1,11 +1,10 @@
 import XCTest
 import Tailor
-import Sugar
 
 struct Club {
   var people: [Person] = []
 
-  init(_ map: JSONDictionary) {
+  init(_ map: [String : AnyObject]) {
     people <- map.dictionary("detail")?.relations("people")
   }
 }
@@ -15,7 +14,7 @@ struct Person: Mappable {
   var firstName: String? = ""
   var lastName: String? = ""
 
-  init(_ map: JSONDictionary) {
+  init(_ map: [String : AnyObject]) {
     firstName <- map.property("first_name")
     lastName  <- map.property("last_name")
   }

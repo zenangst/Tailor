@@ -1,5 +1,3 @@
-import Sugar
-
 // MARK: - Basic
 
 public extension Dictionary {
@@ -46,13 +44,13 @@ public extension Dictionary {
    */
   func directory<T : Mappable>(name: String) -> [String : T]? {
     guard let key = name as? Key,
-      dictionary = self[key] as? JSONDictionary
+      dictionary = self[key] as? [String : AnyObject]
       else { return nil }
 
     var directory = [String : T]()
 
     for (key, value) in dictionary {
-      guard let value = value as? JSONDictionary else { continue }
+      guard let value = value as? [String : AnyObject] else { continue }
       directory[key] = T(value)
     }
 
@@ -63,9 +61,9 @@ public extension Dictionary {
    - Parameter name: The name of the key
    - Returns: A child dictionary for that key, otherwise it returns nil
    */
-  func dictionary(name: String) -> JSONDictionary? {
+  func dictionary(name: String) -> [String : AnyObject]? {
     guard let key = name as? Key,
-      value = self[key] as? JSONDictionary
+      value = self[key] as? [String : AnyObject]
       else { return nil }
 
     return value
@@ -75,9 +73,9 @@ public extension Dictionary {
    - Parameter name: The name of the key
    - Returns: A child dictionary for that key, otherwise it throws
    */
-  func dictionaryOrThrow(name: String) throws -> JSONDictionary {
+  func dictionaryOrThrow(name: String) throws -> [String : AnyObject] {
     guard let result = dictionary(name)
-      else { throw MappableError.TypeError(message: "Tried to get value for \(name) as JSONDictionary") }
+      else { throw MappableError.TypeError(message: "Tried to get value for \(name) as [String : AnyObject]") }
 
     return result
   }
@@ -86,9 +84,9 @@ public extension Dictionary {
    - Parameter name: The name of the key
    - Returns: A child array for that key, otherwise it returns nil
    */
-  func array(name: String) -> JSONArray? {
+  func array(name: String) -> [[String : AnyObject]]? {
     guard let key = name as? Key,
-      value = self[key] as? JSONArray
+      value = self[key] as? [[String : AnyObject]]
       else { return nil }
 
     return value
@@ -98,9 +96,9 @@ public extension Dictionary {
    - Parameter name: The name of the key
    - Returns: A child array for that key, otherwise it throws
    */
-  func arrayOrThrow(name: String) throws -> JSONArray {
+  func arrayOrThrow(name: String) throws -> [[String : AnyObject]] {
     guard let result = array(name)
-      else { throw MappableError.TypeError(message: "Tried to get value for \(name) as JSONArray") }
+      else { throw MappableError.TypeError(message: "Tried to get value for \(name) as [[String : AnyObject]]") }
 
     return result
   }
@@ -139,7 +137,7 @@ public extension Dictionary {
    */
   func relation<T : Mappable>(name: String) -> T? {
     guard let key = name as? Key,
-      dictionary = self[key] as? JSONDictionary
+      dictionary = self[key] as? [String : AnyObject]
       else { return nil }
 
     return T(dictionary)
@@ -162,7 +160,7 @@ public extension Dictionary {
    */
   func relation<T : SafeMappable>(name: String) -> T? {
     guard let key = name as? Key,
-      dictionary = self[key] as? JSONDictionary
+      dictionary = self[key] as? [String : AnyObject]
       else { return nil }
 
     let result: T?
@@ -198,7 +196,7 @@ public extension Dictionary {
    */
   func relations<T : Mappable>(name: String) -> [T]? {
     guard let key = name as? Key,
-      array = self[key] as? JSONArray
+      array = self[key] as? [[String : AnyObject]]
       else { return nil }
 
     return array.map { T($0) }
@@ -221,7 +219,7 @@ public extension Dictionary {
    */
   func relations<T : SafeMappable>(name: String) -> [T]? {
     guard let key = name as? Key,
-      array = self[key] as? JSONArray
+      array = self[key] as? [[String : AnyObject]]
       else { return nil }
 
     var result = [T]()
@@ -255,7 +253,7 @@ public extension Dictionary {
    */
   func relationHierarchically<T where T: Mappable, T: HierarchyType>(name: String) -> T? {
     guard let key = name as? Key,
-      dictionary = self[key] as? JSONDictionary
+      dictionary = self[key] as? [String : AnyObject]
       else { return nil }
 
     return T.cluster(dictionary) as? T
@@ -267,7 +265,7 @@ public extension Dictionary {
    */
   func relationsHierarchically<T where T: Mappable, T: HierarchyType>(name: String) -> [T]? {
     guard let key = name as? Key,
-      array = self[key] as? JSONArray
+      array = self[key] as? [[String : AnyObject]]
       else { return nil }
 
     return array.flatMap { T.cluster($0) as? T }

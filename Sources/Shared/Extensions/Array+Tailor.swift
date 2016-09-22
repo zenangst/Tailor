@@ -1,5 +1,3 @@
-import Sugar
-
 public extension Array {
 
   /**
@@ -11,13 +9,13 @@ public extension Array {
 
     if let name = name {
       for dictionary in self {
-        guard let dictionary = dictionary as? JSONDictionary,
-          value = dictionary[name] as? JSONDictionary else { continue }
+        guard let dictionary = dictionary as? [String : AnyObject],
+          value = dictionary[name] as? [String : AnyObject] else { continue }
         objects.append(T(value))
       }
     } else {
       for dictionary in self {
-        guard let dictionary = dictionary as? JSONDictionary else { continue }
+        guard let dictionary = dictionary as? [String : AnyObject] else { continue }
         objects.append(T(dictionary))
       }
     }
@@ -34,13 +32,13 @@ public extension Array {
 
     if let name = name {
       for dictionary in self {
-        guard let dictionary = dictionary as? JSONDictionary,
-          value = dictionary[name] as? JSONDictionary else { continue }
+        guard let dictionary = dictionary as? [String : AnyObject],
+          value = dictionary[name] as? [String : AnyObject] else { continue }
         objects.append(try T(value))
       }
     } else {
       for dictionary in self {
-        guard let dictionary = dictionary as? JSONDictionary else { continue }
+        guard let dictionary = dictionary as? [String : AnyObject] else { continue }
         objects.append(try T(dictionary))
       }
     }
@@ -52,8 +50,8 @@ public extension Array {
    - Parameter name: The index
    - Returns: A child dictionary at that index, otherwise it returns nil
    */
-  func dictionary(index: Int) -> JSONDictionary? {
-    guard index < self.count, let value = self[index] as? JSONDictionary
+  func dictionary(index: Int) -> [String : AnyObject]? {
+    guard index < self.count, let value = self[index] as? [String : AnyObject]
       else { return nil }
 
     return value
@@ -63,8 +61,8 @@ public extension Array {
    - Parameter name: The index
    - Returns: A child array at that index, otherwise it returns nil
    */
-  func array(index: Int) -> JSONArray? {
-    guard index < self.count, let value = self[index] as? JSONArray
+  func array(index: Int) -> [[String : AnyObject]]? {
+    guard index < self.count, let value = self[index] as? [[String : AnyObject]]
       else { return nil }
 
     return value

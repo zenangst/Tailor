@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BDA0DFCA1D93F91E00D299BE"
-               BuildableName = "Tailor-tvOS.framework"
+               BuildableName = "Tailor.framework"
                BlueprintName = "Tailor-tvOS"
                ReferencedContainer = "container:Tailor.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BDA0DFCA1D93F91E00D299BE"
-            BuildableName = "Tailor-tvOS.framework"
+            BuildableName = "Tailor.framework"
             BlueprintName = "Tailor-tvOS"
             ReferencedContainer = "container:Tailor.xcodeproj">
          </BuildableReference>
@@ -65,7 +65,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BDA0DFCA1D93F91E00D299BE"
-            BuildableName = "Tailor-tvOS.framework"
+            BuildableName = "Tailor.framework"
             BlueprintName = "Tailor-tvOS"
             ReferencedContainer = "container:Tailor.xcodeproj">
          </BuildableReference>
@@ -83,7 +83,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BDA0DFCA1D93F91E00D299BE"
-            BuildableName = "Tailor-tvOS.framework"
+            BuildableName = "Tailor.framework"
             BlueprintName = "Tailor-tvOS"
             ReferencedContainer = "container:Tailor.xcodeproj">
          </BuildableReference>

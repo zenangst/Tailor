@@ -1,5 +1,3 @@
-import Foundation
-
 /**
  Anything that has default value
 */

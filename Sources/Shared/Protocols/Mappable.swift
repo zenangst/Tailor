@@ -1,7 +1,5 @@
-import Sugar
-
 public protocol Mappable {
-  init(_ map: JSONDictionary)
+  init(_ map: [String : AnyObject])
 }
 
 public extension Mappable {

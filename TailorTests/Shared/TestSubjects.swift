@@ -1,6 +1,5 @@
 import Foundation
 import Tailor
-import Sugar
 
 enum Sex: String {
   case Unspecified = "unspecified"
@@ -11,7 +10,7 @@ enum Sex: String {
 struct Job: Mappable {
   var name: String = ""
 
-  init(_ map: JSONDictionary) {
+  init(_ map: [String : AnyObject]) {
     name <- map.property("name")
   }
 }
@@ -33,7 +32,7 @@ class TestPersonClass: NSObject, Mappable {
   var sex: Sex = .Unspecified
   var birthDate: NSDate?
 
-  required convenience init(_ map: JSONDictionary) {
+  required convenience init(_ map: [String : AnyObject]) {
     self.init()
     firstName <- map.property("firstName")
     lastName  <- map.property("lastName")
@@ -59,7 +58,7 @@ struct TestPersonStruct: Mappable, Equatable {
   var relatives = [TestPersonStruct]()
   let children = [TestPersonStruct]()
 
-  init(_ map: JSONDictionary) {
+  init(_ map: [String : AnyObject]) {
     firstName <- map.property("firstName")
     lastName  <- map.property("lastName")
 
@@ -80,7 +79,7 @@ struct TestImmutable: SafeMappable {
   let job: Job
   let hobbies: [Job]
 
-  init(_ map: JSONDictionary) throws {
+  init(_ map: [String : AnyObject]) throws {
     firstName = try <-map.property("firstName")
     lastName = try <-map.property("lastName")
     job = try <-map.relationOrThrow("job")
@@ -95,7 +94,7 @@ struct MultipleTypeStruct : Mappable {
   var people = [TestPersonStruct]()
   var peopleDictionary = [String : TestPersonStruct]()
 
-  init(_ map: JSONDictionary) {
+  init(_ map: [String : AnyObject]) {
     stringArray <- map.property("stringArray")
     stringDictionary <- map.property("stringDictionary")
     boolProperty <- map.property("boolProperty")

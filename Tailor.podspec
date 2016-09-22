@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name             = "Tailor"
   s.summary          = "A super fast & convenient object mapper tailored for your needs."
-  s.version          = "1.2.3"
+  s.version          = "1.2.4"
   s.homepage         = "https://github.com/zenangst/Tailor"
   s.license          = 'MIT'
   s.author           = { "Christoffer Winterkvist" => "christoffer@winterkvist.com" }
@@ -19,6 +19,4 @@ Pod::Spec.new do |s|
   s.ios.source_files = 'Sources/{iOS,Shared}/**/*'
   s.osx.source_files = 'Sources/{Mac,Shared}/**/*'
   s.tvos.source_files = 'Sources/{iOS,Shared}/**/*'
-
-  s.dependency 'Sugar'
 end

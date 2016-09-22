@@ -1,4 +1,3 @@
-import Foundation
 // MARK: - Error
 
 public enum MappableError: ErrorType {

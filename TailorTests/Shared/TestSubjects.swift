@@ -10,15 +10,15 @@ enum Sex: String {
 struct Job: Mappable {
   var name: String = ""
 
-  init(_ map: [String : AnyObject]) {
+  init(_ map: [String : Any]) {
     name <- map.property("name")
   }
 }
 
-let dateTransformer = { (value: String) -> NSDate? in
-  let dateFormatter = NSDateFormatter()
+let dateTransformer = { (value: String) -> Date? in
+  let dateFormatter = DateFormatter()
   dateFormatter.dateFormat = "yyyy-MM-dd"
-  return dateFormatter.dateFromString(value)
+  return dateFormatter.date(from: value)
 }
 
 func ==(lhs: Job, rhs: Job) -> Bool {
@@ -30,9 +30,9 @@ class TestPersonClass: NSObject, Mappable {
   var firstName: String = ""
   var lastName: String? = ""
   var sex: Sex = .Unspecified
-  var birthDate: NSDate?
+  var birthDate: Date?
 
-  required convenience init(_ map: [String : AnyObject]) {
+  required convenience init(_ map: [String : Any]) {
     self.init()
     firstName <- map.property("firstName")
     lastName  <- map.property("lastName")
@@ -41,10 +41,10 @@ class TestPersonClass: NSObject, Mappable {
       return Sex(rawValue: value)
     }
 
-    birthDate <- map.transform("birth_date") { (value: String) -> NSDate? in
-      let dateFormatter = NSDateFormatter()
+    birthDate <- map.transform("birth_date") { (value: String) -> Date? in
+      let dateFormatter = DateFormatter()
       dateFormatter.dateFormat = "yyyy-MM-dd"
-      return dateFormatter.dateFromString(value)
+      return dateFormatter.date(from: value)
     }
   }
 }
@@ -53,12 +53,12 @@ struct TestPersonStruct: Mappable, Equatable {
   var firstName: String = ""
   var lastName: String? = ""
   var sex: Sex?
-  var birthDate = NSDate(timeIntervalSince1970: 1)
+  var birthDate = Date(timeIntervalSince1970: 1)
   var job: Job? = nil
   var relatives = [TestPersonStruct]()
   let children = [TestPersonStruct]()
 
-  init(_ map: [String : AnyObject]) {
+  init(_ map: [String : Any]) {
     firstName <- map.property("firstName")
     lastName  <- map.property("lastName")
 
@@ -79,7 +79,7 @@ struct TestImmutable: SafeMappable {
   let job: Job
   let hobbies: [Job]
 
-  init(_ map: [String : AnyObject]) throws {
+  init(_ map: [String : Any]) throws {
     firstName = try <-map.property("firstName")
     lastName = try <-map.property("lastName")
     job = try <-map.relationOrThrow("job")
@@ -94,7 +94,7 @@ struct MultipleTypeStruct : Mappable {
   var people = [TestPersonStruct]()
   var peopleDictionary = [String : TestPersonStruct]()
 
-  init(_ map: [String : AnyObject]) {
+  init(_ map: [String : Any]) {
     stringArray <- map.property("stringArray")
     stringDictionary <- map.property("stringDictionary")
     boolProperty <- map.property("boolProperty")

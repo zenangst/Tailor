@@ -1,34 +1,34 @@
 // MARK: - Error
 
-public enum MappableError: ErrorType {
-  case TypeError(message: String)
+public enum MappableError: Error {
+  case typeError(message: String)
 }
 
 // MARK: - SubscriptKind
 
 public enum SubscriptKind {
-  case Index(Int)
-  case Key(String)
+  case index(Int)
+  case key(String)
 }
 
-extension SubscriptKind: IntegerLiteralConvertible {
+extension SubscriptKind: ExpressibleByIntegerLiteral {
   public init(integerLiteral value: IntegerLiteralType) {
-    self = .Index(value)
+    self = .index(value)
   }
 }
 
-extension SubscriptKind: StringLiteralConvertible {
+extension SubscriptKind: ExpressibleByStringLiteral {
   public typealias UnicodeScalarLiteralType = StringLiteralType
   public init(unicodeScalarLiteral value: UnicodeScalarLiteralType) {
-    self = .Key("\(value)")
+    self = .key("\(value)")
   }
 
   public typealias ExtendedGraphemeClusterLiteralType = StringLiteralType
   public init(extendedGraphemeClusterLiteral value: ExtendedGraphemeClusterLiteralType) {
-    self = .Key(value)
+    self = .key(value)
   }
 
   public init(stringLiteral value: StringLiteralType) {
-    self = .Key(value)
+    self = .key(value)
   }
 }

@@ -6,12 +6,12 @@
 
 extension String {
 
-  func split(delimiter: String) -> [String] {
-    let components = componentsSeparatedByString(delimiter)
+  func split(_ delimiter: String) -> [String] {
+    let components = self.components(separatedBy: delimiter)
     return components != [""] ? components : []
   }
 
-  func contains(find: String) -> Bool {
-    return rangeOfString(find) != nil
+  func contains(_ find: String) -> Bool {
+    return range(of: find) != nil
   }
 }

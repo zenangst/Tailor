@@ -30,13 +30,13 @@ class IssueEvent: Event {
 }
 
 extension Event: HierarchyType {
-  static func cluster(map: [String : AnyObject]) -> AnyObject {
+  static func cluster(_ map: [String : AnyObject]) -> AnyObject {
     let kinds: [String: Event.Type] = [
       "push": PushEvent.self,
       "issue": IssueEvent.self
     ]
 
-    if let kind = map["type"] as? String, type = kinds[kind] {
+    if let kind = map["type"] as? String, let type = kinds[kind] {
       return type.init(map)
     } else {
       return self.init(map)
@@ -69,7 +69,7 @@ class TestHierarchyType: XCTestCase {
       ]
     ]
 
-    let notification = Notification(json)
+    let notification = Notification(json as [String : AnyObject])
 
     let push = notification.events[0] as! PushEvent
     XCTAssertEqual(push.name, "Update README")

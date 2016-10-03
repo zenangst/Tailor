@@ -9,22 +9,22 @@ public protocol PathAccessible {
 
 public extension PathAccessible {
 
-  private func internalResolve<T>(path: [SubscriptKind]) -> T? {
+  fileprivate func internalResolve<T>(_ path: [SubscriptKind]) -> T? {
     var castedPath = path.dropFirst()
-    castedPath.append(.Key(""))
+    castedPath.append(.key(""))
 
     let pairs = zip(path, Array(castedPath))
     var result: Any = self
 
     for (kind, castedKind) in pairs {
       switch (kind, castedKind) {
-      case (let .Key(name), .Key):
+      case (let .key(name), .key):
         result = (result as? [String : AnyObject])?.dictionary(name)
-      case (let .Key(name), .Index):
+      case (let .key(name), .index):
         result = (result as? [String : AnyObject])?.array(name)
-      case (let .Index(index), .Key):
+      case (let .index(index), .key):
         result = (result as? [[String : AnyObject]])?.dictionary(index)
-      case (let .Index(index), .Index):
+      case (let .index(index), .index):
         result = (result as? [[String : AnyObject]])?.array(index)
       }
     }
@@ -32,7 +32,7 @@ public extension PathAccessible {
     return result as? T
   }
 
-  private func resolveSubscript<T>(key: String) -> T? {
+  fileprivate func resolveSubscript<T>(_ key: String) -> T? {
     if let index = Int(key) {
       return [index] as? T
     } else {
@@ -40,12 +40,12 @@ public extension PathAccessible {
     }
   }
 
-  private func internalResolve<T>(path: String) -> T? {
-    let kinds: [SubscriptKind] = path.componentsSeparatedByString(".").map {
+  fileprivate func internalResolve<T>(_ path: String) -> T? {
+    let kinds: [SubscriptKind] = path.components(separatedBy: ".").map {
       if let index = Int($0) {
-        return .Index(index)
+        return .index(index)
       } else {
-        return .Key($0)
+        return .key($0)
       }
     }
 
@@ -58,25 +58,25 @@ public extension PathAccessible {
    - Parameter path: A key path
    - Returns: A tuple with the first key and the remaining key path
    */
-  private func extractKey(path: String) -> (key: String, keyPath: String)? {
-    guard let lastSplit = path.split(".").last where path.contains(".") else { return nil }
+  fileprivate func extractKey(_ path: String) -> (key: String, keyPath: String)? {
+    guard let lastSplit = path.split(".").last , path.contains(".") else { return nil }
 
     return (key: lastSplit,
-            keyPath: Array(path.split(".").dropLast()).joinWithSeparator("."))
+            keyPath: Array(path.split(".").dropLast()).joined(separator: "."))
   }
 
-  @available(*, deprecated=1.1.3, message="Use resolve(keyPath:)")
-  public func path(path: [SubscriptKind]) -> [String : AnyObject]? { return internalResolve(path) }
-  @available(*, deprecated=1.1.3, message="Use resolve(keyPath:)")
-  public func path<T>(path: String) -> T? { return resolve(keyPath: path) as? T }
-  @available(*, deprecated=1.1.3, message="Use resolve(keyPath:)")
-  public func path(path: String) -> String? { return resolve(keyPath: path) }
-  @available(*, deprecated=1.1.3, message="Use resolve(keyPath:)")
-  public func path(path: String) -> Int? { return resolve(keyPath: path) }
-  @available(*, deprecated=1.1.3, message="Use resolve(keyPath:)")
-  public func path(path: String) -> [[String : AnyObject]]? { return resolve(keyPath: path) }
-  @available(*, deprecated=1.1.3, message="Use resolve(keyPath:)")
-  public func path(path: String) -> [String : AnyObject]? { return resolve(keyPath: path) }
+  @available(*, deprecated: 1.1.3, message: "Use resolve(keyPath:)")
+  public func path(_ path: [SubscriptKind]) -> [String : AnyObject]? { return internalResolve(path) }
+  @available(*, deprecated: 1.1.3, message: "Use resolve(keyPath:)")
+  public func path<T>(_ path: String) -> T? { return resolve(keyPath: path) as? T }
+  @available(*, deprecated: 1.1.3, message: "Use resolve(keyPath:)")
+  public func path(_ path: String) -> String? { return resolve(keyPath: path) }
+  @available(*, deprecated: 1.1.3, message: "Use resolve(keyPath:)")
+  public func path(_ path: String) -> Int? { return resolve(keyPath: path) }
+  @available(*, deprecated: 1.1.3, message: "Use resolve(keyPath:)")
+  public func path(_ path: String) -> [[String : AnyObject]]? { return resolve(keyPath: path) }
+  @available(*, deprecated: 1.1.3, message: "Use resolve(keyPath:)")
+  public func path(_ path: String) -> [String : AnyObject]? { return resolve(keyPath: path) }
 
   /**
    Resolve key path to Dictionary

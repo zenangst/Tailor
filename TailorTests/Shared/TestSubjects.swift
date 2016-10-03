@@ -15,10 +15,10 @@ struct Job: Mappable {
   }
 }
 
-let dateTransformer = { (value: String) -> NSDate? in
-  let dateFormatter = NSDateFormatter()
+let dateTransformer = { (value: String) -> Date? in
+  let dateFormatter = DateFormatter()
   dateFormatter.dateFormat = "yyyy-MM-dd"
-  return dateFormatter.dateFromString(value)
+  return dateFormatter.date(from: value)
 }
 
 func ==(lhs: Job, rhs: Job) -> Bool {
@@ -30,7 +30,7 @@ class TestPersonClass: NSObject, Mappable {
   var firstName: String = ""
   var lastName: String? = ""
   var sex: Sex = .Unspecified
-  var birthDate: NSDate?
+  var birthDate: Date?
 
   required convenience init(_ map: [String : AnyObject]) {
     self.init()
@@ -41,10 +41,10 @@ class TestPersonClass: NSObject, Mappable {
       return Sex(rawValue: value)
     }
 
-    birthDate <- map.transform("birth_date") { (value: String) -> NSDate? in
-      let dateFormatter = NSDateFormatter()
+    birthDate <- map.transform("birth_date") { (value: String) -> Date? in
+      let dateFormatter = DateFormatter()
       dateFormatter.dateFormat = "yyyy-MM-dd"
-      return dateFormatter.dateFromString(value)
+      return dateFormatter.date(from: value)
     }
   }
 }
@@ -53,7 +53,7 @@ struct TestPersonStruct: Mappable, Equatable {
   var firstName: String = ""
   var lastName: String? = ""
   var sex: Sex?
-  var birthDate = NSDate(timeIntervalSince1970: 1)
+  var birthDate = Date(timeIntervalSince1970: 1)
   var job: Job? = nil
   var relatives = [TestPersonStruct]()
   let children = [TestPersonStruct]()

@@ -27,7 +27,7 @@ public extension Mappable {
    */
   public func property<T>(_ key: String, dictionary: T? = nil) -> T? {
     // TODO: Improve this to support nested attributes
-    let components = key.split(".")
+    let components = key.components(separatedBy: ".")
     let values = Mirror(reflecting: self)
       .children
       .filter({$0.0 == components.first})
@@ -37,24 +37,24 @@ public extension Mappable {
     var result = value as? T
 
     let tail = components.dropFirst()
-    let type:_MirrorType = _reflect(value)
+    let type = Mirror.init(reflecting: value)
 
-    if type.disposition == .optional && type.count != 0 {
-      let (_, some) = type[0]
-      result = some.value as? T
+    if type.displayStyle == .optional && type.children.count != 0,
+      let (_, value) = type.children.first {
+      result = value as? T
     }
 
     if let indexString = tail.first,
       let index = Int(indexString) {
-        guard let result = (value as? [T])?[index] else { return nil }
+      guard let result = (value as? [T])?[index] else { return nil }
 
-        if tail.count > 1 {
-          guard let range = key.range(of: indexString) else { return nil }
-          let key = key.substring(from: <#T##String.CharacterView corresponding to your index##String.CharacterView#>.index(range.lowerBound, offsetBy: 2))
-          return property(key, dictionary: result)
-        } else {
-          return result
-        }
+      if tail.count > 1 {
+        guard let range = key.range(of: indexString) else { return nil }
+        let key = key.substring(from: range.lowerBound)
+        return property(key, dictionary: result)
+      } else {
+        return result
+      }
     }
 
     return result
@@ -75,8 +75,8 @@ public extension Mappable {
   }
 
   /**
-  - Returns: A string based dictionary.
-  */
+   - Returns: A string based dictionary.
+   */
   public func types() -> [String : String] {
     var types = [String : String]()
     for tuple in Mirror(reflecting: self).children {

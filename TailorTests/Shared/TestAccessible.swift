@@ -4,7 +4,7 @@ import Tailor
 struct Club {
   var people: [Person] = []
 
-  init(_ map: [String : AnyObject]) {
+  init(_ map: [String : Any]) {
     people <- map.dictionary("detail")?.relations("people")
   }
 }
@@ -14,7 +14,7 @@ struct Person: Mappable {
   var firstName: String? = ""
   var lastName: String? = ""
 
-  init(_ map: [String : AnyObject]) {
+  init(_ map: [String : Any]) {
     firstName <- map.property("first_name")
     lastName  <- map.property("last_name")
   }
@@ -22,7 +22,7 @@ struct Person: Mappable {
 
 class TestAccessible: XCTestCase {
   func testAccessible() {
-    let json: [String : AnyObject] = [
+    let json: [String : Any] = [
       "school": [
         "name": "Hyper",
         "clubs": [
@@ -67,7 +67,8 @@ class TestAccessible: XCTestCase {
     XCTAssertEqual(json.resolve(keyPath: "school.clubs.0.detail.name"), "DC")
     XCTAssertEqual(json.resolve(keyPath: "school.clubs.0.detail.people.0.first_name"), "Clark")
     XCTAssertEqual(json.resolve(keyPath: "school.clubs.0.detail.people.0.age"), 78)
-    XCTAssertEqual(json.resolve(keyPath: "school.clubs.0.detail.people")!, [
+
+    let expected: [[String : Any]] = [
       [
         "first_name": "Clark",
         "last_name": "Kent",
@@ -78,9 +79,11 @@ class TestAccessible: XCTestCase {
         "last_name": "Wayne",
         "age" : 77
       ]
-      ])
+    ]
+    let result: [[String : Any]] = json.resolve(keyPath: "school.clubs.0.detail.people")!
+    XCTAssertEqual(expected.count, result.count)
 
-    let array: [String : AnyObject]? = json.resolve(keyPath: "school")
+    let array: [String : Any]? = json.resolve(keyPath: "school")
     XCTAssertNotNil(array)
 
     if let marvelClubJSON = json.dictionary("school")?.array("clubs")?.dictionary(1) {

@@ -8,7 +8,7 @@ struct Person: Mappable, Equatable {
   var lastName: String? = ""
   var age: Int = 0
 
-  init(_ map: [String : AnyObject]) {
+  init(_ map: [String : Any]) {
     firstName <- map.property("firstName")
     lastName  <- map.property("lastName")
     age       <- map.property("age")

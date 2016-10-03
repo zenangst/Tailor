@@ -10,7 +10,7 @@ enum Sex: String {
 struct Job: Mappable {
   var name: String = ""
 
-  init(_ map: [String : AnyObject]) {
+  init(_ map: [String : Any]) {
     name <- map.property("name")
   }
 }
@@ -32,7 +32,7 @@ class TestPersonClass: NSObject, Mappable {
   var sex: Sex = .Unspecified
   var birthDate: Date?
 
-  required convenience init(_ map: [String : AnyObject]) {
+  required convenience init(_ map: [String : Any]) {
     self.init()
     firstName <- map.property("firstName")
     lastName  <- map.property("lastName")
@@ -58,7 +58,7 @@ struct TestPersonStruct: Mappable, Equatable {
   var relatives = [TestPersonStruct]()
   let children = [TestPersonStruct]()
 
-  init(_ map: [String : AnyObject]) {
+  init(_ map: [String : Any]) {
     firstName <- map.property("firstName")
     lastName  <- map.property("lastName")
 
@@ -79,7 +79,7 @@ struct TestImmutable: SafeMappable {
   let job: Job
   let hobbies: [Job]
 
-  init(_ map: [String : AnyObject]) throws {
+  init(_ map: [String : Any]) throws {
     firstName = try <-map.property("firstName")
     lastName = try <-map.property("lastName")
     job = try <-map.relationOrThrow("job")
@@ -94,7 +94,7 @@ struct MultipleTypeStruct : Mappable {
   var people = [TestPersonStruct]()
   var peopleDictionary = [String : TestPersonStruct]()
 
-  init(_ map: [String : AnyObject]) {
+  init(_ map: [String : Any]) {
     stringArray <- map.property("stringArray")
     stringDictionary <- map.property("stringDictionary")
     boolProperty <- map.property("boolProperty")

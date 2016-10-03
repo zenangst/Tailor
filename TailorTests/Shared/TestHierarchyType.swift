@@ -4,7 +4,7 @@ import Tailor
 class Event: Mappable {
   var name: String = ""
 
-  required init(_ map: [String : AnyObject]) {
+  required init(_ map: [String : Any]) {
     self.name <- map.property("name")
   }
 }
@@ -12,7 +12,7 @@ class Event: Mappable {
 class PushEvent: Event {
   var SHA: String = ""
 
-  required init(_ map: [String : AnyObject]) {
+  required init(_ map: [String : Any]) {
     super.init(map)
 
     self.SHA <- map.property("sha")
@@ -22,7 +22,7 @@ class PushEvent: Event {
 class IssueEvent: Event {
   var number: Int = 0
 
-  required init(_ map: [String : AnyObject]) {
+  required init(_ map: [String : Any]) {
     super.init(map)
 
     self.number <- map.property("number")
@@ -30,7 +30,7 @@ class IssueEvent: Event {
 }
 
 extension Event: HierarchyType {
-  static func cluster(_ map: [String : AnyObject]) -> AnyObject {
+  static func cluster(_ map: [String : Any]) -> AnyObject {
     let kinds: [String: Event.Type] = [
       "push": PushEvent.self,
       "issue": IssueEvent.self
@@ -47,7 +47,7 @@ extension Event: HierarchyType {
 class Notification: Mappable {
   var events: [Event] = []
 
-  required init(_ map: [String : AnyObject]) {
+  required init(_ map: [String : Any]) {
     self.events <- map.relationsHierarchically("events")
   }
 }
@@ -69,7 +69,7 @@ class TestHierarchyType: XCTestCase {
       ]
     ]
 
-    let notification = Notification(json as [String : AnyObject])
+    let notification = Notification(json as [String : Any])
 
     let push = notification.events[0] as! PushEvent
     XCTAssertEqual(push.name, "Update README")

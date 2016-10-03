@@ -4,7 +4,7 @@ public protocol PathAccessible {
    - Parameter name: The key path, separated by dot
    - Returns: A child dictionary for that path, otherwise it returns nil
    */
-  func resolve(keyPath path: String) -> [String : AnyObject]?
+  func resolve(keyPath path: String) -> [String : Any]?
 }
 
 public extension PathAccessible {
@@ -19,13 +19,13 @@ public extension PathAccessible {
     for (kind, castedKind) in pairs {
       switch (kind, castedKind) {
       case (let .key(name), .key):
-        result = (result as? [String : AnyObject])?.dictionary(name)
+        result = (result as? [String : Any])?.dictionary(name)
       case (let .key(name), .index):
-        result = (result as? [String : AnyObject])?.array(name)
+        result = (result as? [String : Any])?.array(name)
       case (let .index(index), .key):
-        result = (result as? [[String : AnyObject]])?.dictionary(index)
+        result = (result as? [[String : Any]])?.dictionary(index)
       case (let .index(index), .index):
-        result = (result as? [[String : AnyObject]])?.array(index)
+        result = (result as? [[String : Any]])?.array(index)
       }
     }
 
@@ -36,7 +36,7 @@ public extension PathAccessible {
     if let index = Int(key) {
       return [index] as? T
     } else {
-      return (self as? [String : AnyObject])?[key] as? T
+      return (self as? [String : Any])?[key] as? T
     }
   }
 
@@ -66,7 +66,7 @@ public extension PathAccessible {
   }
 
   @available(*, deprecated: 1.1.3, message: "Use resolve(keyPath:)")
-  public func path(_ path: [SubscriptKind]) -> [String : AnyObject]? { return internalResolve(path) }
+  public func path(_ path: [SubscriptKind]) -> [String : Any]? { return internalResolve(path) }
   @available(*, deprecated: 1.1.3, message: "Use resolve(keyPath:)")
   public func path<T>(_ path: String) -> T? { return resolve(keyPath: path) as? T }
   @available(*, deprecated: 1.1.3, message: "Use resolve(keyPath:)")
@@ -74,17 +74,17 @@ public extension PathAccessible {
   @available(*, deprecated: 1.1.3, message: "Use resolve(keyPath:)")
   public func path(_ path: String) -> Int? { return resolve(keyPath: path) }
   @available(*, deprecated: 1.1.3, message: "Use resolve(keyPath:)")
-  public func path(_ path: String) -> [[String : AnyObject]]? { return resolve(keyPath: path) }
+  public func path(_ path: String) -> [[String : Any]]? { return resolve(keyPath: path) }
   @available(*, deprecated: 1.1.3, message: "Use resolve(keyPath:)")
-  public func path(_ path: String) -> [String : AnyObject]? { return resolve(keyPath: path) }
+  public func path(_ path: String) -> [String : Any]? { return resolve(keyPath: path) }
 
   /**
    Resolve key path to Dictionary
 
    - Parameter path: A key path string
-   - Returns: An Optional [String : AnyObject]
+   - Returns: An Optional [String : Any]
    */
-  func resolve(keyPath path: String) -> [String : AnyObject]? {
+  func resolve(keyPath path: String) -> [String : Any]? {
     return internalResolve(path)
   }
 
@@ -99,7 +99,7 @@ public extension PathAccessible {
       return resolveSubscript(path)
     }
 
-    let result: [String : AnyObject]? = internalResolve(keyPath)
+    let result: [String : Any]? = internalResolve(keyPath)
     return result?.property(key)
   }
 }

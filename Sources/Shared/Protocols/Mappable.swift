@@ -1,5 +1,5 @@
 public protocol Mappable {
-  init(_ map: [String : AnyObject])
+  init(_ map: [String : Any])
 }
 
 public extension Mappable {

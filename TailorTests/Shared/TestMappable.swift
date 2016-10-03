@@ -96,7 +96,7 @@ class TestMappable: XCTestCase {
 
   func testMapArrayOfObjects() {
     var testStruct = TestPersonStruct([:])
-    let relatives: [[String : AnyObject]] = [
+    let relatives: [[String : Any]] = [
       ["firstName" : "Mini" as AnyObject,
         "lastName" : "Swift" as AnyObject,
         "sex": "female" as AnyObject,
@@ -112,7 +112,7 @@ class TestMappable: XCTestCase {
 
   func testAppendingObjects() {
     var testStruct = TestPersonStruct([:])
-    let relatives: [[String : AnyObject]] = [
+    let relatives: [[String : Any]] = [
       ["firstName" : "Mini" as AnyObject,
         "lastName" : "Swift" as AnyObject,
         "sex": "female" as AnyObject,
@@ -128,7 +128,7 @@ class TestMappable: XCTestCase {
 
   func testAppendingObject() {
     var testStruct = TestPersonStruct([:])
-    let relatives: [String : AnyObject] = ["first" :
+    let relatives: [String : Any] = ["first" :
       ["firstName" : "Mini",
         "lastName" : "Swift",
         "sex": "female",
@@ -247,7 +247,7 @@ class TestMappable: XCTestCase {
       var state: State = .Closed
       var priority: Priority = .low
 
-      init(_ map: [String : AnyObject]) {
+      init(_ map: [String : Any]) {
         self.name <- map.property("name")
         self.state <- map.`enum`("state")
         self.priority <- map.`enum`("priority")
@@ -260,7 +260,7 @@ class TestMappable: XCTestCase {
       "priority": 2
     ] as [String : Any]
 
-    let issue = Issue(json as [String : AnyObject])
+    let issue = Issue(json as [String : Any])
     XCTAssertEqual(issue.name, "Swift 3 support")
     XCTAssertEqual(issue.state, State.Open)
     XCTAssertEqual(issue.priority, Priority.high)
@@ -306,7 +306,7 @@ class TestMappable: XCTestCase {
       var secret: String = ""
       var identity: String = ""
 
-      init(_ map: [String : AnyObject]) {
+      init(_ map: [String : Any]) {
         self.name <- map.resolve(keyPath: "info")?.property("name")
         self.trueName <- map.resolve(keyPath: "info.true_info")?.property("true_name")
         self.secret <- map.resolve(keyPath: "chaos.1.way.light.1")?.property("secret")
@@ -314,7 +314,7 @@ class TestMappable: XCTestCase {
       }
     }
 
-    let person = Person(json as [String : AnyObject])
+    let person = Person(json as [String : Any])
     XCTAssertEqual(person.name, "Elliot Alderson")
     XCTAssertEqual(person.trueName, "Mr. Robot")
     XCTAssertEqual(person.secret, "secret")

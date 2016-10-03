@@ -6,7 +6,7 @@ struct Book: Mappable {
   let pageCount: Int
   let website: URL?
 
-  init(_ map: [String : AnyObject]) {
+  init(_ map: [String : Any]) {
     name = <?map.property("name")
     pageCount = <?map.property("page_count")
     website = map.transform("website_url", transformer: URL.init(string: ))
@@ -29,7 +29,7 @@ class TestDefaultType: XCTestCase {
       "website_url": "https://www.objc.io/books/advanced-swift/"
     ] as [String : Any]
 
-    let book = Book(json as [String : AnyObject])
+    let book = Book(json as [String : Any])
     XCTAssertEqual(book.name, "Advanced Swift")
     XCTAssertEqual(book.pageCount, 400)
     XCTAssertEqual(book.website, URL(string: "https://www.objc.io/books/advanced-swift/"))

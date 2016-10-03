@@ -40,7 +40,7 @@ class TestInspectable: XCTestCase {
   }
 
   func testNestedAttributes() {
-    let data: [String : AnyObject] = ["firstName" : "Taylor" as AnyObject,
+    let data: [String : Any] = ["firstName" : "Taylor" as AnyObject,
       "lastName" : "Swift" as AnyObject,
       "sex": "female" as AnyObject,
       "birth_date": "2014-07-15" as AnyObject]

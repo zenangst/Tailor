@@ -87,7 +87,7 @@ struct TestImmutable: SafeMappable {
   }
 }
 
-struct MultipleTypeStruct : Mappable {
+struct MultipleTypeStruct: Mappable {
   var stringArray = [String]()
   var stringDictionary = [String : String]()
   var boolProperty = false

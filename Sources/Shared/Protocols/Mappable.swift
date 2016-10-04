@@ -87,5 +87,5 @@ public extension Mappable {
   }
 
   public func keys() -> [String] { return Mirror(reflecting: self).children.map { $0.0! } }
-  public func values() -> [Any]  { return Mirror(reflecting: self).children.map { $1 } }
+  public func values() -> [Any] { return Mirror(reflecting: self).children.map { $1 } }
 }

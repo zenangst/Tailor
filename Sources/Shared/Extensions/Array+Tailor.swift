@@ -4,7 +4,7 @@ public extension Array {
    - Parameter name: String
    - Returns: A mappable object array, otherwise it returns empty array
    */
-  func objects<T : Mappable>(_ name: String? = nil) -> [T] {
+  func objects<T: Mappable>(_ name: String? = nil) -> [T] {
     var objects = [T]()
 
     if let name = name {
@@ -27,7 +27,7 @@ public extension Array {
    - Parameter name: String
    - Returns: A mappable object array, otherwise it returns nil
    */
-  func objects<T : SafeMappable>(_ name: String? = nil) throws -> [T] {
+  func objects<T: SafeMappable>(_ name: String? = nil) throws -> [T] {
     var objects = [T]()
 
     if let name = name {

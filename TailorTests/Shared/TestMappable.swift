@@ -197,7 +197,7 @@ class TestMappable: XCTestCase {
     let multiTypeStruct = MultipleTypeStruct(
       [
         "stringArray" : ["a", "b", "c"],
-        "stringDictionary" : ["a" : "a" , "b" : "b", "c" : "c"],
+        "stringDictionary" : ["a" : "a", "b" : "b", "c" : "c"],
         "boolProperty" : true,
         "people" : [
           [
@@ -223,7 +223,7 @@ class TestMappable: XCTestCase {
     )
 
     XCTAssertEqual(multiTypeStruct.stringArray, ["a", "b", "c"])
-    XCTAssertEqual(multiTypeStruct.stringDictionary, ["a" : "a" , "b" : "b", "c" : "c"])
+    XCTAssertEqual(multiTypeStruct.stringDictionary, ["a" : "a", "b" : "b", "c" : "c"])
     XCTAssertEqual(multiTypeStruct.boolProperty, true)
     XCTAssertEqual(multiTypeStruct.people.first?.firstName, TestPersonStruct(["firstName" : "foo"]).firstName)
     XCTAssertEqual(multiTypeStruct.peopleDictionary["Mini"]?.firstName, TestPersonStruct(["firstName" : "Mini"]).firstName)

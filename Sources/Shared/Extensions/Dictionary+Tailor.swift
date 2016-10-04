@@ -42,12 +42,12 @@ public extension Dictionary {
    - Parameter name: The name of the property that you want to map
    - Returns: A mappable object directory, otherwise it returns nil
    */
-  func directory<T : Mappable>(_ name: String) -> [String : T]? {
+  func directory<T: Mappable>(_ name: String) -> [String : T]? {
     guard let key = name as? Key,
       let dictionary = self[key] as? [String : Any]
       else { return nil }
 
-    var directory = [String : T]()
+    var directory = [String: T]()
 
     for (key, value) in dictionary {
       guard let value = value as? [String : Any] else { continue }
@@ -135,7 +135,7 @@ public extension Dictionary {
    - Parameter name: The name of the property that you want to map
    - Returns: A mappable object, otherwise it returns nil
    */
-  func relation<T : Mappable>(_ name: String) -> T? {
+  func relation<T: Mappable>(_ name: String) -> T? {
     guard let key = name as? Key,
       let dictionary = self[key] as? [String : Any]
       else { return nil }
@@ -147,7 +147,7 @@ public extension Dictionary {
    - Parameter name: The name of the property that you want to map
    - Returns: A generic type if casting succeeds, otherwise it throws
    */
-  func relationOrThrow<T : Mappable>(_ name: String) throws -> T {
+  func relationOrThrow<T: Mappable>(_ name: String) throws -> T {
     guard let result: T = relation(name)
       else { throw MappableError.typeError(message: "Tried to get value for \(name) as \(T.self)") }
 
@@ -158,7 +158,7 @@ public extension Dictionary {
    - Parameter name: The name of the property that you want to map
    - Returns: A mappable object, otherwise it returns nil
    */
-  func relation<T : SafeMappable>(_ name: String) -> T? {
+  func relation<T: SafeMappable>(_ name: String) -> T? {
     guard let key = name as? Key,
       let dictionary = self[key] as? [String : Any]
       else { return nil }
@@ -178,7 +178,7 @@ public extension Dictionary {
    - Parameter name: The name of the property that you want to map
    - Returns: A generic type if casting succeeds, otherwise it throws
    */
-  func relationOrThrow<T : SafeMappable>(_ name: String) throws -> T {
+  func relationOrThrow<T: SafeMappable>(_ name: String) throws -> T {
     guard let result: T = relation(name)
       else { throw MappableError.typeError(message: "Tried to get value for \(name) as \(T.self)") }
 
@@ -194,7 +194,7 @@ public extension Dictionary {
    - Parameter name: The name of the property that you want to map
    - Returns: A mappable object array, otherwise it returns nil
    */
-  func relations<T : Mappable>(_ name: String) -> [T]? {
+  func relations<T: Mappable>(_ name: String) -> [T]? {
     guard let key = name as? Key,
       let array = self[key] as? [[String : Any]]
       else { return nil }
@@ -206,7 +206,7 @@ public extension Dictionary {
    - Parameter name: The name of the property that you want to map
    - Returns: A mappable object array, otherwise it throws
    */
-  func relationsOrThrow<T : Mappable>(_ name: String) throws -> [T] {
+  func relationsOrThrow<T: Mappable>(_ name: String) throws -> [T] {
     guard let result: [T] = relations(name)
       else { throw MappableError.typeError(message: "Tried to get value for \(name) as \(T.self)") }
 
@@ -217,7 +217,7 @@ public extension Dictionary {
    - Parameter name: The name of the property that you want to map
    - Returns: A mappable object array, otherwise it returns nil
    */
-  func relations<T : SafeMappable>(_ name: String) -> [T]? {
+  func relations<T: SafeMappable>(_ name: String) -> [T]? {
     guard let key = name as? Key,
       let array = self[key] as? [[String : Any]]
       else { return nil }
@@ -235,7 +235,7 @@ public extension Dictionary {
    - Parameter name: The name of the property that you want to map
    - Returns: A mappable object array, otherwise it throws
    */
-  func relationsOrThrow<T : SafeMappable>(_ name: String) throws -> [T] {
+  func relationsOrThrow<T: SafeMappable>(_ name: String) throws -> [T] {
     guard let result: [T] = relations(name)
       else { throw MappableError.typeError(message: "Tried to get value for \(name) as \(T.self)") }
 

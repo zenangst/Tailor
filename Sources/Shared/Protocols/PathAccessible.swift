@@ -59,7 +59,7 @@ public extension PathAccessible {
    - Returns: A tuple with the first key and the remaining key path
    */
   fileprivate func extractKey(_ path: String) -> (key: String, keyPath: String)? {
-    guard let lastSplit = path.split(".").last , path.contains(".") else { return nil }
+    guard let lastSplit = path.split(".").last, path.contains(".") else { return nil }
 
     return (key: lastSplit,
             keyPath: Array(path.split(".").dropLast()).joined(separator: "."))

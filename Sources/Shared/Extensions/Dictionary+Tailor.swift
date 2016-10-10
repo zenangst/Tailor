@@ -1,4 +1,8 @@
-import Foundation
+#if os(OSX)
+  import Foundation
+#else
+  import UIKit
+#endif
 // MARK: - Basic
 
 public extension Dictionary {

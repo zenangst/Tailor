@@ -1,3 +1,4 @@
+import Foundation
 // MARK: - Basic
 
 public extension Dictionary {
@@ -7,11 +8,17 @@ public extension Dictionary {
    - Returns: A generic type if casting succeeds, otherwise it returns nil
    */
   func property<T>(_ name: String) -> T? {
-    guard let key = name as? Key,
-      let value = self[key] as? T
-      else { return nil }
+    if let key = name as? Key {
+      if let value = self[key] as? T {
+        return value
+      }
 
-    return value
+      if let double = self[key] as? Double, T.self == CGFloat.self {
+        return CGFloat(double) as? T
+      }
+    }
+
+    return nil
   }
 
   /**

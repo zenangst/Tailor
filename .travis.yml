@@ -10,3 +10,6 @@ script:
 - xcodebuild test -project Tailor.xcodeproj -scheme Tailor-iOS -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6,OS=10.0'
 - xcodebuild clean build -project Tailor.xcodeproj -scheme Tailor-Mac -sdk macosx
 - xcodebuild test -project Tailor.xcodeproj -scheme Tailor-Mac -sdk macosx
+
+notifications:
+  email: false

@@ -105,4 +105,23 @@ class TestAccessible: XCTestCase {
 
     XCTAssertEqual(json.resolve(keyPath: "school.clubs.0.detail.people.1.first_name"), "Bruce")
   }
+
+  func testMappingFloats() {
+    let json: [String : Any] = [
+      "values" : [
+        "cgfloat" : CGFloat(10.0),
+        "float" : Float(10.0),
+        "double" : Double(10.0),
+        "generic": 10.0
+      ]
+    ]
+
+    XCTAssertEqual(json.resolve(keyPath: "values.cgfloat"), CGFloat(10.0))
+    XCTAssertEqual(json.resolve(keyPath: "values.float"), Float(10.0))
+    XCTAssertEqual(json.resolve(keyPath: "values.double"), Double(10.0))
+    XCTAssertEqual(json.resolve(keyPath: "values.generic"), CGFloat(10.0))
+    XCTAssertEqual(json.resolve(keyPath: "values.generic"), 10.0)
+    XCTAssertEqual(json.resolve(keyPath: "values.generic"), Double(10.0))
+    XCTAssertEqual(json.resolve(keyPath: "values.generic"), CGFloat(10.0))
+  }
 }

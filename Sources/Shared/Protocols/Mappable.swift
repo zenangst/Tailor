@@ -26,7 +26,6 @@ public extension Mappable {
    - Returns: An optional generic value.
    */
   public func property<T>(_ key: String, dictionary: T? = nil) -> T? {
-    // TODO: Improve this to support nested attributes
     let components = key.components(separatedBy: ".")
     let values = Mirror(reflecting: self)
       .children

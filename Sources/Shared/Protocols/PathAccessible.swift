@@ -19,13 +19,13 @@ public extension PathAccessible {
     for (kind, castedKind) in pairs {
       switch (kind, castedKind) {
       case (let .key(name), .key):
-        result = (result as? [String : Any])?.dictionary(name)
+        result = (result as? [String : Any])?.dictionary(name) ?? [:]
       case (let .key(name), .index):
-        result = (result as? [String : Any])?.array(name)
+        result = (result as? [String : Any])?.array(name) ?? [:]
       case (let .index(index), .key):
-        result = (result as? [[String : Any]])?.dictionary(index)
+        result = (result as? [[String : Any]])?.dictionary(index) ?? [:]
       case (let .index(index), .index):
-        result = (result as? [[String : Any]])?.array(index)
+        result = (result as? [[String : Any]])?.array(index) ?? [:]
       }
     }
 

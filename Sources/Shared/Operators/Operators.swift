@@ -3,14 +3,14 @@ prefix operator <?
 infix operator <-
 infix operator <+
 
-public prefix func <-<T>(rhs: T?) throws -> T {
+public prefix func <- <T>(rhs: T?) throws -> T {
   guard let rhs = rhs else {
     throw MappableError.typeError(message: "Unable to unrwap value")
   }
   return rhs
 }
 
-public prefix func <-<T>(rhs: T) throws -> T {
+public prefix func <- <T>(rhs: T) throws -> T {
   return rhs
 }
 

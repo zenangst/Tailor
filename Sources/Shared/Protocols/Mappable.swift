@@ -26,7 +26,6 @@ public extension Mappable {
    - Returns: An optional generic value.
    */
   public func property<T>(_ key: String, dictionary: T? = nil) -> T? {
-    // TODO: Improve this to support nested attributes
     let components = key.components(separatedBy: ".")
     let values = Mirror(reflecting: self)
       .children
@@ -39,7 +38,7 @@ public extension Mappable {
     let tail = components.dropFirst()
     let type = Mirror.init(reflecting: value)
 
-    if type.displayStyle == .optional && type.children.count != 0,
+    if type.displayStyle == .optional && !type.children.isEmpty,
       let (_, value) = type.children.first {
       result = value as? T
     }

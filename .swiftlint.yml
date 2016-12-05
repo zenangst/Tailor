@@ -1,0 +1,40 @@
+disabled_rules:
+  - nesting
+  - missing_docs
+opt_in_rules:
+  - empty_count
+included:
+  - Sources
+excluded:
+  - Carthage
+  - Pods
+force_cast: warning
+force_try:
+  severity: warning
+line_length: 350
+type_body_length:
+  - 300
+  - 400
+file_length:
+  warning: 850
+  error: 1200
+cyclomatic_complexity:
+  warning: 20
+  error: 30
+type_name:
+  min_length: 3
+  max_length:
+    warning: 40
+    error: 50
+  excluded: iPhone
+variable_name:
+  min_length:
+    error: 2
+  excluded:
+    - x
+    - y
+    - id
+    - URL
+    - GlobalAPIKey
+reporter: "xcode"
+missing_docs: internal

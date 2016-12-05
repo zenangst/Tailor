@@ -24,7 +24,7 @@ struct Person: Mappable {
   var firstName: String? = ""
   var lastName: String? = ""
 
-  init(_ map: JSONDictionary) {
+  init(_ map: [String : Any]) {
     firstName <- map.property("first_name")
     lastName  <- map.property("last_name")
   }
@@ -61,7 +61,7 @@ struct Person: Mappable {
   var lastName: String? = ""
   var spouse: Person?
 
-  init(_ map: JSONDictionary) {
+  init(_ map: [String : Any]) {
     firstName <- map.property("first_name")
     lastName  <- map.property("last_name")
     spouse    <- map.relation("spouse")
@@ -87,7 +87,7 @@ struct Person: Mappable {
   var spouse: Person?
   var parents = [Person]()
 
-  init(_ map: JSONDictionary) {
+  init(_ map: [String : Any]) {
     firstName <- map.property("first_name")
     lastName  <- map.property("last_name")
     spouse    <- map.relation("spouse")
@@ -118,7 +118,7 @@ struct ImmutablePerson: SafeMappable {
   let spouse: Person
   let parents = [Person]()
 
-  init(_ map: JSONDictionary) throws {
+  init(_ map: [String : Any]) throws {
     firstName = try <-map.property("firstName")
     lastName = try <-map.property("lastName")
     spouse = try <-map.relationOrThrow("spouse")
@@ -145,7 +145,7 @@ struct Person: Mappable {
   var parents = [Person]()
   var birthDate = NSDate?
 
-  init(_ map: JSONDictionary) {
+  init(_ map: [String : Any]) {
     firstName <- map.property("first_name")
     lastName  <- map.property("last_name")
     spouse    <- map.relation("spouse")

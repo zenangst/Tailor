@@ -1,4 +1,3 @@
-import XCTest
 import Tailor
 import Quick
 import Nimble

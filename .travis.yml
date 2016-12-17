@@ -4,6 +4,7 @@ language: objective-c
 before_install:
 - brew update
 - if brew outdated | grep -qx xctool; then brew upgrade xctool; fi
+- pod install
 
 script:
 - xcodebuild clean build -project Tailor.xcodeproj -scheme Tailor-iOS -sdk iphonesimulator

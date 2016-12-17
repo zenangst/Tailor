@@ -15,7 +15,7 @@ public extension Mappable {
       .map { $1 }.first
 
     guard let objectValue = value as? T else {
-      throw MappableError.typeError(message: "Tried to get value \(value!) for \(key) as \(T.self) when expecting \(types()[key]!)")
+      throw MappableError.typeError(message: "Tried to get value \(value) for \(key) as \(T.self) when expecting \(types()[key])")
     }
 
     return objectValue

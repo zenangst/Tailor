@@ -1,4 +1,5 @@
-import XCTest
+import Quick
+import Nimble
 import Tailor
 
 class Event: Mappable {
@@ -52,31 +53,61 @@ class Notification: Mappable {
   }
 }
 
-class TestHierarchyType: XCTestCase {
-  func testHierarchyType() {
-    let json = [
-      "events": [
-        [
-          "type": "push",
-          "name": "Update README",
-          "sha": "a8037a7bda800c51ee1aae557729a9b16e8e57fe"
-        ],
-        [
-          "type": "issue",
-          "name": "Add HierarchyType",
-          "number": 3
-        ]
-      ]
-    ]
+class TestHierarchyType: QuickSpec {
+    override func spec() {
 
-    let notification = Notification(json as [String : Any])
+        describe("hierarchy type") {
 
-    let push = notification.events[0] as! PushEvent
-    XCTAssertEqual(push.name, "Update README")
-    XCTAssertEqual(push.SHA, "a8037a7bda800c51ee1aae557729a9b16e8e57fe")
+            var json: [String : Any]!
+            var notification: Notification!
+            var issue: IssueEvent!
+            var push: PushEvent!
 
-    let issue = notification.events[1] as! IssueEvent
-    XCTAssertEqual(issue.name, "Add HierarchyType")
-    XCTAssertEqual(issue.number, 3)
-  }
+            beforeEach {
+                json = [
+                    "events": [
+                        [
+                            "type": "push",
+                            "name": "Update README",
+                            "sha": "a8037a7bda800c51ee1aae557729a9b16e8e57fe"
+                        ],
+                        [
+                            "type": "issue",
+                            "name": "Add HierarchyType",
+                            "number": 3
+                        ]
+                    ]
+                ]
+                notification = Notification(json as [String : Any])
+                push = notification.events[0] as! PushEvent
+                issue = notification.events[1] as! IssueEvent
+            }
+
+            context("push") {
+
+                it("has the correct push name") {
+                    expect(push.name).to(equal("Update README"))
+                }
+
+                it("has the correct push SHA") {
+                    expect(push.SHA).to(equal("a8037a7bda800c51ee1aae557729a9b16e8e57fe"))
+                }
+
+            }
+
+            context("issue") {
+
+                it("has the correct issue name") {
+                    expect(issue.name).to(equal("Add HierarchyType"))
+                }
+
+                it("has the correct issue number") {
+                    expect(issue.number).to(equal(3))
+                }
+
+            }
+
+        }
+
+    }
 }

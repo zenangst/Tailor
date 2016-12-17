@@ -5,7 +5,7 @@ before_install:
 - brew update
 - if brew outdated | grep -qx xctool; then brew upgrade xctool; fi
 - travis_wait 25 pod repo update --silent
-- pod install && pod update
+- pod install
 
 script:
 - xcodebuild clean build -workspace Tailor.xcworkspace -scheme Tailor-iOS -sdk iphonesimulator

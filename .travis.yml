@@ -8,10 +8,10 @@ before_install:
 - pod install && pod update
 
 script:
-- xcodebuild clean build -project Tailor.xcodeproj -scheme Tailor-iOS -sdk iphonesimulator
-- xcodebuild test -project Tailor.xcodeproj -scheme Tailor-iOS -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6,OS=10.0'
-- xcodebuild clean build -project Tailor.xcodeproj -scheme Tailor-Mac -sdk macosx
-- xcodebuild test -project Tailor.xcodeproj -scheme Tailor-Mac -sdk macosx
+- xcodebuild clean build -workspace Tailor.xcworkspace -scheme Tailor-iOS -sdk iphonesimulator
+- xcodebuild test -workspace Tailor.xcworkspace -scheme Tailor-iOS -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6,OS=10.0'
+- xcodebuild clean build -workspace Tailor.xcworkspace -scheme Tailor-Mac -sdk macosx
+- xcodebuild test -workspace Tailor.xcworkspace -scheme Tailor-Mac -sdk macosx
 
 notifications:
   email: false

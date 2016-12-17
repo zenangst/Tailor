@@ -1,5 +1,6 @@
-// MARK: - Error
+// swiftlint:disable type_name
 
+// MARK: - Error
 public enum MappableError: Error {
   case typeError(message: String)
 }

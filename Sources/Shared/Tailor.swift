@@ -1,5 +1,4 @@
 // MARK: - Error
-
 public enum MappableError: Error {
   case typeError(message: String)
 }

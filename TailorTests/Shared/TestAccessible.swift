@@ -1,4 +1,5 @@
-import XCTest
+import Quick
+import Nimble
 import Tailor
 
 struct Club {
@@ -20,108 +21,172 @@ struct Person: Mappable {
   }
 }
 
-class TestAccessible: XCTestCase {
-  func testAccessible() {
-    let json: [String : Any] = [
-      "school": [
-        "name": "Hyper",
-        "clubs": [
-          [
-            "detail": [
-              "name": "DC",
-              "people": [
-                [
-                  "first_name": "Clark",
-                  "last_name": "Kent",
-                  "age" : 78
-                ],
-                [
-                  "first_name": "Bruce",
-                  "last_name": "Wayne",
-                  "age" : 77
+class TestAccessible: QuickSpec {
+    override func spec() {
+        describe("test accessible") {
+            var json: [String : Any]!
+            var expected: [[String : Any]]!
+            var result: [[String : Any]]!
+            var array: [String : Any]?
+            var marvelClubJSON: [String : Any]!
+            var club: Club!
+            var tony: Person!
+            var hulk: Person!
+
+            beforeEach {
+                json = [
+                    "school": [
+                        "name": "Hyper",
+                        "clubs": [
+                            [
+                                "detail": [
+                                    "name": "DC",
+                                    "people": [
+                                        [
+                                            "first_name": "Clark",
+                                            "last_name": "Kent",
+                                            "age" : 78
+                                        ],
+                                        [
+                                            "first_name": "Bruce",
+                                            "last_name": "Wayne",
+                                            "age" : 77
+                                        ]
+                                    ]
+                                ]
+                            ],
+                            [
+                                "detail": [
+                                    "name": "Marvel",
+                                    "people": [
+                                        [
+                                            "first_name": "Tony",
+                                            "last_name": "Stark",
+                                            "age" : 53
+                                        ],
+                                        [
+                                            "first_name": "Bruce",
+                                            "last_name": "Banner",
+                                            "age" : 54
+                                        ]
+                                    ]
+                                ]
+                            ]
+                        ]
+                    ]
                 ]
-              ]
-            ]
-          ],
-          [
-            "detail": [
-              "name": "Marvel",
-              "people": [
-                [
-                  "first_name": "Tony",
-                  "last_name": "Stark",
-                  "age" : 53
-                ],
-                [
-                  "first_name": "Bruce",
-                  "last_name": "Banner",
-                  "age" : 54
+
+                expected =  [
+                    [
+                        "first_name": "Clark",
+                        "last_name": "Kent",
+                        "age" : 78
+                    ],
+                    [
+                        "first_name": "Bruce",
+                        "last_name": "Wayne",
+                        "age" : 77
+                    ]
                 ]
-              ]
-            ]
-          ]
-        ]
-      ]
-    ]
 
-    XCTAssertEqual(json.resolve(keyPath: "school.clubs.0.detail.name"), "DC")
-    XCTAssertEqual(json.resolve(keyPath: "school.clubs.0.detail.people.0.first_name"), "Clark")
-    XCTAssertEqual(json.resolve(keyPath: "school.clubs.0.detail.people.0.age"), 78)
+                result = json.resolve(keyPath: "school.clubs.0.detail.people")!
+                array = json.resolve(keyPath: "school")
+                marvelClubJSON = json.dictionary("school")?.array("clubs")?.dictionary(1)
+                club = Club(marvelClubJSON)
+                tony = club.people[0]
+                hulk = club.people[1]
+            }
 
-    let expected: [[String : Any]] = [
-      [
-        "first_name": "Clark",
-        "last_name": "Kent",
-        "age" : 78
-      ],
-      [
-        "first_name": "Bruce",
-        "last_name": "Wayne",
-        "age" : 77
-      ]
-    ]
-    let result: [[String : Any]] = json.resolve(keyPath: "school.clubs.0.detail.people")!
-    XCTAssertEqual(expected.count, result.count)
+            it("has the correct detail name") {
+                expect(json.resolve(keyPath: "school.clubs.0.detail.name")).to(equal("DC"))
+            }
 
-    let array: [String : Any]? = json.resolve(keyPath: "school")
-    XCTAssertNotNil(array)
+            it("has the correct first name") {
+                expect(json.resolve(keyPath: "school.clubs.0.detail.people.0.first_name")).to(equal("Clark"))
+            }
 
-    if let marvelClubJSON = json.dictionary("school")?.array("clubs")?.dictionary(1) {
-      let club = Club(marvelClubJSON)
+            it("has the correct age") {
+                expect(json.resolve(keyPath: "school.clubs.0.detail.people.0.age")).to(equal(78))
+            }
 
-      let tony = club.people[0]
+            it("Has the correct count") {
+                expect(expected.count).to(equal(result.count))
+            }
 
-      XCTAssertEqual(tony.firstName, "Tony")
-      XCTAssertEqual(tony.lastName, "Stark")
+            it("has a non nil array") {
+                expect(array).toNot(beNil())
+            }
 
-      let hulk = club.people[1]
+            it("has the right first name for iron man") {
+                expect(tony.firstName).to(equal("Tony"))
+            }
 
-      XCTAssertEqual(hulk.firstName, "Bruce")
-      XCTAssertEqual(hulk.lastName, "Banner")
+            it("has the right last name for iron man") {
+                expect(tony.lastName).to(equal("Stark"))
+            }
+
+            it("has the right first name for hulk") {
+                expect(hulk.firstName).to(equal("Bruce"))
+            }
+
+            it("has the right last name for hulk") {
+                expect(hulk.lastName).to(equal("Banner"))
+            }
+
+            it("has the right school name for DC") {
+                expect(json.resolve(keyPath: "school.clubs.0.detail.name")).to(equal("DC"))
+            }
+
+            it("has the right school name for Marvel") {
+                expect(json.resolve(keyPath: "school.clubs.1.detail.name")).to(equal("Marvel"))
+            }
+
+            it("has the right first name through keypath for hulk") {
+                expect(json.resolve(keyPath: "school.clubs.0.detail.people.1.first_name")).to(equal("Bruce"))
+            }
+
+        }
+
+        describe("mapping floats") {
+            var json: [String : Any]!
+
+            beforeEach {
+                json = [
+                    "values" : [
+                        "cgfloat" : CGFloat(10.0),
+                        "float" : Float(10.0),
+                        "double" : Double(10.0),
+                        "generic": 10.0
+                    ]
+                ]
+            }
+
+            it("has the correct non-generic cgfloat value") {
+                expect(json.resolve(keyPath: "values.cgfloat")).to(equal(CGFloat(10.0)))
+            }
+
+            it("has the correct non-generic float value") {
+                expect(json.resolve(keyPath: "values.float")).to(equal(Float(10.0)))
+            }
+
+            it("has the correct non-generic double value") {
+                expect(json.resolve(keyPath: "values.double")).to(equal(Double(10.0)))
+            }
+
+            it("has the correct generic value") {
+                expect(json.resolve(keyPath: "values.generic")).to(equal(10.0))
+            }
+
+            it("has the correct generic CGFloat value") {
+                expect(json.resolve(keyPath: "values.generic")).to(equal(CGFloat(10.0)))
+            }
+
+            it("has the correct generic double value") {
+                expect(json.resolve(keyPath: "values.generic")).to(equal(Double(10.0)))
+            }
+
+        }
+
     }
 
-    XCTAssertEqual(json.resolve(keyPath: "school.clubs.0.detail.name"), "DC")
-    XCTAssertEqual(json.resolve(keyPath: "school.clubs.1.detail.name"), "Marvel")
-
-    XCTAssertEqual(json.resolve(keyPath: "school.clubs.0.detail.people.1.first_name"), "Bruce")
-  }
-
-  func testMappingFloats() {
-    let json: [String : Any] = [
-      "values" : [
-        "cgfloat" : CGFloat(10.0),
-        "float" : Float(10.0),
-        "double" : Double(10.0),
-        "generic": 10.0
-      ]
-    ]
-
-    XCTAssertEqual(json.resolve(keyPath: "values.cgfloat"), CGFloat(10.0))
-    XCTAssertEqual(json.resolve(keyPath: "values.float"), Float(10.0))
-    XCTAssertEqual(json.resolve(keyPath: "values.double"), Double(10.0))
-    XCTAssertEqual(json.resolve(keyPath: "values.generic"), CGFloat(10.0))
-    XCTAssertEqual(json.resolve(keyPath: "values.generic"), 10.0)
-    XCTAssertEqual(json.resolve(keyPath: "values.generic"), Double(10.0))
-    XCTAssertEqual(json.resolve(keyPath: "values.generic"), CGFloat(10.0))
-  }
 }

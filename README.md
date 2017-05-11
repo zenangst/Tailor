@@ -189,7 +189,7 @@ dictionary.string("key")
 You can also use `value(forKey:ofType:)`, it works like this.
 
 ```swift
-dictionary.value(forKey: "key", ofType: Boolean.self)
+dictionary.value(forKey: "key", ofType: Bool.self)
 dictionary.value(forKey: "key", ofType: Double.self)
 dictionary.value(forKey: "key", ofType: Float.self)
 dictionary.value(forKey: "key", ofType: Int.self)

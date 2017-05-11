@@ -101,7 +101,14 @@ public extension Dictionary {
     }
 
     if let string = self[key] as? String {
-      return string == "true" ? true : false
+
+      if ["true", "1"].contains(string.lowercased()) {
+        return true
+      } else if ["false", "0"].contains(string.lowercased()) {
+        return false
+      }
+
+      return nil
     } else if let number = self[key] as? NSNumber {
       return number.boolValue
     } else if let boolean = self[key] as? Bool {

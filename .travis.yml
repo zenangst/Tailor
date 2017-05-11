@@ -11,7 +11,7 @@ before_install:
 script:
   - xcodebuild clean
   - xcodebuild clean build -project Tailor.xcodeproj -scheme Tailor-iOS -sdk iphonesimulator | xcpretty
-  - xcodebuild test -project Tailor.xcodeproj -scheme Tailor-iOS -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6,OS=10.3' | xcpretty
+  - xcodebuild test -project Tailor.xcodeproj -scheme Tailor-iOS -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6,OS=10.2' | xcpretty
   - xcodebuild clean build -project Tailor.xcodeproj -scheme Tailor-Mac -sdk macosx | xcpretty
   - xcodebuild test -project Tailor.xcodeproj -scheme Tailor-Mac -sdk macosx | xcpretty
   - xcodebuild -project Tailor.xcodeproj -scheme "Tailor-tvOS" -destination 'platform=tvOS Simulator,name=Apple TV 1080p,OS=10.1' clean build | xcpretty

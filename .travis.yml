@@ -12,7 +12,7 @@ script:
   - xcodebuild clean build -project Tailor.xcodeproj -scheme Tailor-iOS -sdk iphonesimulator
   - xcodebuild test -project Tailor.xcodeproj -scheme Tailor-iOS -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6,OS=10.3'
   - xcodebuild clean build -project Tailor.xcodeproj -scheme Tailor-Mac -sdk macosx
-  - xcodebuild test -project Tailor.xcodeproj -scheme Tailor-Mac -sdk macosxy
+  - xcodebuild test -project Tailor.xcodeproj -scheme Tailor-Mac -sdk macosx
   - xcodebuild -project Tailor.xcodeproj -scheme "Tailor-tvOS" -destination 'platform=tvOS Simulator,name=Apple TV 1080p,OS=10.1' clean build
   - xcodebuild -project Tailor.xcodeproj -scheme "Tailor-tvOS" -destination 'platform=tvOS Simulator,name=Apple TV 1080p,OS=10.1' -enableCodeCoverage YES test
 

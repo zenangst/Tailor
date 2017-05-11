@@ -34,4 +34,3 @@ Carthage
 
 # SPM
 .build/
-Podfile.lock

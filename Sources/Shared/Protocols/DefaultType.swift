@@ -17,6 +17,12 @@ extension Int: DefaultType {
   }
 }
 
+extension Double: DefaultType {
+  public static var defaultValue: Double {
+    return 0
+  }
+}
+
 extension Float: DefaultType {
   public static var defaultValue: Float {
     return 0

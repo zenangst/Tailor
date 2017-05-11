@@ -7,6 +7,125 @@
 
 public extension Dictionary {
 
+  /// Map value using key into Double
+  ///
+  /// - Parameter name: The name of the key.
+  /// - Returns: An optional Double
+  func double(_ name: String) -> Double? {
+    if let value: Float = property(name) {
+      return Double(value)
+    }
+
+    if let value: Int = property(name) {
+      return Double(value)
+    }
+
+    if let value: String = property(name) {
+      return Double(value)
+    }
+
+    return property(name)
+  }
+
+  /// Map value using key to Float
+  ///
+  /// - Parameter name: The name of the key.
+  /// - Returns: An optional Float
+  func float(_ name: String) -> Float? {
+    if let value: Double = property(name) {
+      return Float(value)
+    }
+
+    if let value: Int = property(name) {
+      return Float(value)
+    }
+
+    if let value: String = property(name) {
+      return Float(value)
+    }
+
+    return property(name)
+  }
+
+  /// Map value using key to Int
+  ///
+  /// - Parameter name: The name of the key.
+  /// - Returns: An optional Int
+  func int(_ name: String) -> Int? {
+    if let value: Double = property(name) {
+      return Int(value)
+    }
+
+    if let value: Float = property(name) {
+      return Int(value)
+    }
+
+    if let value: String = property(name) {
+      if let firstCharacter = value.characters.first, value.characters.count > 1 {
+        return Int(String(firstCharacter))
+      }
+
+      return Int(value)
+    }
+
+    return property(name)
+  }
+
+  /// Map value using key to String
+  ///
+  /// - Parameter name: The name of the key.
+  /// - Returns: An optional String
+  func string(_ name: String) -> String? {
+    if let value: Float = property(name) {
+      return String(value)
+    }
+
+    if let value: Double = property(name) {
+      return String(value)
+    }
+
+    if let value: Int = property(name) {
+      return String(value)
+    }
+
+    return property(name)
+  }
+
+  /// A generic method that maps a value from a key to a specific type.
+  ///
+  /// - Parameters:
+  ///   - forKey: The key that holds the value that should be mapped.
+  ///   - ofType: The type that should be used for casting.
+  /// - Returns: An optional value of the inferred type.
+  func value<T>(forKey: String, ofType: T.Type) -> T? {
+    guard let key = forKey as? Key else {
+      return nil
+    }
+
+    guard let value = self[key] else {
+      return nil
+    }
+
+    if let value = value as? T {
+      return value
+    } else {
+      switch ofType {
+      case is Double.Type:
+        return double(forKey) as? T
+      case is Float.Type:
+        return float(forKey) as? T
+      case is String.Type:
+        return string(forKey) as? T
+      case is Int.Type:
+        return int(forKey) as? T
+      default:
+        assertionFailure("Unsupported type: \(ofType)")
+      }
+    }
+
+    return nil
+  }
+
   /**
    - Parameter name: The name of the property that you want to map
    - Returns: A generic type if casting succeeds, otherwise it returns nil

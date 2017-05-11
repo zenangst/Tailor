@@ -1,8 +1,81 @@
 # Change Log
 
-## [Unreleased](https://github.com/zenangst/Tailor/tree/HEAD)
+## [2.2.0](https://github.com/zenangst/Tailor/tree/2.2.0) (2017-05-11)
+[Full Changelog](https://github.com/zenangst/Tailor/compare/2.1.0...2.2.0)
 
-[Full Changelog](https://github.com/zenangst/Tailor/compare/1.1.2...HEAD)
+**Merged pull requests:**
+
+- Add support for mapping booleans [\#64](https://github.com/zenangst/Tailor/pull/64) ([zenangst](https://github.com/zenangst))
+- Fix Carthage build [\#63](https://github.com/zenangst/Tailor/pull/63) ([zenangst](https://github.com/zenangst))
+
+## [2.1.0](https://github.com/zenangst/Tailor/tree/2.1.0) (2017-05-11)
+[Full Changelog](https://github.com/zenangst/Tailor/compare/2.0.2...2.1.0)
+
+**Closed issues:**
+
+- Getting error when using JSONDictionary [\#57](https://github.com/zenangst/Tailor/issues/57)
+- Refactor tests with Quick [\#22](https://github.com/zenangst/Tailor/issues/22)
+
+**Merged pull requests:**
+
+- Improve/mapping default types [\#62](https://github.com/zenangst/Tailor/pull/62) ([zenangst](https://github.com/zenangst))
+- Refactored Tests with Quick [\#60](https://github.com/zenangst/Tailor/pull/60) ([heshamsalman](https://github.com/heshamsalman))
+
+## [2.0.2](https://github.com/zenangst/Tailor/tree/2.0.2) (2016-12-05)
+[Full Changelog](https://github.com/zenangst/Tailor/compare/2.0.1...2.0.2)
+
+**Merged pull requests:**
+
+- Feature swiftlint [\#58](https://github.com/zenangst/Tailor/pull/58) ([zenangst](https://github.com/zenangst))
+- Add test for mapping floats [\#56](https://github.com/zenangst/Tailor/pull/56) ([zenangst](https://github.com/zenangst))
+
+## [2.0.1](https://github.com/zenangst/Tailor/tree/2.0.1) (2016-10-10)
+[Full Changelog](https://github.com/zenangst/Tailor/compare/2.0.0...2.0.1)
+
+**Merged pull requests:**
+
+- Fix/mapping double to cgfloat [\#55](https://github.com/zenangst/Tailor/pull/55) ([zenangst](https://github.com/zenangst))
+
+## [2.0.0](https://github.com/zenangst/Tailor/tree/2.0.0) (2016-10-03)
+[Full Changelog](https://github.com/zenangst/Tailor/compare/1.3.0...2.0.0)
+
+**Merged pull requests:**
+
+- Swift 3 [\#54](https://github.com/zenangst/Tailor/pull/54) ([zenangst](https://github.com/zenangst))
+
+## [1.3.0](https://github.com/zenangst/Tailor/tree/1.3.0) (2016-09-22)
+[Full Changelog](https://github.com/zenangst/Tailor/compare/1.2.4...1.3.0)
+
+**Merged pull requests:**
+
+- Add support for tvOS [\#52](https://github.com/zenangst/Tailor/pull/52) ([zenangst](https://github.com/zenangst))
+
+## [1.2.4](https://github.com/zenangst/Tailor/tree/1.2.4) (2016-09-22)
+[Full Changelog](https://github.com/zenangst/Tailor/compare/1.2.3...1.2.4)
+
+**Merged pull requests:**
+
+- Remove all references to Sugar [\#51](https://github.com/zenangst/Tailor/pull/51) ([zenangst](https://github.com/zenangst))
+
+## [1.2.3](https://github.com/zenangst/Tailor/tree/1.2.3) (2016-09-09)
+[Full Changelog](https://github.com/zenangst/Tailor/compare/1.2.2...1.2.3)
+
+## [1.2.2](https://github.com/zenangst/Tailor/tree/1.2.2) (2016-09-08)
+[Full Changelog](https://github.com/zenangst/Tailor/compare/1.2.1...1.2.2)
+
+**Merged pull requests:**
+
+- Update podspec version [\#50](https://github.com/zenangst/Tailor/pull/50) ([onmyway133](https://github.com/onmyway133))
+
+## [1.2.1](https://github.com/zenangst/Tailor/tree/1.2.1) (2016-08-30)
+[Full Changelog](https://github.com/zenangst/Tailor/compare/1.2.0...1.2.1)
+
+**Merged pull requests:**
+
+- Improve/resolve [\#49](https://github.com/zenangst/Tailor/pull/49) ([zenangst](https://github.com/zenangst))
+
+## [1.2.0](https://github.com/zenangst/Tailor/tree/1.2.0) (2016-08-08)
+[Full Changelog](https://github.com/zenangst/Tailor/compare/1.1.2...1.2.0)
 
 **Merged pull requests:**
 

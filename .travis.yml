@@ -9,6 +9,7 @@ before_install:
   - travis_wait 35; bin/bootstrap-if-needed
 
 script:
+  - xcodebuild clean
   - xcodebuild clean build -project Tailor.xcodeproj -scheme Tailor-iOS -sdk iphonesimulator | xcpretty
   - xcodebuild test -project Tailor.xcodeproj -scheme Tailor-iOS -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6,OS=10.3' | xcpretty
   - xcodebuild clean build -project Tailor.xcodeproj -scheme Tailor-Mac -sdk macosx | xcpretty

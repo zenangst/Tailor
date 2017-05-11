@@ -15,7 +15,7 @@ public extension Mappable {
       .map { $1 }.first
 
     guard let objectValue = value as? T else {
-      throw MappableError.typeError(message: "Tried to get value \(value) for \(key) as \(T.self) when expecting \(types()[key])")
+      throw MappableError.typeError(message: "Tried to get value \(String(describing: value)) for \(key) as \(T.self) when expecting \(String(describing: types()[key]))")
     }
 
     return objectValue
@@ -63,7 +63,7 @@ public extension Mappable {
    - Returns: A key-value dictionary.
    */
   public func properties() -> [String : Any] {
-    var properties = [String : Any]()
+    var properties = [String: Any]()
 
     for tuple in Mirror(reflecting: self).children {
       guard let key = tuple.label else { continue }
@@ -77,7 +77,7 @@ public extension Mappable {
    - Returns: A string based dictionary.
    */
   public func types() -> [String : String] {
-    var types = [String : String]()
+    var types = [String: String]()
     for tuple in Mirror(reflecting: self).children {
       guard let key = tuple.label else { continue }
       types[key] = "\(Mirror(reflecting: tuple.value).subjectType)"

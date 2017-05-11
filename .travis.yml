@@ -1,12 +1,12 @@
-osx_image: xcode8
+osx_image: xcode8.2
 language: objective-c
 
+cache:
+  directories:
+    - Carthage
+
 before_install:
-- gem install xcpretty
-- brew update
-- if brew outdated | grep -qx xctool; then brew upgrade xctool; fi
-- travis_wait 25 pod repo update --silent
-- pod install
+  - travis_wait 35; bin/bootstrap-if-needed
 
 script:
 - xcodebuild clean build -workspace Tailor.xcworkspace -scheme Tailor-iOS -sdk iphonesimulator | xcpretty

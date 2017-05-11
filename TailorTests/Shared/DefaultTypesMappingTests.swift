@@ -12,6 +12,9 @@ class TestMappingDefaultTypes: QuickSpec {
         "name" : "Swedish Chef",
         "int": 1,
         "float": 2.5,
+        "bool" : true,
+        "string_bool" : "true",
+        "string_number_bool" : "1",
         "string": "1.25",
         "array" : [
           "foo", "bar", "baz"
@@ -40,6 +43,10 @@ class TestMappingDefaultTypes: QuickSpec {
         expect(dictionary.value(forKey: "string", ofType: Int.self)).to(equal(1))
         expect(dictionary.value(forKey: "string", ofType: String.self)).to(equal("1.25"))
 
+        expect(dictionary.value(forKey: "bool", ofType: Bool.self)).to(equal(true))
+        expect(dictionary.value(forKey: "string_bool", ofType: Bool.self)).to(equal(true))
+        expect(dictionary.value(forKey: "string_number_bool", ofType: Bool.self)).to(equal(true))
+
         expect(dictionary.string("string")).to(equal("1.25"))
 
         expect(dictionary.float("name")).to(beNil())
@@ -61,6 +68,8 @@ class TestMappingDefaultTypes: QuickSpec {
         expect(dictionary.double("string")).to(equal(1.25))
         expect(dictionary.int("string")).to(equal(1))
         expect(dictionary.string("string")).to(equal("1.25"))
+
+        expect(dictionary.boolean("string_number_bool")).to(equal(true))
 
       }
     }

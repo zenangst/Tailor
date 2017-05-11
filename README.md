@@ -174,6 +174,30 @@ let dictionary = [
 let model = Person(dictionary)
 ```
 
+## Resolving value types.
+
+Tailor supports mapping values from dictionaries using type specific functions.
+
+```swift
+dictionary.boolean("key")
+dictionary.double("key")
+dictionary.float("key")
+dictionary.int("key")
+dictionary.string("key")
+```
+
+You can also use `value(forKey:ofType:)`, it works like this.
+
+```swift
+dictionary.value(forKey: "key", ofType: Bool.self)
+dictionary.value(forKey: "key", ofType: Double.self)
+dictionary.value(forKey: "key", ofType: Float.self)
+dictionary.value(forKey: "key", ofType: Int.self)
+dictionary.value(forKey: "key", ofType: String.self)
+```
+
+All of these methods returns an optional value.
+
 ## Installation
 
 **Tailor** is available through [CocoaPods](http://cocoapods.org). To install

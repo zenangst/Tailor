@@ -91,6 +91,26 @@ public extension Dictionary {
     return property(name)
   }
 
+  /// Map value using key to String
+  ///
+  /// - Parameter name: The name of the key.
+  /// - Returns: An optional String
+  func boolean(_ name: String) -> Bool? {
+    guard let key = name as? Key else {
+      return nil
+    }
+
+    if let string = self[key] as? String {
+      return string == "true" ? true : false
+    } else if let number = self[key] as? NSNumber {
+      return number.boolValue
+    } else if let boolean = self[key] as? Bool {
+      return boolean
+    } else {
+      return nil
+    }
+  }
+
   /// A generic method that maps a value from a key to a specific type.
   ///
   /// - Parameters:
@@ -110,6 +130,8 @@ public extension Dictionary {
       return value
     } else {
       switch ofType {
+      case is Bool.Type:
+        return boolean(forKey) as? T
       case is Double.Type:
         return double(forKey) as? T
       case is Float.Type:

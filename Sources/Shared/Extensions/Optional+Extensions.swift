@@ -10,4 +10,11 @@ public extension Optional {
       throw MappableError.typeError(message: "Can't unwrap")
     }
   }
+
+  /// Perform an action if not nil
+  func performIfNotNil(block: (Wrapped) -> Void) {
+    if case .some(let value) = self {
+      block(value)
+    }
+  }
 }

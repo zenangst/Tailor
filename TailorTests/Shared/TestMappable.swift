@@ -230,13 +230,12 @@ class TestMappable: QuickSpec {
             ]
           ]
 
-          testStruct.relatives <+ relatives.objects()
+          testStruct.relatives += relatives.objects()
         }
 
         it("has the correct relative count") {
           expect(testStruct.relatives.count).to(equal(2))
         }
-
       }
 
       context("appending object") {
@@ -255,7 +254,7 @@ class TestMappable: QuickSpec {
               "birth_date": "2014-07-17"
             ]
           ]
-          testStruct.relatives <+ relatives.relation("first")
+          testStruct.relatives.append(relatives.relation("first")!)
           copy = testStruct
         }
 
@@ -265,7 +264,7 @@ class TestMappable: QuickSpec {
 
         context("after appending copy") {
           beforeEach {
-            testStruct.relatives <+ copy
+            testStruct.relatives.append(copy)
           }
 
           it("has two relatives") {

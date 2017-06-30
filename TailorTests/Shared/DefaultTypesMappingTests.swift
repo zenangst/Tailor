@@ -68,9 +68,9 @@ class TestMappingDefaultTypes: QuickSpec {
         expect(dictionary.double("string")).to(equal(1.25))
         expect(dictionary.int("string")).to(equal(1))
         expect(dictionary.string("string")).to(equal("1.25"))
-
+        
         expect(dictionary.boolean("string_number_bool")).to(equal(true))
-
+        
       }
     }
   }

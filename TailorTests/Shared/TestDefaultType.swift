@@ -17,62 +17,62 @@ struct Book: Mappable {
 
 class TestDefaultType: QuickSpec {
 
-    override func spec() {
+  override func spec() {
 
-        describe("operator") {
+    describe("operator") {
 
-            context("string") {
-                var string: String!
+      context("string") {
+        var string: String!
 
-                beforeEach {
-                    string = <?(nil as String?)
-                }
-
-                it("is equal to empty string") {
-                    expect(string).to(equal(""))
-                }
-
-            }
-
-            context("int") {
-                var int: Int!
-
-                beforeEach {
-                    int = <?(nil as Int?)
-                }
-
-                it("is equal to 0") {
-                    expect(int).to(equal(0))
-                }
-
-            }
-
+        beforeEach {
+          string = <?(nil as String?)
         }
 
-        describe("default type") {
-            var json: [String : Any]!
-            var book: Book!
-
-            beforeEach {
-                json = [
-                    "name": "Advanced Swift",
-                    "page_count": 400,
-                    "website_url": "https://www.objc.io/books/advanced-swift/"
-                ]
-                book = Book(json)
-            }
-
-            it("has the correct name") {
-                expect(book.name).to(equal("Advanced Swift"))
-            }
-
-            it("has the correct page count") {
-                expect(book.pageCount).to(equal(400))
-            }
-
-            it("has the correct website") {
-                expect(book.website).to(equal(URL(string: "https://www.objc.io/books/advanced-swift/")))
-            }
+        it("is equal to empty string") {
+          expect(string).to(equal(""))
         }
+
+      }
+
+      context("int") {
+        var int: Int!
+
+        beforeEach {
+          int = <?(nil as Int?)
+        }
+
+        it("is equal to 0") {
+          expect(int).to(equal(0))
+        }
+
+      }
+
     }
+
+    describe("default type") {
+      var json: [String : Any]!
+      var book: Book!
+
+      beforeEach {
+        json = [
+          "name": "Advanced Swift",
+          "page_count": 400,
+          "website_url": "https://www.objc.io/books/advanced-swift/"
+        ]
+        book = Book(json)
+      }
+
+      it("has the correct name") {
+        expect(book.name).to(equal("Advanced Swift"))
+      }
+
+      it("has the correct page count") {
+        expect(book.pageCount).to(equal(400))
+      }
+
+      it("has the correct website") {
+        expect(book.website).to(equal(URL(string: "https://www.objc.io/books/advanced-swift/")))
+      }
+    }
+  }
 }

@@ -80,10 +80,10 @@ struct TestImmutable: SafeMappable {
   let hobbies: [Job]
 
   init(_ map: [String : Any]) throws {
-    firstName = try <-map.property("firstName")
-    lastName = try <-map.property("lastName")
-    job = try <-map.relationOrThrow("job")
-    hobbies = try <-map.relationsOrThrow("hobbies")
+    firstName = try map.property("firstName").unwrapOrThrow()
+    lastName = try map.property("lastName").unwrapOrThrow()
+    job = try map.relation("job").unwrapOrThrow()
+    hobbies = try map.relations("hobbies").unwrapOrThrow()
   }
 }
 

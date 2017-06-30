@@ -171,17 +171,6 @@ public extension Dictionary {
 
   /**
    - Parameter name: The name of the property that you want to map
-   - Returns: A generic type if casting succeeds, otherwise it throws
-   */
-  func propertyOrThrow<T>(_ name: String) throws -> T {
-    guard let result: T = property(name)
-      else { throw MappableError.typeError(message: "Tried to get value for \(name) as \(T.self)") }
-
-    return result
-  }
-
-  /**
-   - Parameter name: The name of the property that you want to map
    - Parameter transformer: A transformation closure
    - Returns: A generic type if casting succeeds, otherwise it returns nil
    */
@@ -226,17 +215,6 @@ public extension Dictionary {
 
   /**
    - Parameter name: The name of the key
-   - Returns: A child dictionary for that key, otherwise it throws
-   */
-  func dictionaryOrThrow(_ name: String) throws -> [String : Any] {
-    guard let result = dictionary(name)
-      else { throw MappableError.typeError(message: "Tried to get value for \(name) as [String : Any]") }
-
-    return result
-  }
-
-  /**
-   - Parameter name: The name of the key
    - Returns: A child array for that key, otherwise it returns nil
    */
   func array(_ name: String) -> [[String : Any]]? {
@@ -249,17 +227,6 @@ public extension Dictionary {
 
   /**
    - Parameter name: The name of the key
-   - Returns: A child array for that key, otherwise it throws
-   */
-  func arrayOrThrow(_ name: String) throws -> [[String : Any]] {
-    guard let result = array(name)
-      else { throw MappableError.typeError(message: "Tried to get value for \(name) as [[String : Any]]") }
-
-    return result
-  }
-
-  /**
-   - Parameter name: The name of the key
    - Returns: An enum if casting succeeds, otherwise it returns nil
    */
   func `enum`<T: RawRepresentable>(_ name: String) -> T? {
@@ -268,17 +235,6 @@ public extension Dictionary {
       else { return nil }
 
     return T(rawValue: value)
-  }
-
-  /**
-   - Parameter name: The name of the key
-   - Returns: An enum if casting succeeds, otherwise it throws
-   */
-  func enumOrThrow<T: RawRepresentable>(_ name: String) throws -> T {
-    guard let result: T = `enum`(name)
-      else { throw MappableError.typeError(message: "Tried to get value for \(name) as enum") }
-
-    return result
   }
 }
 
@@ -300,17 +256,6 @@ public extension Dictionary {
 
   /**
    - Parameter name: The name of the property that you want to map
-   - Returns: A generic type if casting succeeds, otherwise it throws
-   */
-  func relationOrThrow<T: Mappable>(_ name: String) throws -> T {
-    guard let result: T = relation(name)
-      else { throw MappableError.typeError(message: "Tried to get value for \(name) as \(T.self)") }
-
-    return result
-  }
-
-  /**
-   - Parameter name: The name of the property that you want to map
    - Returns: A mappable object, otherwise it returns nil
    */
   func relation<T: SafeMappable>(_ name: String) -> T? {
@@ -325,17 +270,6 @@ public extension Dictionary {
     } catch {
       result = nil
     }
-
-    return result
-  }
-
-  /**
-   - Parameter name: The name of the property that you want to map
-   - Returns: A generic type if casting succeeds, otherwise it throws
-   */
-  func relationOrThrow<T: SafeMappable>(_ name: String) throws -> T {
-    guard let result: T = relation(name)
-      else { throw MappableError.typeError(message: "Tried to get value for \(name) as \(T.self)") }
 
     return result
   }
@@ -359,17 +293,6 @@ public extension Dictionary {
 
   /**
    - Parameter name: The name of the property that you want to map
-   - Returns: A mappable object array, otherwise it throws
-   */
-  func relationsOrThrow<T: Mappable>(_ name: String) throws -> [T] {
-    guard let result: [T] = relations(name)
-      else { throw MappableError.typeError(message: "Tried to get value for \(name) as \(T.self)") }
-
-    return result
-  }
-
-  /**
-   - Parameter name: The name of the property that you want to map
    - Returns: A mappable object array, otherwise it returns nil
    */
   func relations<T: SafeMappable>(_ name: String) -> [T]? {
@@ -382,17 +305,6 @@ public extension Dictionary {
     do {
       result = try array.map { try T($0) }
     } catch {}
-
-    return result
-  }
-
-  /**
-   - Parameter name: The name of the property that you want to map
-   - Returns: A mappable object array, otherwise it throws
-   */
-  func relationsOrThrow<T: SafeMappable>(_ name: String) throws -> [T] {
-    guard let result: [T] = relations(name)
-      else { throw MappableError.typeError(message: "Tried to get value for \(name) as \(T.self)") }
 
     return result
   }

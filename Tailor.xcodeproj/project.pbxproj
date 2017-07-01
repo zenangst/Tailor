@@ -51,6 +51,9 @@
 		D22829E81CCA2ECF00466A1C /* PathAccessible.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22829E61CCA2ECF00466A1C /* PathAccessible.swift */; };
 		D2E827DA1CAD25FA003151A6 /* TestAccessible.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E827D91CAD25FA003151A6 /* TestAccessible.swift */; };
 		D2E827DB1CAD25FA003151A6 /* TestAccessible.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E827D91CAD25FA003151A6 /* TestAccessible.swift */; };
+		D2EC3BB91F06745D00AF84F4 /* Optional+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EC3BB81F06745D00AF84F4 /* Optional+Extensions.swift */; };
+		D2EC3BBA1F06745D00AF84F4 /* Optional+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EC3BB81F06745D00AF84F4 /* Optional+Extensions.swift */; };
+		D2EC3BBB1F06745D00AF84F4 /* Optional+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EC3BB81F06745D00AF84F4 /* Optional+Extensions.swift */; };
 		D2F488761CCDFFC7005DD009 /* HierarchyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F488751CCDFFC7005DD009 /* HierarchyType.swift */; };
 		D2F488771CCDFFC7005DD009 /* HierarchyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F488751CCDFFC7005DD009 /* HierarchyType.swift */; };
 		D2F488791CCE00F2005DD009 /* TestHierarchyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F488781CCE00F2005DD009 /* TestHierarchyType.swift */; };
@@ -105,6 +108,7 @@
 		BDC182631C3FE45000B54DD7 /* TestSubjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestSubjects.swift; sourceTree = "<group>"; };
 		D22829E61CCA2ECF00466A1C /* PathAccessible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathAccessible.swift; sourceTree = "<group>"; };
 		D2E827D91CAD25FA003151A6 /* TestAccessible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestAccessible.swift; sourceTree = "<group>"; };
+		D2EC3BB81F06745D00AF84F4 /* Optional+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Optional+Extensions.swift"; sourceTree = "<group>"; };
 		D2F488751CCDFFC7005DD009 /* HierarchyType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HierarchyType.swift; sourceTree = "<group>"; };
 		D2F488781CCE00F2005DD009 /* TestHierarchyType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestHierarchyType.swift; sourceTree = "<group>"; };
 		D2F4887B1CCE2885005DD009 /* DefaultType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultType.swift; sourceTree = "<group>"; };
@@ -175,6 +179,7 @@
 				BD81A1411C73A493009955E3 /* Dictionary+Tailor.swift */,
 				BD81A1441C73A49D009955E3 /* Array+Tailor.swift */,
 				BD8B1EB51D93E36F000C3F53 /* String+Extensions.swift */,
+				D2EC3BB81F06745D00AF84F4 /* Optional+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -636,6 +641,7 @@
 				BDA0DFD81D93F93A00D299BE /* SafeMappable.swift in Sources */,
 				BDA0DFD91D93F93A00D299BE /* PathAccessible.swift in Sources */,
 				BDA0DFDA1D93F93A00D299BE /* HierarchyType.swift in Sources */,
+				D2EC3BBB1F06745D00AF84F4 /* Optional+Extensions.swift in Sources */,
 				BDA0DFDB1D93F93A00D299BE /* DefaultType.swift in Sources */,
 				BDA0DFDC1D93F93A00D299BE /* Tailor.swift in Sources */,
 			);
@@ -667,6 +673,7 @@
 				BD81A1511C73A66D009955E3 /* SafeMappable.swift in Sources */,
 				BD793D481C3FCC97002BBB5F /* Tailor.swift in Sources */,
 				D22829E71CCA2ECF00466A1C /* PathAccessible.swift in Sources */,
+				D2EC3BB91F06745D00AF84F4 /* Optional+Extensions.swift in Sources */,
 				D2F488761CCDFFC7005DD009 /* HierarchyType.swift in Sources */,
 				D2F4887C1CCE2885005DD009 /* DefaultType.swift in Sources */,
 			);
@@ -698,6 +705,7 @@
 				BD81A1521C73A66D009955E3 /* SafeMappable.swift in Sources */,
 				BD793D551C3FCFA2002BBB5F /* Tailor.swift in Sources */,
 				D22829E81CCA2ECF00466A1C /* PathAccessible.swift in Sources */,
+				D2EC3BBA1F06745D00AF84F4 /* Optional+Extensions.swift in Sources */,
 				D2F488771CCDFFC7005DD009 /* HierarchyType.swift in Sources */,
 				D2F4887D1CCE2885005DD009 /* DefaultType.swift in Sources */,
 			);

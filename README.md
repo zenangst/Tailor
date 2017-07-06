@@ -52,31 +52,6 @@ let dictionary = ["first_name" : "Taylor", "last_name" : "Swift"]
 let model = Person(dictionary)
 ```
 
-## Object mapping
-
-```swift
-struct Person: Mappable {
-
-  var firstName: String? = ""
-  var lastName: String? = ""
-  var spouse: Person?
-
-  init(_ map: [String : Any]) {
-    firstName <- map.property("first_name")
-    lastName  <- map.property("last_name")
-    spouse    <- map.relation("spouse")
-  }
-}
-
-let dictionary = [
-  "first_name" : "Taylor",
-  "last_name" : "Swift",
-  "spouse" : ["first_name" : "Calvin",
-              "last_name" : "Harris"]
-]
-let model = Person(dictionary)
-```
-
 ## Mapping objects
 
 ```swift

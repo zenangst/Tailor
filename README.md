@@ -52,31 +52,6 @@ let dictionary = ["first_name" : "Taylor", "last_name" : "Swift"]
 let model = Person(dictionary)
 ```
 
-## Object mapping
-
-```swift
-struct Person: Mappable {
-
-  var firstName: String? = ""
-  var lastName: String? = ""
-  var spouse: Person?
-
-  init(_ map: [String : Any]) {
-    firstName <- map.property("first_name")
-    lastName  <- map.property("last_name")
-    spouse    <- map.relation("spouse")
-  }
-}
-
-let dictionary = [
-  "first_name" : "Taylor",
-  "last_name" : "Swift",
-  "spouse" : ["first_name" : "Calvin",
-              "last_name" : "Harris"]
-]
-let model = Person(dictionary)
-```
-
 ## Mapping objects
 
 ```swift
@@ -119,10 +94,10 @@ struct ImmutablePerson: SafeMappable {
   let parents = [Person]()
 
   init(_ map: [String : Any]) throws {
-    firstName = try <-map.property("firstName")
-    lastName = try <-map.property("lastName")
-    spouse = try <-map.relationOrThrow("spouse")
-    parents = try <-map.relationsOrThrow("parents")
+    firstName = try map.property("firstName").unwrapOrThrow()
+    lastName = try map.property("lastName").unwrapOrThrow()
+    spouse = try map.relationOrThrow("spouse").unwrapOrThrow()
+    parents = try map.relationsOrThrow("parents").unwrapOrThrow()
   }
 }
 
@@ -172,6 +147,27 @@ let dictionary = [
   "birth_date": "1989-12-13"
 ]
 let model = Person(dictionary)
+```
+
+## KeyPath
+
+Tailor supports mapping values using deep keyPath
+
+```swift
+struct Book: Mappable {
+
+  var title: String = ""
+  var publisherName: String = ""
+  var authorName: String = ""
+  var firstReviewerName: String = ""
+
+  init(_ map: [String : Any]) {
+    title <- map.resolve(keyPath: "title")
+    publisherName <- map.resolve(keyPath: "publisher.name")
+    authorName <- map.resolve(keyPath: "info.author.name")
+    firstReviewerName <- map.resolve(keyPath: "meta.reviewers.0.info.name.first_name")
+  }
+}
 ```
 
 ## Resolving value types.

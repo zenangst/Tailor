@@ -149,6 +149,27 @@ let dictionary = [
 let model = Person(dictionary)
 ```
 
+## KeyPath
+
+Tailor supports mapping values using deep keyPath
+
+```swift
+struct Book: Mappable {
+
+  var title: String = ""
+  var publisherName: String = ""
+  var authorName: String = ""
+  var firstReviewerName: String = ""
+
+  init(_ map: [String : Any]) {
+    title <- map.resolve(keyPath: "title")
+    publisherName <- map.resolve(keyPath: "publisher.name")
+    authorName <- map.resolve(keyPath: "info.author.name")
+    firstReviewer <- map.resolve(keyPath: "meta.reviewers.0.info.name.first_name")
+  }
+}
+```
+
 ## Resolving value types.
 
 Tailor supports mapping values from dictionaries using type specific functions.

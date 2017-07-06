@@ -119,10 +119,10 @@ struct ImmutablePerson: SafeMappable {
   let parents = [Person]()
 
   init(_ map: [String : Any]) throws {
-    firstName = try <-map.property("firstName")
-    lastName = try <-map.property("lastName")
-    spouse = try <-map.relationOrThrow("spouse")
-    parents = try <-map.relationsOrThrow("parents")
+    firstName = try map.property("firstName").unwrapOrThrow()
+    lastName = try map.property("lastName").unwrapOrThrow()
+    spouse = try map.relationOrThrow("spouse").unwrapOrThrow()
+    parents = try map.relationsOrThrow("parents").unwrapOrThrow()
   }
 }
 

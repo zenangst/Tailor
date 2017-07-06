@@ -165,7 +165,7 @@ struct Book: Mappable {
     title <- map.resolve(keyPath: "title")
     publisherName <- map.resolve(keyPath: "publisher.name")
     authorName <- map.resolve(keyPath: "info.author.name")
-    firstReviewer <- map.resolve(keyPath: "meta.reviewers.0.info.name.first_name")
+    firstReviewerName <- map.resolve(keyPath: "meta.reviewers.0.info.name.first_name")
   }
 }
 ```
